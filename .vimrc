@@ -16,9 +16,6 @@ set softtabstop=2
 colorscheme molokai
 
 
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprevious<CR>
-nnoremap <CR> :noh<CR><CR>
 
 
 "set cursorline
@@ -52,6 +49,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/syntastic'
 Plugin 'junegunn/vim-easy-align'
+Plugin 'BufOnly.vim'
 "Plugin 'vim-multiple-cursors'   "has bugs with opening file, and useles
 
 "tools
@@ -63,6 +61,7 @@ Plugin 'airblade/vim-gitgutter'
 "Syntax
 Plugin 'pangloss/vim-javascript'
 Plugin 'slim-template/vim-slim'
+Plugin 'digitaltoad/vim-jade'
 
 
 
@@ -111,6 +110,18 @@ let g:syntastic_loc_list_height=1
 
 "Hotkeys
 nmap <Leader>n :NERDTreeToggle<CR>
+nmap <Leader>o :BufOnly<CR>
+nmap <Leader>p :CtrlPClearAllCaches<CR><c-p>
+
+
+nmap <Leader>u :tabNext<CR>
+nmap <Leader>y :tabprevious<CR>
+nmap <Leader>t :bnext<CR>
+nmap <Leader>r :bprevious<CR>
+
+"nnoremap <Tab> :bnext<CR>
+"nnoremap <S-Tab> :bprevious<CR>
+nnoremap <CR> :noh<CR><CR>
 "ctrl-p
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -119,6 +130,9 @@ let g:ctrlp_cmd = 'CtrlP'
 xmap ga <Plug>(EasyAlign)
  " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+
+
 
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
