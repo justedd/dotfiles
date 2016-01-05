@@ -19,6 +19,7 @@ colorscheme molokai
 
 
 "set cursorline
+"set cursorcolumn
 
 set hlsearch
 
@@ -39,7 +40,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'Yggdroot/indentLine'
-Plugin 'mhinz/vim-startify'
+"Plugin 'mhinz/vim-startify'
 
 
 "code
@@ -62,6 +63,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'pangloss/vim-javascript'
 Plugin 'slim-template/vim-slim'
 Plugin 'digitaltoad/vim-jade'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'cakebaker/scss-syntax.vim'
 
 
 
@@ -93,6 +96,8 @@ let g:gitgutter_sign_column_always = 1
 "disable node_modules for ctrlp
 set wildignore+=node_modules/**
 set wildignore+=*/node_modules/**
+set wildignore+=public/**
+set wildignore+=*/public/**
 
 
 "syntastic def config
@@ -104,8 +109,11 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 "syntastic checkers
-let g:syntastic_js_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_loc_list_height=1
+
+"let g:syntastic_quiet_messages=1
 
 
 "Hotkeys
@@ -119,12 +127,17 @@ nmap <Leader>y :tabprevious<CR>
 nmap <Leader>t :bnext<CR>
 nmap <Leader>r :bprevious<CR>
 
+
+
+nmap <Leader>R :!ruby %<CR>
+
 "nnoremap <Tab> :bnext<CR>
 "nnoremap <S-Tab> :bprevious<CR>
 nnoremap <CR> :noh<CR><CR>
 "ctrl-p
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
