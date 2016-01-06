@@ -50,6 +50,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/syntastic'
 Plugin 'junegunn/vim-easy-align'
+Plugin 'tpope/vim-surround'
 Plugin 'BufOnly.vim'
 "Plugin 'vim-multiple-cursors'   "has bugs with opening file, and useles
 
@@ -61,10 +62,12 @@ Plugin 'airblade/vim-gitgutter'
 
 "Syntax
 Plugin 'pangloss/vim-javascript'
+Plugin 'vim-ruby/vim-ruby'
 Plugin 'slim-template/vim-slim'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'mxw/vim-jsx'
 
 
 
@@ -111,9 +114,17 @@ let g:syntastic_check_on_wq = 0
 "syntastic checkers
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_scss_checkers = ['scss_lint']
+let g:syntastic_jade_checkers = ['jade_lint']
+let g:syntastic_jade_checkers = ['jade_lint']
 let g:syntastic_loc_list_height=1
 
 "let g:syntastic_quiet_messages=1
+"
+
+
+"jsx highlight not only jsx files
+let g:jsx_ext_required = 0
 
 
 "Hotkeys
