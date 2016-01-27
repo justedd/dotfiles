@@ -40,6 +40,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'Yggdroot/indentLine'
+Plugin 'szw/vim-maximizer'
 "Plugin 'mhinz/vim-startify'
 
 
@@ -137,10 +138,13 @@ nmap <Leader>u :tabNext<CR>
 nmap <Leader>y :tabprevious<CR>
 nmap <Leader>t :bnext<CR>
 nmap <Leader>r :bprevious<CR>
+nmap <Leader>f :set foldmethod=syntax<CR>
+nmap <Leader>m :MaximizerToggle<CR>
 
 
 
 nmap <Leader>R :!ruby %<CR>
+nmap <Leader>T :!rspec <CR>
 
 "nnoremap <Tab> :bnext<CR>
 "nnoremap <S-Tab> :bprevious<CR>
@@ -156,6 +160,7 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 
+let g:airline_powerline_fonts = 1
 
 
 " To ignore plugin indent changes, instead use:
