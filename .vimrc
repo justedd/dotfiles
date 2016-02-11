@@ -134,10 +134,10 @@ nmap <Leader>o :BufOnly<CR>
 nmap <Leader>p :CtrlPClearAllCaches<CR><c-p>
 
 
-nmap <Leader>u :tabNext<CR>
-nmap <Leader>y :tabprevious<CR>
-nmap <Leader>t :bnext<CR>
-nmap <Leader>r :bprevious<CR>
+nmap <Leader>; :tabNext<CR>
+nmap <Leader>l :tabprevious<CR>
+nmap <Leader>s :bnext<CR>
+nmap <Leader>a :bprevious<CR>
 nmap <Leader>f :set foldmethod=syntax<CR>
 nmap <Leader>m :MaximizerToggle<CR>
 
