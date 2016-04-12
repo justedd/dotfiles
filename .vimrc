@@ -114,7 +114,7 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 "syntastic checkers
 let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_ruby_checkers = ['rubocop', 'reek']
 let g:syntastic_scss_checkers = ['scss_lint']
 let g:syntastic_jade_checkers = ['jade_lint']
 let g:syntastic_jade_checkers = ['jade_lint']
@@ -123,6 +123,8 @@ let g:syntastic_loc_list_height=1
 "let g:syntastic_quiet_messages=1
 "
 
+" use multiple checkers
+let g:syntastic_aggregate_errors = 1
 
 "jsx highlight not only jsx files
 let g:jsx_ext_required = 0
@@ -140,6 +142,8 @@ nmap <Leader>s :bnext<CR>
 nmap <Leader>a :bprevious<CR>
 nmap <Leader>f :set foldmethod=syntax<CR>
 nmap <Leader>m :MaximizerToggle<CR>
+
+xmap <Leader>y "+Y 
 
 
 
@@ -162,6 +166,7 @@ nmap ga <Plug>(EasyAlign)
 
 let g:airline_powerline_fonts = 1
 
+set diffopt+=vertical
 
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
