@@ -147,7 +147,7 @@ nmap <Leader>m :MaximizerToggle<CR>
 xmap <Leader>y "+Y 
 
 nmap <Leader>d :bd<CR>
-nmap <Leader>l :SyntasticCheck<CR>
+nmap <Leader>l :w<CR>:SyntasticCheck<CR>
 nmap <Leader>L :SyntasticReset<CR>
 
 nmap <Leader>R :!ruby %<CR>
