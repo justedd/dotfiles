@@ -112,6 +112,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map = { "mode": "passive", "active_filetypes": [], "passive_filetypes": [] }
 "syntastic checkers
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_ruby_checkers = ['rubocop', 'reek']
@@ -136,8 +137,8 @@ nmap <Leader>o :BufOnly<CR>
 nmap <Leader>p :CtrlPClearAllCaches<CR><c-p>
 
 
-nmap <Leader>; :tabNext<CR>
-nmap <Leader>l :tabprevious<CR>
+"nmap <Leader>; :tabNext<CR>
+"nmap <Leader>l :tabprevious<CR>
 nmap <Leader>s :bnext<CR>
 nmap <Leader>a :bprevious<CR>
 nmap <Leader>f :set foldmethod=syntax<CR>
@@ -145,7 +146,9 @@ nmap <Leader>m :MaximizerToggle<CR>
 
 xmap <Leader>y "+Y 
 
-
+nmap <Leader>d :bd<CR>
+nmap <Leader>l :SyntasticCheck<CR>
+nmap <Leader>L :SyntasticReset<CR>
 
 nmap <Leader>R :!ruby %<CR>
 nmap <Leader>T :!rspec <CR>
