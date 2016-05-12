@@ -148,6 +148,7 @@ xmap <Leader>y "+Y
 
 nmap <Leader>d :bd<CR>
 nmap <Leader>l :w<CR>:SyntasticCheck<CR>
+nmap <Leader>w :w<CR>
 nmap <Leader>L :SyntasticReset<CR>
 
 nmap <Leader>R :!ruby %<CR>
