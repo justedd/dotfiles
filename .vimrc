@@ -55,6 +55,13 @@ Plugin 'tpope/vim-surround'
 Plugin 'BufOnly.vim'
 "Plugin 'vim-multiple-cursors'   "has bugs with opening file, and useles
 
+"tag test start
+Plugin 'majutsushi/tagbar'
+Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc'
+"tag test end
+
+
 "tools
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
@@ -82,6 +89,9 @@ Plugin 'mxw/vim-jsx'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+"tag test start
+nmap <F8> :TagbarToggle<CR>
+"tag test end
 
 "indentline color
 let g:indentLine_color_term = 239
