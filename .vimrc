@@ -56,9 +56,9 @@ Plugin 'BufOnly.vim'
 "Plugin 'vim-multiple-cursors'   "has bugs with opening file, and useles
 
 "tag test start
-Plugin 'majutsushi/tagbar'
-Plugin 'xolox/vim-easytags'
-Plugin 'xolox/vim-misc'
+"Plugin 'majutsushi/tagbar'
+"Plugin 'xolox/vim-easytags'
+"Plugin 'xolox/vim-misc'
 "tag test end
 
 
