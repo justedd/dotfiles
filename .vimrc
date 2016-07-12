@@ -53,6 +53,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'tpope/vim-surround'
 Plugin 'BufOnly.vim'
+Plugin 'mattn/emmet-vim'
 "Plugin 'vim-multiple-cursors'   "has bugs with opening file, and useles
 
 "tag test start
@@ -68,6 +69,7 @@ Plugin 'airblade/vim-gitgutter'
 
 
 
+
 "Syntax
 Plugin 'pangloss/vim-javascript'
 Plugin 'vim-ruby/vim-ruby'
@@ -76,6 +78,7 @@ Plugin 'digitaltoad/vim-jade'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'mxw/vim-jsx'
+Plugin 'elzr/vim-json'
 
 
 
@@ -181,6 +184,11 @@ nmap ga <Plug>(EasyAlign)
 let g:airline_powerline_fonts = 1
 
 set diffopt+=vertical
+
+let g:vim_json_syntax_conceal = 0
+
+" json auto hide quotes
+"set conceallevel=0
 
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
