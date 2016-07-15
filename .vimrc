@@ -67,6 +67,12 @@ Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
+Plugin 'tpope/vim-rvm'
+
+
+
+Plugin 'ConradIrwin/vim-bracketed-paste'
+
 
 
 
@@ -100,14 +106,17 @@ nmap <F8> :TagbarToggle<CR>
 let g:indentLine_color_term = 239
 "set tern_for_vim as def js for YCM
 autocmd FileType javascript setlocal omnifunc=tern#Complete
+
 "disable node_modules dir from command-t
 "let g:CommandTWildIgnore=&wildignore . ",**/node_modules/*"
 "show tabline form air-line
 let g:airline#extensions#tabline#enabled = 1
 "always show air-line
 set laststatus=2
+
 "disable popup window fro turn_for_vim
 autocmd BufEnter * set completeopt-=preview
+
 "always show gitgutter sign column for changes
 let g:gitgutter_sign_column_always = 1
 "disable node_modules for ctrlp
@@ -157,6 +166,7 @@ nmap <Leader>a :bprevious<CR>
 nmap <Leader>f :set foldmethod=syntax<CR>
 nmap <Leader>m :MaximizerToggle<CR>
 
+" x copy paste
 xmap <Leader>y "+Y 
 
 nmap <Leader>d :bd<CR>
@@ -201,3 +211,7 @@ let g:vim_json_syntax_conceal = 0
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+"
+set shell=/bin/sh
+
+set backupdir=~/.vim/swp
