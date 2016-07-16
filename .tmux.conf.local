@@ -4,7 +4,7 @@
 #tmux_conf_theme=default
 tmux_conf_theme=powerline
 
-set -g mouse-utf8 on
+#set -g mouse-utf8 on
 set -g mouse on
 
 bind -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft= '#{pane_in_mode}' 'send-keys -M' 'select-pane -t=; copy-mode -e; send-keys -M'"
