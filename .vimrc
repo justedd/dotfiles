@@ -86,6 +86,9 @@ Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'mxw/vim-jsx'
 Plugin 'elzr/vim-json'
 
+Plugin 'dkprice/vim-easygrep'
+Plugin 'mileszs/ack.vim'
+
 
 
 
