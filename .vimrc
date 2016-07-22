@@ -218,3 +218,7 @@ let g:vim_json_syntax_conceal = 0
 set shell=/bin/sh
 
 set backupdir=~/.vim/swp
+
+let EasyGrepRecursive=1
+let g:EasyGrepCommand="ack"
+let g:EasyGrepFilesToExclude=".log"
