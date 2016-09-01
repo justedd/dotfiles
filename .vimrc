@@ -46,7 +46,7 @@ Plugin 'szw/vim-maximizer'
 
 "code
 Plugin 'Valloric/YouCompleteMe'
-"Plugin 'ternjs/tern_for_vim'
+Plugin 'ternjs/tern_for_vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/syntastic'
@@ -108,7 +108,7 @@ nmap <F8> :TagbarToggle<CR>
 "indentline color
 let g:indentLine_color_term = 239
 "set tern_for_vim as def js for YCM
-"autocmd FileType javascript setlocal omnifunc=tern#Complete
+autocmd FileType javascript setlocal omnifunc=tern#Complete
 
 "disable node_modules dir from command-t
 "let g:CommandTWildIgnore=&wildignore . ",**/node_modules/*"
