@@ -140,11 +140,14 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { "mode": "passive", "active_filetypes": [], "passive_filetypes": [] }
 "syntastic checkers
 let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_ruby_checkers = ['rubocop', 'reek']
+let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_scss_checkers = ['scss_lint']
 let g:syntastic_jade_checkers = ['jade_lint']
 let g:syntastic_jade_checkers = ['jade_lint']
 let g:syntastic_loc_list_height=1
+
+" hm
+"let g:syntastic_ruby_rubocop_exec = "~/_core/rubocop.sh"
 
 "let g:syntastic_quiet_messages=1
 "
