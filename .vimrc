@@ -90,13 +90,6 @@ Plugin 'dkprice/vim-easygrep'
 Plugin 'mileszs/ack.vim'
 
 
-
-
-
-
-
-
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -114,6 +107,7 @@ autocmd FileType javascript setlocal omnifunc=tern#Complete
 "let g:CommandTWildIgnore=&wildignore . ",**/node_modules/*"
 "show tabline form air-line
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_splits = 0
 "always show air-line
 set laststatus=2
 
@@ -162,7 +156,7 @@ let g:jsx_ext_required = 0
 "Hotkeys
 nmap <Leader>n :NERDTreeToggle<CR>
 nmap <Leader>o :BufOnly<CR>
-nmap <Leader>p :CtrlPClearAllCaches<CR><c-p>
+nmap <Leader>p :CtrlPBuffer<CR>
 
 
 "nmap <Leader>; :tabNext<CR>
