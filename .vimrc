@@ -156,13 +156,18 @@ let g:jsx_ext_required = 0
 "Hotkeys
 nmap <Leader>n :NERDTreeToggle<CR>
 nmap <Leader>o :BufOnly<CR>
-nmap <Leader>p :CtrlPBuffer<CR>
+
+"ctrl-p
+let g:ctrlp_map = '<Leader>p'
+let g:ctrlp_cmd = 'CtrlP'
+
+nmap <C-p> :CtrlPBuffer<CR>
 
 
 "nmap <Leader>; :tabNext<CR>
 "nmap <Leader>l :tabprevious<CR>
-nmap <Leader>s :bnext<CR>
-nmap <Leader>a :bprevious<CR>
+"nmap <Leader>s :bnext<CR>
+"nmap <Leader>a :bprevious<CR>
 nmap <Leader>f :set foldmethod=syntax<CR>
 nmap <Leader>m :MaximizerToggle<CR>
 
@@ -180,10 +185,6 @@ nmap <Leader>T :!rspec <CR>
 "nnoremap <Tab> :bnext<CR>
 "nnoremap <S-Tab> :bprevious<CR>
 nnoremap <CR> :noh<CR><CR>
-"ctrl-p
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
