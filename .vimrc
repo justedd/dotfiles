@@ -54,6 +54,9 @@ Plugin 'junegunn/vim-easy-align'
 Plugin 'tpope/vim-surround'
 Plugin 'BufOnly.vim'
 Plugin 'mattn/emmet-vim'
+
+" % for ruby
+Plugin 'endwise.vim'
 "Plugin 'vim-multiple-cursors'   "has bugs with opening file, and useles
 
 "tag test start
