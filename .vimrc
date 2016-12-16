@@ -171,9 +171,7 @@ nmap <C-p> :CtrlPBuffer<CR>
 "nmap <Leader>l :tabprevious<CR>
 "nmap <Leader>s :bnext<CR>
 "nmap <Leader>a :bprevious<CR>
-nmap <Leader>f :set foldmethod=syntax<CR>
 nmap <Leader>m :MaximizerToggle<CR>
-
 " x copy paste
 xmap <Leader>y "+Y 
 
@@ -223,3 +221,8 @@ set backupdir=~/.vim/swp
 let EasyGrepRecursive=1
 let g:EasyGrepCommand="ack"
 let g:EasyGrepFilesToExclude=".log"
+
+set foldmethod=syntax
+set foldlevel=1
+" prevent automatic open folds in search
+set fdo-=search
