@@ -274,4 +274,7 @@ tmux_conf_theme_status_left_bg='#ffff00,#000000,#00afff'  # yellow, black, white
 # right side staff
 tmux_conf_theme_status_right='#{prefix}#{pairing}#{?battery_status, #{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} | #{username}#{root} | #{hostname} '
 
+set -g status-fg white
+
+tmux_conf_theme_window_status_current_bg='#1D1F21'      # light blue
 # -----end of justed section --------------#

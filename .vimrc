@@ -35,12 +35,13 @@ Plugin 'scrooloose/nerdtree'
 "Plugin 'wincent/Command-T'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Yggdroot/indentLine'
 Plugin 'szw/vim-maximizer'
 "Plugin 'mhinz/vim-startify'
 
 " colour schemes
-"Plugin 'chriskempson/base16-vim'
+Plugin 'chriskempson/base16-vim'
 
 "code
 Plugin 'Valloric/YouCompleteMe'
@@ -73,7 +74,6 @@ Plugin 'tpope/vim-rvm'
 
 
 Plugin 'ConradIrwin/vim-bracketed-paste'
-
 
 
 
@@ -229,3 +229,19 @@ set fdo-=search
 "if has("termguicolors")
   "set termguicolors
 "endif
+
+let base16colorspace=256
+
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
+" unknown fix for base16 and tmux
+if has('termguicolors') && $TERM_PROGRAM ==# 'iTerm.app' && $TERM !~# '^\%(screen\|tmux\)'
+  set termguicolors
+else
+  set notermguicolors
+endif
+
+let g:airline_theme='base16_default'
