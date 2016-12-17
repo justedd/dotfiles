@@ -13,10 +13,6 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 
-colorscheme molokai
-
-
-
 
 "set cursorline
 "set cursorcolumn
@@ -43,6 +39,8 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'szw/vim-maximizer'
 "Plugin 'mhinz/vim-startify'
 
+" colour schemes
+"Plugin 'chriskempson/base16-vim'
 
 "code
 Plugin 'Valloric/YouCompleteMe'
@@ -226,3 +224,8 @@ set foldmethod=syntax
 set foldlevel=1
 " prevent automatic open folds in search
 set fdo-=search
+
+" fix colour scheme conflicts with terminal colourscheme (for base16)
+"if has("termguicolors")
+  "set termguicolors
+"endif
