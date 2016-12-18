@@ -53,6 +53,7 @@ Plugin 'junegunn/vim-easy-align'
 Plugin 'tpope/vim-surround'
 Plugin 'BufOnly.vim'
 Plugin 'mattn/emmet-vim'
+Plugin 'tpope/vim-rails'
 
 " % for ruby
 Plugin 'endwise.vim'
@@ -64,17 +65,13 @@ Plugin 'endwise.vim'
 "Plugin 'xolox/vim-misc'
 "tag test end
 
-
 "tools
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
 Plugin 'tpope/vim-rvm'
 
-
-
 Plugin 'ConradIrwin/vim-bracketed-paste'
-
 
 
 "Syntax
@@ -220,7 +217,7 @@ let EasyGrepRecursive=1
 let g:EasyGrepCommand="ack"
 let g:EasyGrepFilesToExclude=".log"
 
-set foldmethod=syntax
+set foldmethod=indent
 set foldlevel=1
 " prevent automatic open folds in search
 set fdo-=search
