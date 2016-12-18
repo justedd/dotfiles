@@ -269,7 +269,7 @@ tmux_conf_theme_right_separator_sub=''
 # left side only good stuff
 tmux_conf_theme_status_left=' ❐ #S | '
 # colours from left
-tmux_conf_theme_status_left_bg='#ffff00,#000000,#00afff'  # yellow, black, white blue
+tmux_conf_theme_status_left_bg='#1D1F21,#000000,#00afff'  # yellow, black, white blue
 
 # right side staff
 tmux_conf_theme_status_right='#{prefix}#{pairing}#{?battery_status, #{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} | #{username}#{root} | #{hostname} '
@@ -277,4 +277,6 @@ tmux_conf_theme_status_right='#{prefix}#{pairing}#{?battery_status, #{battery_st
 set -g status-fg white
 
 tmux_conf_theme_window_status_current_bg='#1D1F21'      # light blue
+
+tmux_conf_theme_status_right_bg='#080808,#d70000,#1D1F21' # dark gray, red, white
 # -----end of justed section --------------#
