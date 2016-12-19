@@ -218,7 +218,7 @@ let g:EasyGrepCommand="ack"
 let g:EasyGrepFilesToExclude=".log"
 
 set foldmethod=indent
-set foldlevel=1
+set foldlevel=0
 " prevent automatic open folds in search
 set fdo-=search
 
@@ -228,6 +228,9 @@ set fdo-=search
 "endif
 
 let base16colorspace=256
+
+"remove dashes in folds
+set fillchars=fold:\ 
 
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
