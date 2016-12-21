@@ -1,25 +1,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-set number
-
-"space to leader
-let mapleader=" "
-
-let g:molokai_original = 1
-
-"indents and tabs
-set expandtab
-set shiftwidth=2
-set softtabstop=2
-
-
-"set cursorline
-"set cursorcolumn
-
-set hlsearch
-
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -44,7 +25,6 @@ Plugin 'szw/vim-maximizer'
 Plugin 'chriskempson/base16-vim'
 
 "code
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'ternjs/tern_for_vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/nerdcommenter'
@@ -73,6 +53,14 @@ Plugin 'tpope/vim-rvm'
 
 Plugin 'ConradIrwin/vim-bracketed-paste'
 
+" sniplets
+Plugin 'ervandew/supertab'
+Plugin 'Valloric/YouCompleteMe'
+" Track the engine.
+Plugin 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
+
 
 "Syntax
 Plugin 'pangloss/vim-javascript'
@@ -92,17 +80,31 @@ Plugin 'mileszs/ack.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+"========================================== end of vundle section ===================================
+
+
+set number
+"space to leader
+let mapleader=" "
+
+"indents and tabs
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+
+set hlsearch
+
+
 "tag test start
 nmap <F8> :TagbarToggle<CR>
 "tag test end
 
-"indentline color
+"indentline color (guessed)
 let g:indentLine_color_term = 239
-"set tern_for_vim as def js for YCM
-autocmd FileType javascript setlocal omnifunc=tern#Complete
 
-"disable node_modules dir from command-t
-"let g:CommandTWildIgnore=&wildignore . ",**/node_modules/*"
+"set tern_for_vim as def js for YCM
+"autocmd FileType javascript setlocal omnifunc=tern#Complete
+
 "show tabline form air-line
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_splits = 0
@@ -114,6 +116,7 @@ autocmd BufEnter * set completeopt-=preview
 
 "always show gitgutter sign column for changes
 let g:gitgutter_sign_column_always = 1
+
 "disable node_modules for ctrlp
 set wildignore+=node_modules/**
 set wildignore+=*/node_modules/**
@@ -138,11 +141,6 @@ let g:syntastic_jade_checkers = ['jade_lint']
 let g:syntastic_jade_checkers = ['jade_lint']
 let g:syntastic_loc_list_height=1
 
-" hm
-"let g:syntastic_ruby_rubocop_exec = "~/_core/rubocop.sh"
-
-"let g:syntastic_quiet_messages=1
-"
 
 " use multiple checkers
 let g:syntastic_aggregate_errors = 1
@@ -162,12 +160,24 @@ let g:ctrlp_cmd = 'CtrlP'
 nmap <C-p> :CtrlPBuffer<CR>
 
 
-"nmap <Leader>; :tabNext<CR>
-"nmap <Leader>l :tabprevious<CR>
-"nmap <Leader>s :bnext<CR>
-"nmap <Leader>a :bprevious<CR>
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>']
+let g:ycm_key_list_previous_completion = ['<C-p>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<C-n>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-p>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+
 nmap <Leader>m :MaximizerToggle<CR>
-" x copy paste
+
+" copy to X buffer
 xmap <Leader>y "+Y 
 
 nmap <Leader>d :bd<CR>
@@ -178,8 +188,6 @@ nmap <Leader>L :SyntasticReset<CR>
 nmap <Leader>R :!ruby %<CR>
 nmap <Leader>T :!rspec <CR>
 
-"nnoremap <Tab> :bnext<CR>
-"nnoremap <S-Tab> :bprevious<CR>
 nnoremap <CR> :noh<CR><CR>
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -197,19 +205,9 @@ let g:vim_json_syntax_conceal = 0
 " json auto hide quotes
 "set conceallevel=0
 
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-"
 set shell=/bin/sh
+
+let g:UltiSnipsUsePythonVersion = 2
 
 set backupdir=~/.vim/swp
 
@@ -222,11 +220,7 @@ set foldlevel=0
 " prevent automatic open folds in search
 set fdo-=search
 
-" fix colour scheme conflicts with terminal colourscheme (for base16)
-"if has("termguicolors")
-  "set termguicolors
-"endif
-
+" color scheme settings  =========================================================================================
 let base16colorspace=256
 
 "remove dashes in folds
@@ -245,3 +239,5 @@ else
 endif
 
 let g:airline_theme='base16_default'
+
+" end ofcolor scheme settings  ===================================================================================
