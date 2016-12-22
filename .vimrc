@@ -54,13 +54,12 @@ Plugin 'tpope/vim-rvm'
 Plugin 'ConradIrwin/vim-bracketed-paste'
 
 " sniplets
-Plugin 'ervandew/supertab'
 Plugin 'Valloric/YouCompleteMe'
 " Track the engine.
 Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
-
+Plugin 'justinj/vim-react-snippets'
 
 "Syntax
 Plugin 'pangloss/vim-javascript'
@@ -82,8 +81,8 @@ filetype plugin indent on    " required
 
 "========================================== end of vundle section ===================================
 
-
-set number
+set nonumber
+set relativenumber
 "space to leader
 let mapleader=" "
 
@@ -159,17 +158,14 @@ let g:ctrlp_cmd = 'CtrlP'
 
 nmap <C-p> :CtrlPBuffer<CR>
 
-
-
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>']
 let g:ycm_key_list_previous_completion = ['<C-p>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<C-n>"
-let g:UltiSnipsJumpBackwardTrigger = "<C-p>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -209,7 +205,7 @@ set shell=/bin/sh
 
 let g:UltiSnipsUsePythonVersion = 2
 
-set backupdir=~/.vim/swp
+se backupdir=~/.vim/swp
 
 let EasyGrepRecursive=1
 let g:EasyGrepCommand="ack"
