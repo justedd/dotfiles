@@ -123,8 +123,8 @@ set wildignore+=*/public/**
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { "mode": "passive", "active_filetypes": [], "passive_filetypes": [] }
@@ -135,6 +135,12 @@ let g:syntastic_scss_checkers = ['scss_lint']
 let g:syntastic_jade_checkers = ['jade_lint']
 let g:syntastic_jade_checkers = ['jade_lint']
 let g:syntastic_loc_list_height=1
+
+"remove bottom frame
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_enable_signs = 1
+let g:syntastic_enable_balloons = 0
+let g:syntastic_enable_highlighting = 0
 
 
 " use multiple checkers
@@ -208,6 +214,8 @@ se backupdir=~/.vim/swp
 let EasyGrepRecursive=1
 let g:EasyGrepCommand="ack"
 let g:EasyGrepFilesToExclude=".log"
+
+let g:airline#extensions#whitespace#enabled = 0
 
 set foldmethod=indent
 set foldlevel=0
