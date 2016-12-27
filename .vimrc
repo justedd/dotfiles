@@ -13,13 +13,10 @@ Plugin 'VundleVim/Vundle.vim'
 
 "ui
 Plugin 'scrooloose/nerdtree'
-"Plugin 'wincent/Command-T'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Yggdroot/indentLine'
-Plugin 'szw/vim-maximizer'
-"Plugin 'mhinz/vim-startify'
 
 " colour schemes
 Plugin 'chriskempson/base16-vim'
@@ -37,7 +34,6 @@ Plugin 'tpope/vim-rails'
 
 " % for ruby
 Plugin 'endwise.vim'
-"Plugin 'vim-multiple-cursors'   "has bugs with opening file, and useles
 
 "tag test start
 "Plugin 'majutsushi/tagbar'
@@ -197,6 +193,8 @@ let g:airline_powerline_fonts = 1
 set diffopt+=vertical
 
 let g:vim_json_syntax_conceal = 0
+
+let g:indentLine_faster = 1
 
 " json auto hide quotes
 "set conceallevel=0
