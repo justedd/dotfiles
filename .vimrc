@@ -32,6 +32,8 @@ Plugin 'BufOnly.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-rails'
 
+Plugin 'metakirby5/codi.vim'
+
 " % for ruby
 Plugin 'endwise.vim'
 
