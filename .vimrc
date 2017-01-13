@@ -40,6 +40,8 @@ Plugin 'easymotion/vim-easymotion'
 " % for ruby
 Plugin 'endwise.vim'
 
+Plugin 'mhinz/vim-grepper'
+
 "tag test start
 "Plugin 'majutsushi/tagbar'
 "Plugin 'xolox/vim-easytags'
@@ -227,6 +229,24 @@ set foldlevel=0
 " prevent automatic open folds in search
 set fdo-=search
 
+" async grep conf
+nnoremap <leader>g :Grepper -tool git<cr>
+nnoremap <leader>G :Grepper -tool ag<cr>
+
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
+
+" Optional. The default behaviour should work for most users.
+let g:grepper               = {}
+let g:grepper.tools         = ['git', 'ag', 'rg']
+let g:grepper.jump          = 1
+let g:grepper.next_tool     = '<leader>g'
+let g:grepper.simple_prompt = 1
+let g:grepper.quickfix      = 0
+" end of async grep
+
+" prevent loclist usage by ale
+let g:ale_set_loclist = 0
 " airline ale integration
 call airline#parts#define_function('ALE', 'ALEGetStatusLine')
 call airline#parts#define_condition('ALE', 'exists("*ALEGetStatusLine")')
