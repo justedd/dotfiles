@@ -186,7 +186,7 @@ nmap <Leader>m :MaximizerToggle<CR>
 xmap <Leader>y "+Y 
 
 nmap <Leader>d :bd<CR>
-nmap <Leader>l :w<CR>
+nmap <Leader>l :CodiUpdate<CR>:w<CR>
 nmap <Leader>w :w<CR>
 nmap <Leader>L :SyntasticReset<CR>
 
@@ -244,6 +244,8 @@ let g:grepper.next_tool     = '<leader>g'
 let g:grepper.simple_prompt = 1
 let g:grepper.quickfix      = 0
 " end of async grep
+
+let g:codi#autocmd = 'None'
 
 " prevent loclist usage by ale
 let g:ale_set_loclist = 0
