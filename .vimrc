@@ -34,6 +34,8 @@ Plugin 'tpope/vim-rails'
 
 Plugin 'metakirby5/codi.vim'
 
+Plugin 'easymotion/vim-easymotion'
+
 " % for ruby
 Plugin 'endwise.vim'
 
@@ -79,8 +81,8 @@ filetype plugin indent on    " required
 
 "========================================== end of vundle section ===================================
 
-set nonumber
-set relativenumber
+set number
+set norelativenumber
 "space to leader
 let mapleader=" "
 
@@ -202,7 +204,7 @@ set diffopt+=vertical
 
 let g:vim_json_syntax_conceal = 0
 
-let g:indentLine_faster = 1
+let g:indentLine_faster = 0
 
 " json auto hide quotes
 "set conceallevel=0
@@ -215,7 +217,7 @@ se backupdir=~/.vim/swp
 
 let EasyGrepRecursive=1
 let g:EasyGrepCommand="ack"
-let g:EasyGrepFilesToExclude=".log"
+let g:EasyGrepFilesToExclude="*.log"
 
 let g:airline#extensions#whitespace#enabled = 0
 
