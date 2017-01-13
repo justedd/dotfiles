@@ -32,6 +32,8 @@ Plugin 'BufOnly.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-rails'
 
+Plugin 'easymotion/vim-easymotion'
+
 " % for ruby
 Plugin 'endwise.vim'
 
@@ -77,8 +79,8 @@ filetype plugin indent on    " required
 
 "========================================== end of vundle section ===================================
 
-set nonumber
-set relativenumber
+set number
+set norelativenumber
 "space to leader
 let mapleader=" "
 
