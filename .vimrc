@@ -25,7 +25,8 @@ Plugin 'chriskempson/base16-vim'
 Plugin 'ternjs/tern_for_vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'tpope/vim-surround'
 Plugin 'BufOnly.vim'
@@ -183,7 +184,7 @@ nmap <Leader>m :MaximizerToggle<CR>
 xmap <Leader>y "+Y 
 
 nmap <Leader>d :bd<CR>
-nmap <Leader>l :w<CR>:SyntasticCheck<CR>
+nmap <Leader>l :w<CR>
 nmap <Leader>w :w<CR>
 nmap <Leader>L :SyntasticReset<CR>
 
@@ -225,6 +226,15 @@ set foldmethod=indent
 set foldlevel=0
 " prevent automatic open folds in search
 set fdo-=search
+
+" airline ale integration
+call airline#parts#define_function('ALE', 'ALEGetStatusLine')
+call airline#parts#define_condition('ALE', 'exists("*ALEGetStatusLine")')
+let g:airline_section_error = airline#section#create_right(['ALE'])
+let g:ale_statusline_format = ['✗ %d', '⚠ %d', '(ノ°ο°)ノ']
+
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '-'
 
 " color scheme settings  =========================================================================================
 let base16colorspace=256
