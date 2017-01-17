@@ -256,7 +256,7 @@ let g:airline_section_error = airline#section#create_right(['ALE'])
 let g:ale_statusline_format = ['✗ %d', '⚠ %d', '(ノ°ο°)ノ']
 
 let g:ale_sign_error = '✗'
-let g:ale_sign_warning = '-'
+let g:ale_sign_warning = '⚠'
 
 " color scheme settings  =========================================================================================
 let base16colorspace=256
