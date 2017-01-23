@@ -33,6 +33,8 @@ Plugin 'BufOnly.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-rails'
 
+Plugin 'terryma/vim-multiple-cursors'
+
 Plugin 'metakirby5/codi.vim'
 
 Plugin 'easymotion/vim-easymotion'
