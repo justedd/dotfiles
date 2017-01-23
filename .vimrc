@@ -25,8 +25,7 @@ Plugin 'chriskempson/base16-vim'
 Plugin 'ternjs/tern_for_vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/nerdcommenter'
-"Plugin 'scrooloose/syntastic'
-Plugin 'w0rp/ale'
+Plugin 'scrooloose/syntastic'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'tpope/vim-surround'
 Plugin 'BufOnly.vim'
@@ -189,7 +188,7 @@ xmap <Leader>y "+Y
 
 nmap <Leader>d :bd<CR>
 nmap <Leader>l :CodiUpdate<CR>:w<CR>
-nmap <Leader>w :w<CR>
+nmap <Leader>l :w<CR>:SyntasticCheck<CR>
 nmap <Leader>L :SyntasticReset<CR>
 
 nmap <Leader>R :!ruby %<CR>
@@ -248,17 +247,6 @@ let g:grepper.quickfix      = 0
 " end of async grep
 
 let g:codi#autocmd = 'None'
-
-" prevent loclist usage by ale
-let g:ale_set_loclist = 0
-" airline ale integration
-call airline#parts#define_function('ALE', 'ALEGetStatusLine')
-call airline#parts#define_condition('ALE', 'exists("*ALEGetStatusLine")')
-let g:airline_section_error = airline#section#create_right(['ALE'])
-let g:ale_statusline_format = ['✗ %d', '⚠ %d', '(ノ°ο°)ノ']
-
-let g:ale_sign_error = '✗'
-let g:ale_sign_warning = '-'
 
 " color scheme settings  =========================================================================================
 let base16colorspace=256
