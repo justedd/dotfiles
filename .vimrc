@@ -225,6 +225,10 @@ let g:EasyGrepFilesToExclude="*.log"
 
 let g:airline#extensions#whitespace#enabled = 0
 
+set regexpengine=1
+let g:easytags_async=1
+let g:easytags_auto_highlight=0
+
 set foldmethod=indent
 set foldlevel=0
 " prevent automatic open folds in search
