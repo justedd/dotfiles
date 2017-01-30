@@ -44,9 +44,9 @@ Plugin 'endwise.vim'
 Plugin 'mhinz/vim-grepper'
 
 "tag test start
-Plugin 'majutsushi/tagbar'
-Plugin 'xolox/vim-easytags'
-Plugin 'xolox/vim-misc'
+"Plugin 'majutsushi/tagbar'
+"Plugin 'xolox/vim-easytags'
+"Plugin 'xolox/vim-misc'
 "tag test end
 
 "tools
