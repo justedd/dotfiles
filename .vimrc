@@ -29,7 +29,6 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/syntastic'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'tpope/vim-surround'
-Plugin 'BufOnly.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-rails'
 
@@ -163,7 +162,6 @@ let g:jsx_ext_required = 0
 
 "Hotkeys
 nmap <Leader>n :NERDTreeToggle<CR>
-nmap <Leader>o :BufOnly<CR>
 
 "ctrl-p
 let g:ctrlp_map = '<Leader>p'
