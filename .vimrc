@@ -4,6 +4,7 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+set smartcase
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
@@ -75,6 +76,8 @@ Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'mxw/vim-jsx'
 Plugin 'elzr/vim-json'
 
+Plugin 'tpope/vim-unimpaired'
+
 Plugin 'dkprice/vim-easygrep'
 Plugin 'mileszs/ack.vim'
 
@@ -141,7 +144,7 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_scss_checkers = ['scss_lint']
 let g:syntastic_jade_checkers = ['jade_lint']
-let g:syntastic_jade_checkers = ['jade_lint']
+let g:syntastic_cpp_checkers = ['gcc']
 let g:syntastic_loc_list_height=1
 
 "remove bottom frame
@@ -186,7 +189,6 @@ nmap <Leader>m :MaximizerToggle<CR>
 " copy to X buffer
 xmap <Leader>y "+Y 
 
-nmap <Leader>d :bd<CR>
 nmap <Leader>l :CodiUpdate<CR>:w<CR>
 nmap <Leader>l :w<CR>:SyntasticCheck<CR>
 nmap <Leader>L :SyntasticReset<CR>
