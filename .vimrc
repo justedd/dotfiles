@@ -59,6 +59,7 @@ Plugin 'ConradIrwin/vim-bracketed-paste'
 
 " sniplets
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'rdnetto/YCM-Generator'
 " Track the engine.
 Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
