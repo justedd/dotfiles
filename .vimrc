@@ -31,6 +31,7 @@ Plugin 'junegunn/vim-easy-align'
 Plugin 'tpope/vim-surround'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-rails'
+Plugin 'maxbrunsfeld/vim-yankstack'
 
 Plugin 'terryma/vim-multiple-cursors'
 
@@ -252,6 +253,10 @@ let g:grepper.quickfix      = 0
 " end of async grep
 
 let g:codi#autocmd = 'None'
+
+let g:yankstack_map_keys = 0
+nmap <leader>k <Plug>yankstack_substitute_older_paste
+nmap <leader>j <Plug>yankstack_substitute_newer_paste
 
 " color scheme settings  =========================================================================================
 let base16colorspace=256
