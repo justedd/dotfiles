@@ -76,6 +76,8 @@ Plugin 'hail2u/vim-css3-syntax'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'mxw/vim-jsx'
 Plugin 'elzr/vim-json'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'peterhoeg/vim-qml'
 
 Plugin 'tpope/vim-unimpaired'
 
