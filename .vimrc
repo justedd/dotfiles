@@ -78,6 +78,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'elzr/vim-json'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'peterhoeg/vim-qml'
+Plugin 'EdTsft/vim-qrc'
 
 Plugin 'tpope/vim-unimpaired'
 
