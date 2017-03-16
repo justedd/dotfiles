@@ -187,7 +187,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
 
-nmap <Leader>m :MaximizerToggle<CR>
+" maximize
+nnoremap <Leader>m <C-W>\| <C-W>_
 
 " copy to X buffer
 xmap <Leader>y "+Y 
