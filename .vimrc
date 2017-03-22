@@ -200,6 +200,8 @@ nmap <Leader>L :SyntasticReset<CR>
 nmap <Leader>R :!ruby %<CR>
 nmap <Leader>T :!rspec <CR>
 
+nmap <C-s> :YcmCompleter GoTo<CR>
+
 nnoremap <CR> :noh<CR><CR>
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
