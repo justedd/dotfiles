@@ -131,7 +131,7 @@ let g:gitgutter_sign_column_always = 1
 set wildignore+=node_modules/**
 set wildignore+=*/node_modules/**
 set wildignore+=public/**
-set wildignore+=*/public/**
+set wildignore+=*/tmp/*,*/log/*,*.so,*.swp,*.zip,moc_*.cpp,moc_*.h,ui_*.cpp,ui_*.h
 
 
 "syntastic def config
