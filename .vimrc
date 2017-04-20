@@ -260,6 +260,8 @@ let g:grepper.quickfix      = 0
 
 let g:codi#autocmd = 'None'
 
+nnoremap * *``
+
 let g:yankstack_map_keys = 0
 nmap <leader>k <Plug>yankstack_substitute_older_paste
 nmap <leader>j <Plug>yankstack_substitute_newer_paste
