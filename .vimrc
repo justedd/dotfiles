@@ -101,6 +101,8 @@ let mapleader=" "
 set expandtab
 set shiftwidth=2
 set softtabstop=2
+" tab size for not expanded files
+set tabstop=2
 
 set hlsearch
 
