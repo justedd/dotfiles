@@ -118,7 +118,7 @@ let g:indentLine_color_term = 239
 autocmd FileType javascript setlocal omnifunc=tern#Complete
 
 "show tabline form air-line
-let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_splits = 0
 "always show air-line
 set laststatus=2
