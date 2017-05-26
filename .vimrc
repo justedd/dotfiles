@@ -105,6 +105,7 @@ set softtabstop=2
 set tabstop=2
 
 set hlsearch
+set incsearch
 
 
 "tag test start
