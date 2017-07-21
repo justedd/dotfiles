@@ -19,6 +19,11 @@ Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Yggdroot/indentLine'
 
+"fun
+Plugin 'jceb/vim-orgmode'
+" for org mode
+Plugin 'speeddating.vim'
+
 " colour schemes
 Plugin 'chriskempson/base16-vim'
 

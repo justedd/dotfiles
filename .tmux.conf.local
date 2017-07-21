@@ -258,8 +258,9 @@ bind -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft=
 bind -n WheelDownPane select-pane -t= \; send-keys -M
 
 unbind-key C-b
-set -g prefix 'C-\'
-bind-key 'C-\' send-prefix
+unbind-key C-a
+set -g prefix C-Space
+bind-key C-Space send-prefix
 
 tmux_conf_theme_left_separator_main=''
 tmux_conf_theme_left_separator_sub=''
@@ -279,4 +280,6 @@ set -g status-fg white
 tmux_conf_theme_window_status_current_bg='#1D1F21'      # light blue
 
 tmux_conf_theme_status_right_bg='#080808,#d70000,#1D1F21' # dark gray, red, white
+
+set-option -g allow-rename off
 # -----end of justed section --------------#
