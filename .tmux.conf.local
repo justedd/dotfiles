@@ -259,8 +259,8 @@ bind -n WheelDownPane select-pane -t= \; send-keys -M
 
 unbind-key C-b
 unbind-key C-a
-set -g prefix C-Space
-bind-key C-Space send-prefix
+set -g prefix C-_
+bind-key C-_ send-prefix
 
 tmux_conf_theme_left_separator_main=''
 tmux_conf_theme_left_separator_sub=''
