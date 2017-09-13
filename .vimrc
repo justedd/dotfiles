@@ -246,9 +246,10 @@ let g:easytags_async=1
 let g:easytags_auto_highlight=0
 
 set foldmethod=indent
-set foldlevel=0
+set foldlevel=3
 " prevent automatic open folds in search
 set fdo-=search
+set nofoldenable
 
 " async grep conf
 nnoremap <leader>g :Grepper -tool git<cr>
