@@ -1,6 +1,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+runtime macros/matchit.vim
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -133,7 +135,7 @@ set laststatus=2
 autocmd BufEnter * set completeopt-=preview
 
 "always show gitgutter sign column for changes
-let g:gitgutter_sign_column_always = 1
+set signcolumn=yes
 
 "disable node_modules for ctrlp
 set wildignore+=node_modules/**
@@ -297,5 +299,8 @@ else
 endif
 
 let g:airline_theme='base16_default'
+
+" fix conflict betwen yank_stack & vim-suround (S block surrounding)
+call yankstack#setup()
 
 " end ofcolor scheme settings  ===================================================================================
