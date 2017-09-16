@@ -119,9 +119,6 @@ set nofoldenable
 " ******************************* INTERNAL SETTINGS END *************
 
 " ******************************* PLUGIN SETTINGS START *************
-"indentline color (guessed)
-let g:indentLine_color_term = 239
-
 " airline show tabline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_splits = 0
@@ -133,9 +130,11 @@ set signcolumn=yes
 
 " set omnifunc for js
 autocmd FileType javascript setlocal omnifunc=tern#Complete
+
 "disable popup window fro turn_for_vim
 autocmd BufEnter * set completeopt-=preview
 
+let g:NERDSpaceDelims = 1
 
 "disable node_modules for ctrlp
 set wildignore+=node_modules/**
@@ -202,11 +201,19 @@ let g:easytags_auto_highlight=0
 " fix conflict betwen yank_stack & vim-suround (S block surrounding)
 call yankstack#setup()
 
+" vim-ruby features
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+
+let s:rubycomplete_debug = 1
+
 " ******************************* PLUGIN SETTINGS END ***************
 
 " ******************************* KEY BINDINGS START ****************
 
 nmap <Leader>n :NERDTreeToggle<CR>
+map <leader>s :NERDTreeFind<cr>
 
 "ctrl-p
 let g:ctrlp_map = '<Leader>p'
@@ -262,9 +269,15 @@ nnoremap <leader>G :Grepper -tool ag<cr>
 nmap gs <plug>(GrepperOperator)
 xmap gs <plug>(GrepperOperator)
 
+" generate ctags for all used gems
+map <silent> <Leader>rt :!bundle list --paths=true \| xargs ctags --extra=+f --exclude=.git --exclude=log -R *<CR><CR> 
+
 " ******************************* KEY BINDINGS END ******************
 "
 " ******************************* COLOR SCHEME START ****************
+
+"indentline color
+let g:indentLine_color_term = 239
 
 let base16colorspace=256
 
