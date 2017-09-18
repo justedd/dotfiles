@@ -202,11 +202,10 @@ let g:easytags_auto_highlight=0
 call yankstack#setup()
 
 " vim-ruby features
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-
-let s:rubycomplete_debug = 1
+let g:rubycomplete_buffer_loading = 0
+let g:rubycomplete_classes_in_global = 0
+let g:rubycomplete_rails = 1
+let g:rubycomplete_load_gemfile = 0
 
 " ******************************* PLUGIN SETTINGS END ***************
 
