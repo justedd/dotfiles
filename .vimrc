@@ -14,6 +14,9 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Yggdroot/indentLine'
+Plugin 'mhinz/vim-startify'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-session'
 
 " *** orgmode
 Plugin 'jceb/vim-orgmode'
@@ -241,7 +244,7 @@ nmap <leader>k <Plug>yankstack_substitute_older_paste
 nmap <leader>j <Plug>yankstack_substitute_newer_paste
 
 " copy to X buffer
-xmap <Leader>y "+Y 
+xmap <Leader>y "+y
 
 " highlight word
 nmap <C-H> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
