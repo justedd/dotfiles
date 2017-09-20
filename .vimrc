@@ -3,7 +3,6 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-set smartcase
 
 " ******************************* VUNDLE START ***********************
 Plugin 'VundleVim/Vundle.vim'
@@ -25,8 +24,13 @@ Plugin 'speeddating.vim'
 " colour schemes
 Plugin 'chriskempson/base16-vim'
 
+" ruby features
+
+Plugin 'kana/vim-textobj-user'
+Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'hallison/vim-rdoc'
+
 " *** code 
-"Plugin 'ternjs/tern_for_vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/syntastic'
@@ -53,6 +57,7 @@ Plugin 'tpope/vim-rvm'
 Plugin 'dkprice/vim-easygrep'
 Plugin 'mileszs/ack.vim'
 Plugin 'ConradIrwin/vim-bracketed-paste'
+Plugin 'nelstrom/vim-visual-star-search'
 
 " *** complition and snippets
 Plugin 'Valloric/YouCompleteMe'
@@ -118,6 +123,9 @@ set foldlevel=3
 " prevent automatic open folds in search
 set fdo-=search
 set nofoldenable
+
+set ignorecase
+set smartcase
 
 " ******************************* INTERNAL SETTINGS END *************
 
