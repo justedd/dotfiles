@@ -33,7 +33,7 @@ Plugin 'hallison/vim-rdoc'
 " *** code 
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'tpope/vim-surround'
 Plugin 'mattn/emmet-vim'
@@ -153,33 +153,22 @@ set wildignore+=*/node_modules/**
 set wildignore+=public/**
 set wildignore+=*/tmp/*,*/log/*,*.so,*.swp,*.zip,moc_*.cpp,moc_*.h,ui_*.cpp,ui_*.h
 
-" *** syntastic def config
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_mode_map = { "mode": "passive", "active_filetypes": [], "passive_filetypes": [] }
-"syntastic checkers
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_scss_checkers = ['scss_lint']
-let g:syntastic_jade_checkers = ['jade_lint']
-let g:syntastic_cpp_checkers = ['gcc']
-let g:syntastic_loc_list_height=1
+" *** ale config
+let g:ale_fixers = {
+      \   'javascript': ['eslint'],
+      \   'ruby': ['rubocop'],
+      \}
+let g:airline#extensions#ale#enabled = 1
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '✗'
+let g:ale_set_highlights = 0
 
-"remove bottom frame
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_enable_signs = 1
-let g:syntastic_enable_balloons = 0
-let g:syntastic_enable_highlighting = 0
-
-" use multiple checkers
-let g:syntastic_aggregate_errors = 1
+highlight link ALEWarningSign todo
+highlight link ALEErrorSign todo
+" *** end of ale config
 
 "jsx highlight not only jsx files
 let g:jsx_ext_required = 0
-
-" *** end of syntastic section
 
 " *** grepper settings
 let g:grepper               = {}
@@ -258,8 +247,7 @@ xmap <Leader>y "+y
 nmap <C-H> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 
 nmap <Leader>l :CodiUpdate<CR>:w<CR>
-nmap <Leader>l :w<CR>:SyntasticCheck<CR>
-nmap <Leader>L :SyntasticReset<CR>
+nmap <Leader>l :w<CR>
 
 " some useless stuff
 nmap <Leader>R :!ruby %<CR>
