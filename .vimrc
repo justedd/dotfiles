@@ -45,9 +45,7 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'endwise.vim'
 
 " *** tags
-"Plugin 'majutsushi/tagbar'
-"Plugin 'xolox/vim-easytags'
-"Plugin 'xolox/vim-misc'
+Plugin 'majutsushi/tagbar'
 
 " *** tools
 Plugin 'tpope/vim-fugitive'
@@ -248,6 +246,7 @@ nmap <C-H> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 
 nmap <Leader>l :CodiUpdate<CR>:w<CR>
 nmap <Leader>l :w<CR>
+nmap <Leader>t :Tagbar<CR>
 
 " some useless stuff
 nmap <Leader>R :!ruby %<CR>
