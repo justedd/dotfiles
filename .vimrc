@@ -201,9 +201,12 @@ call yankstack#setup()
 " vim-ruby features
 let g:rubycomplete_buffer_loading = 0
 let g:rubycomplete_classes_in_global = 0
-let g:rubycomplete_rails = 1
-let g:rubycomplete_load_gemfile = 0
+let g:rubycomplete_rails = 0
+let g:rubycomplete_load_gemfile = 1
+let g:rubycomplete_use_bundler = 0
+let g:rubycomplete_gemfile_path = 'Gemfile.aux'
 
+autocmd FileType ruby setlocal omnifunc=syntaxcomplete#Complete
 
 let g:startify_session_dir = '~/.vim/sessions'
 let g:startify_list_order = ['sessions', 'files', 'dir', 'bookmarks', 'commands']
