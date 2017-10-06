@@ -276,6 +276,10 @@ xmap gs <plug>(GrepperOperator)
 " generate ctags for all used gems
 map <silent> <Leader>rt :!bundle list --paths=true \| xargs ctags --extra=+f --exclude=.git --exclude=log -R *<CR><CR> 
 
+" ale
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
 " ******************************* KEY BINDINGS END ******************
 "
 " ******************************* COLOR SCHEME START ****************
