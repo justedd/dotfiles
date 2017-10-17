@@ -124,7 +124,7 @@ set nofoldenable
 set ignorecase
 set smartcase
 
-set colorcolumn=80
+let &colorcolumn=join(range(81,999),",")
 
 set relativenumber
 
