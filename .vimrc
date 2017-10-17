@@ -124,6 +124,10 @@ set nofoldenable
 set ignorecase
 set smartcase
 
+set colorcolumn=80
+
+set relativenumber
+
 " ******************************* INTERNAL SETTINGS END *************
 
 " ******************************* PLUGIN SETTINGS START *************
