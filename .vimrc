@@ -147,6 +147,7 @@ autocmd FileType javascript setlocal omnifunc=tern#Complete
 autocmd BufEnter * set completeopt-=preview
 
 let g:NERDSpaceDelims = 1
+let NERDTreeCascadeSingleChildDir = 0
 
 "disable node_modules for ctrlp
 set wildignore+=node_modules/**
