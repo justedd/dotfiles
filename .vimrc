@@ -53,6 +53,7 @@ Plugin 'mhinz/vim-grepper'
 Plugin 'tpope/vim-rvm'
 Plugin 'dkprice/vim-easygrep'
 Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
 Plugin 'ConradIrwin/vim-bracketed-paste'
 Plugin 'nelstrom/vim-visual-star-search'
 
@@ -125,8 +126,6 @@ set ignorecase
 set smartcase
 
 let &colorcolumn=join(range(81,999),",")
-
-set relativenumber
 
 " ******************************* INTERNAL SETTINGS END *************
 
