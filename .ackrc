@@ -1,0 +1,9 @@
+--type-set
+slim:ext:slim,slim
+
+--ignore-dir=public
+--ignore-dir=temp
+--ignore-dir=tmp
+--ignore-dir=log
+
+--ignore-file=is:tags
