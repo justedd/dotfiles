@@ -158,11 +158,15 @@ set wildignore+=*/tmp/*,*/log/*,*.so,*.swp,*.zip,moc_*.cpp,moc_*.h,ui_*.cpp,ui_*
 let g:ale_fixers = {
       \   'javascript': ['eslint'],
       \   'ruby': ['rubocop'],
+      \   'cpp': [],
       \}
 let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '✗'
 let g:ale_set_highlights = 0
+
+autocmd BufEnter *.cpp ALEDisable
+autocmd BufEnter *.h ALEDisable
 
 highlight link ALEWarningSign todo
 highlight link ALEErrorSign todo
