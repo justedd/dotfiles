@@ -42,6 +42,7 @@ Plugin 'metakirby5/codi.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'endwise.vim'
+Plugin 'KabbAmine/zeavim.vim'
 
 " *** tags
 Plugin 'majutsushi/tagbar'
