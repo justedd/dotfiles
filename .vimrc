@@ -42,7 +42,6 @@ Plugin 'metakirby5/codi.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'endwise.vim'
-Plugin 'KabbAmine/zeavim.vim'
 
 " *** tags
 Plugin 'majutsushi/tagbar'
@@ -220,6 +219,8 @@ autocmd FileType ruby setlocal omnifunc=syntaxcomplete#Complete
 let g:startify_session_dir = '~/.vim/sessions'
 let g:startify_list_order = ['sessions', 'files', 'dir', 'bookmarks', 'commands']
 let g:startify_session_persistence = 1
+
+set updatetime=100
 
 " ******************************* PLUGIN SETTINGS END ***************
 
