@@ -15,6 +15,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Yggdroot/indentLine'
 Plugin 'mhinz/vim-startify'
 Plugin 'xolox/vim-misc'
+Plugin 'kshenoy/vim-signature'
 
 " *** orgmode
 Plugin 'jceb/vim-orgmode'
