@@ -42,7 +42,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'metakirby5/codi.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'endwise.vim'
+Plugin 'tpope/vim-endwise'
 
 " *** tags
 Plugin 'majutsushi/tagbar'
@@ -222,6 +222,8 @@ let g:startify_list_order = ['sessions', 'files', 'dir', 'bookmarks', 'commands'
 let g:startify_session_persistence = 1
 
 set updatetime=100
+
+let g:ctrlp_max_files = 70000
 
 " ******************************* PLUGIN SETTINGS END ***************
 
