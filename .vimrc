@@ -128,6 +128,8 @@ set smartcase
 
 let &colorcolumn=join(range(81,999),",")
 
+nnoremap gp `[v`]
+
 " ******************************* INTERNAL SETTINGS END *************
 
 " ******************************* PLUGIN SETTINGS START *************
