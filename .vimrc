@@ -9,7 +9,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 " *** ui
 Plugin 'scrooloose/nerdtree'
-Plugin 'ctrlpvim/ctrlp.vim'
+" Plugin 'ctrlpvim/ctrlp.vim'
+ Plugin 'junegunn/fzf.vim'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Yggdroot/indentLine'
@@ -232,7 +233,55 @@ let g:startify_session_persistence = 1
 
 set updatetime=100
 
-let g:ctrlp_max_files = 70000
+" let g:ctrlp_max_files = 70000
+"
+"
+
+
+" FZF stuff
+" This is the default extra key bindings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+" An action can be a reference to a function that processes selected lines
+function! s:build_quickfix_list(lines)
+  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+  copen
+  cc
+endfunction
+
+let g:fzf_action = {
+  \ 'ctrl-q': function('s:build_quickfix_list'),
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+" Default fzf layout
+" - down / up / left / right
+let g:fzf_layout = { 'down': '~20%' }
+
+" You can set up fzf window using a Vim command (Neovim or latest Vim 8 required)
+" let g:fzf_layout = { 'window': 'enew' }
+" let g:fzf_layout = { 'window': '-tabnew' }
+" let g:fzf_layout = { 'window': '10split enew' }
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
 " ******************************* PLUGIN SETTINGS END ***************
 
@@ -241,11 +290,17 @@ let g:ctrlp_max_files = 70000
 nmap <Leader>n :NERDTreeToggle<CR>
 map <leader>s :NERDTreeFind<cr>
 
-"ctrl-p
-let g:ctrlp_map = '<Leader>p'
-let g:ctrlp_cmd = 'CtrlP'
+nmap <Leader>p :FZF<CR>
 
-nmap <C-p> :CtrlPBuffer<CR>
+"ctrl-p
+" let g:ctrlp_map = '<Leader>p'
+" let g:ctrlp_cmd = 'CtrlP'
+
+" nmap <C-p> :CtrlPBuffer<CR>
+"end
+
+
+
 nmap <F8> :TagbarToggle<CR>
 
 let g:ycm_key_list_select_completion = ['<C-n>']
