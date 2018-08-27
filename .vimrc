@@ -167,7 +167,7 @@ let g:ale_fixers = {
 
 let g:ale_linters = {
       \   'javascript': ['eslint'],
-      \   'ruby': ['rubocop'],
+      \   'ruby': ['rubocop', 'reek'],
       \   'cpp': [],
       \}
 
