@@ -89,7 +89,6 @@ Plugin 'plasticboy/vim-markdown'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-let g:deoplete#enable_at_startup = 1
 "
 " ******************************* VUNDLE END *************************
 
