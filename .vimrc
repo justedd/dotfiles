@@ -45,6 +45,8 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-endwise'
 
+Plugin 'cmhamill/vim-jrnl'
+
 " *** tags
 Plugin 'majutsushi/tagbar'
 
@@ -53,6 +55,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mhinz/vim-grepper'
 Plugin 'tpope/vim-rvm'
+Plugin 'tpope/vim-repeat'
 Plugin 'dkprice/vim-easygrep'
 Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
@@ -68,7 +71,7 @@ Plugin 'justinj/vim-react-snippets'
 
 " *** syntax
 Plugin 'pangloss/vim-javascript'
-Plugin 'vim-ruby/vim-ruby'
+" Plugin 'vim-ruby/vim-ruby'
 Plugin 'slim-template/vim-slim'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'hail2u/vim-css3-syntax'
@@ -79,10 +82,14 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'peterhoeg/vim-qml'
 Plugin 'EdTsft/vim-qrc'
 Plugin 'tpope/vim-rails'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 " *** end of plugins list
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+let g:deoplete#enable_at_startup = 1
 "
 " ******************************* VUNDLE END *************************
 
@@ -115,8 +122,6 @@ set conceallevel=0
 
 set diffopt+=vertical
 set shell=/bin/sh
-
-set backupdir=~/.vim/swp
 
 set foldmethod=indent
 set foldlevel=3
@@ -283,6 +288,14 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
+
+"markdown settings
+"disable concealing
+" let g:vim_markdown_conceal = 0
+" set conceallevel=0
+"aliases for languages
+let g:vim_markdown_fenced_languages = ['js=javascript', 'rb=ruby']
+
 " ******************************* PLUGIN SETTINGS END ***************
 
 " ******************************* KEY BINDINGS START ****************
@@ -381,4 +394,6 @@ endif
 let g:airline_theme='base16_default'
 
 " ******************************* COLOR SCHEME END ******************
+"
 
+let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
