@@ -45,8 +45,6 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-endwise'
 
-Plugin 'cmhamill/vim-jrnl'
-
 " *** tags
 Plugin 'majutsushi/tagbar'
 
