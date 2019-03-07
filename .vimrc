@@ -45,8 +45,6 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-endwise'
 
-Plugin 'cmhamill/vim-jrnl'
-
 " *** tags
 Plugin 'majutsushi/tagbar'
 
@@ -89,7 +87,6 @@ Plugin 'plasticboy/vim-markdown'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-let g:deoplete#enable_at_startup = 1
 "
 " ******************************* VUNDLE END *************************
 
