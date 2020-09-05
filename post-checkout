@@ -142,6 +142,7 @@ if ARGV[2] == '1'
 
   def prepare_test_database
     if File.exists?("#{@project_root}/Rakefile")
+
       print "Preparing test database..."
 
       rake_cmd = "rake db:test:prepare"
@@ -193,8 +194,31 @@ if ARGV[2] == '1'
     if @source_branches.all? { |branch| @adapter.dump(branch) }
       # Restore dump from this branch, if it exists
       if @adapter.dump_exists?(@destination_branch)
+        # get guard pid
+        guard_pid = `docker-compose exec -T app ps auxwww | grep 'guard-core' | grep -v grep | awk '{print $2}'`
+
+        # pause guard watching
+        system(%[docker-compose exec -T app kill -USR1 #{guard_pid}]) if guard_pid
+        # stop current process
+        system(%[docker-compose exec -T app kill -SIGINT #{guard_pid}]) if guard_pid
+
         if @adapter.restore(@destination_branch)
+          # stop current process
+          system(%[docker-compose exec -T app kill -SIGINT #{guard_pid}]) if guard_pid
+
+          db = dev_database_name.gsub("development", "test")
+          system(%[docker-compose exec -T app psql -h db -U postgres --command="SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE pg_stat_activity.datname = '#{db}' AND pid <> pg_backend_pid();" postgres > /dev/null])
+
+          system(%[docker-compose exec -T app kill -SIGINT #{guard_pid}]) if guard_pid
+          system(%[docker-compose exec -T app kill -SIGINT #{guard_pid}]) if guard_pid
+          system(%[docker-compose exec -T app kill -SIGINT #{guard_pid}]) if guard_pid
           prepare_test_database
+
+          # unpause guard
+          system(%[docker-compose exec -T app kill -USR2 #{guard_pid}]) if guard_pid
+          system(%[docker-compose exec -T app kill -SIGINT #{guard_pid}]) if guard_pid
+          system(%[docker-compose exec -T app kill -SIGINT #{guard_pid}]) if guard_pid
+          system(%[docker-compose exec -T app kill -SIGINT #{guard_pid}]) if guard_pid
         end
       else
         print "No DB dump for #{dev_database_name} on the '#{@destination_branch}' branch was found!\n"
