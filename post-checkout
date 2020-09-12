@@ -119,19 +119,87 @@ class PostgreSQLAdapter < AbstractAdapter
     %[docker-compose exec -T app pg_dump -h db -U postgres --file=#{dump_file(branch_name)} #{database_name}]
   end
 
-  def restore_cmd(branch_name)
-    # Drop existing connections
+  def drop_connections
     system(%[docker-compose exec -T app psql -h db -U postgres --command="SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE pg_stat_activity.datname = '#{database_name}' AND pid <> pg_backend_pid();" postgres > /dev/null])
+  end
+
+  def restore_cmd(branch_name)
+    # # prevent future connections
+    system(%[docker-compose exec -T app psql -h db -U postgres --command="update pg_database set datallowconn = false where datname = '#{database_name}'" postgres > /dev/null])
+
+    # Drop existing connections
+
+    drop_connections
 
     # Drop database
     system(%[docker-compose exec -T app dropdb -h db -U postgres #{database_name}])
 
+    drop_connections
+
     # Create database
     system(%[docker-compose exec -T app createdb -h db -U postgres #{database_name}])
+
+    drop_connections
+
+    # allow future connections
+    system(%[docker-compose exec -T app psql -h db -U postgres --command="update pg_database set datallowconn = true where datname = '#{database_name}'" postgres > /dev/null])
 
     %[docker-compose exec -T app psql -h db -U postgres --file=#{dump_file(branch_name)} #{database_name} > /dev/null]
   end
 
+end
+
+class GuardManager
+  def initialize
+    @pid = `docker-compose exec -T app ps auxwww | grep 'guard-core' | grep -v grep | awk '{print $2}'`
+    @pid = nil if @pid.empty?
+  end
+
+  def pause
+    return unless pid
+
+    pause_watching
+    interrupt_core
+    interrupt_formater
+    sleep(1)
+    interrupt_core
+    sleep(1)
+  end
+
+  def resume
+    return unless pid
+
+    interrupt_core
+    interrupt_formater
+    resume_watching
+    interrupt_formater
+    interrupt_core
+  end
+
+  private
+
+  attr_reader :pid
+
+  def resume_watching
+    system(%(docker-compose exec -T app kill -USR2 #{pid}))
+  end
+
+  def pause_watching
+    system(%(docker-compose exec -T app kill -USR1 #{pid}))
+  end
+
+  def interrupt_core
+    system(%(docker-compose exec -T app kill -SIGINT #{pid}))
+  end
+
+  def interrupt_formater
+    formatter_pid =
+      `docker-compose exec -T app ps auxwww | grep 'guard/rspec_formatter.rb' | grep -v grep | awk '{print $2}'`
+
+    return if formatter_pid.empty?
+
+    system(%(docker-compose exec -T app kill -SIGINT #{formatter_pid}))
+  end
 end
 
 # If this was a branch checkout
@@ -188,37 +256,23 @@ if ARGV[2] == '1'
     Dir.mkdir @dump_folder
   end
 
+  guard_manager = GuardManager.new
+
   # Don't do anything if the source and destination branches are the same or nonexistent
   unless @source_branches.include?(@destination_branch) || @source_branches.empty? || (@source_branches | [@destination_branch]).any?{ |b| b == '' }
     # Dump database for source branches
     if @source_branches.all? { |branch| @adapter.dump(branch) }
       # Restore dump from this branch, if it exists
       if @adapter.dump_exists?(@destination_branch)
-        # get guard pid
-        guard_pid = `docker-compose exec -T app ps auxwww | grep 'guard-core' | grep -v grep | awk '{print $2}'`
-
-        # pause guard watching
-        system(%[docker-compose exec -T app kill -USR1 #{guard_pid}]) if guard_pid
-        # stop current process
-        system(%[docker-compose exec -T app kill -SIGINT #{guard_pid}]) if guard_pid
+        guard_manager.pause
 
         if @adapter.restore(@destination_branch)
-          # stop current process
-          system(%[docker-compose exec -T app kill -SIGINT #{guard_pid}]) if guard_pid
-
           db = dev_database_name.gsub("development", "test")
+
           system(%[docker-compose exec -T app psql -h db -U postgres --command="SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE pg_stat_activity.datname = '#{db}' AND pid <> pg_backend_pid();" postgres > /dev/null])
 
-          system(%[docker-compose exec -T app kill -SIGINT #{guard_pid}]) if guard_pid
-          system(%[docker-compose exec -T app kill -SIGINT #{guard_pid}]) if guard_pid
-          system(%[docker-compose exec -T app kill -SIGINT #{guard_pid}]) if guard_pid
-          prepare_test_database
 
-          # unpause guard
-          system(%[docker-compose exec -T app kill -USR2 #{guard_pid}]) if guard_pid
-          system(%[docker-compose exec -T app kill -SIGINT #{guard_pid}]) if guard_pid
-          system(%[docker-compose exec -T app kill -SIGINT #{guard_pid}]) if guard_pid
-          system(%[docker-compose exec -T app kill -SIGINT #{guard_pid}]) if guard_pid
+          guard_manager.resume
         end
       else
         print "No DB dump for #{dev_database_name} on the '#{@destination_branch}' branch was found!\n"
