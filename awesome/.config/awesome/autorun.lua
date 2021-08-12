@@ -4,7 +4,7 @@ local awful = require("awful")
 
 --function autorun.init(awful)
 awful.spawn.with_shell('sleep 0.3 && nitrogen --restore')
-awful.spawn.with_shell('compton')
+awful.spawn.with_shell('picom')
 awful.spawn.with_shell("setxkbmap -option 'grp:win_space_toggle' -layout us,ru")
 
 -- Disable screen turning off
