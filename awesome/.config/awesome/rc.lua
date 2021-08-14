@@ -209,6 +209,35 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
+  -- my keybindings
+   awful.key({}, 'XF86AudioPlay', function () awful.util.spawn('playerctl play-pause') end),
+   awful.key({}, 'XF86AudioPause', function () awful.util.spawn('playerctl play-pause') end),
+   awful.key({}, 'XF86AudioNext', function () awful.util.spawn('playerctl next') end),
+   awful.key({}, 'XF86AudioPrev', function () awful.util.spawn('playerctl previous') end),
+
+   awful.key(
+     {}, 'XF86AudioRaiseVolume',
+     function()
+       awful.util.spawn('pactl set-sink-volume @DEFAULT_SINK@ +10%')
+     end
+   ),
+
+   awful.key(
+     {}, 'XF86AudioLowerVolume',
+     function()
+       awful.util.spawn('pactl set-sink-volume @DEFAULT_SINK@ -10%')
+     end
+   ),
+
+   awful.key(
+     {}, 'XF86AudioMute',
+     function()
+       awful.util.spawn('pactl set-sink-mute @DEFAULT_SINK@ toggle')
+     end
+   ),
+
+  -- end of my keybindings
+
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "j",
