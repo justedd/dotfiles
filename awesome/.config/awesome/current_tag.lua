@@ -6,10 +6,24 @@ local beautiful = require('beautiful')
 local obj = {}
 
 local height = 20
-local width = 100
+local width = 40
+
+local icons = {
+  main = '★',
+  post= '🖃',
+  telegram = '☎',
+  slack = '☍',
+  work_code = '☰',
+  work_view = '☯',
+  other_1 = '1',
+  other_2 = '2',
+  other_2 = '3',
+}
 
 local function current_tag_text(screen)
-  return '<span foreground="#333333">' .. screen.selected_tag.name .. '</span>'
+  local name = icons[screen.selected_tag.name]
+
+  return '<span foreground="#333333">' .. name .. '</span>'
 end
 
 function obj.init(screen)

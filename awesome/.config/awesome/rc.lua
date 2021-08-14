@@ -158,9 +158,9 @@ awful.screen.connect_for_each_screen(function(s)
       "slack",
       "work_code",
       "work_view",
-      "7",
-      "8",
-      "9",
+      "other_1",
+      "other_2",
+      "other_3",
     },
       s,
       {
