@@ -14,16 +14,14 @@ local icons = {
   telegram = '☎',
   slack = '☍',
   work_code = '☰',
-  work_view = '☯',
-  other_1 = '1',
-  other_2 = '2',
-  other_2 = '3',
+  work_view = '☯'
 }
 
 local function current_tag_text(screen)
-  local name = icons[screen.selected_tag.name]
+  local name = screen.selected_tag.name
+  local icon = icons[name] or name
 
-  return '<span foreground="#333333">' .. name .. '</span>'
+  return '<span foreground="#333333">' .. icon .. '</span>'
 end
 
 function obj.init(screen)
