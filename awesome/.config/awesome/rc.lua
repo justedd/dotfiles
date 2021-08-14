@@ -21,6 +21,7 @@ require("awful.hotkeys_popup.keys")
 
 --local wibar_visibility_control = require('wibar_visibility_control')
 local current_tag = require('current_tag')
+local tiny_clock = require('tiny_clock')
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -90,7 +91,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+--mytextclock = wibox.widget.textclock()
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -229,6 +230,7 @@ awful.screen.connect_for_each_screen(function(s)
 
     --wibar_visibility_control.init(s, s.mywibox)
     current_tag.init(s)
+    tiny_clock.init(s)
 end)
 -- }}}
 
