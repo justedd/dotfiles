@@ -32,14 +32,14 @@ return gears.table.join(
  awful.key(
    {}, 'XF86AudioRaiseVolume',
    function()
-     awful.util.spawn('pactl set-sink-volume @DEFAULT_SINK@ +10%')
+     awful.util.spawn('pactl set-sink-volume @DEFAULT_SINK@ +5%')
    end
  ),
 
  awful.key(
    {}, 'XF86AudioLowerVolume',
    function()
-     awful.util.spawn('pactl set-sink-volume @DEFAULT_SINK@ -10%')
+     awful.util.spawn('pactl set-sink-volume @DEFAULT_SINK@ -5%')
    end
  ),
 
