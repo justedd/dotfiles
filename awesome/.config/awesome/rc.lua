@@ -2,6 +2,8 @@
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
+-- TODO: extract window control keys
+
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -22,6 +24,7 @@ require("awful.hotkeys_popup.keys")
 --local wibar_visibility_control = require('wibar_visibility_control')
 local current_tag = require('current_tag')
 local tiny_clock = require('tiny_clock')
+local window_utils = require('window_utils')
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -202,8 +205,8 @@ end)
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
     awful.button({ }, 3, function () mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
+    awful.button({ }, 4, window_utils.previous_workspace),
+    awful.button({ }, 5, window_utils.next_workspace)
 ))
 -- }}}
 
@@ -230,20 +233,8 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
               {description = "show main menu", group = "awesome"}),
 
-    awful.key({ "Control", 'Mod1' }, "Up", 
-      function()
-        for i = 1, screen.count() do
-          awful.tag.viewprev(screen[i])
-        end
-      end
-     ),
-
-    awful.key({ "Control", 'Mod1' }, "Down", 
-      function()
-        for i = 1, screen.count() do
-          awful.tag.viewnext(screen[i])
-        end
-      end ),
+    awful.key({ 'Control', 'Mod1' }, 'Up', window_utils.previous_workspace),
+    awful.key({ 'Control', 'Mod1' }, 'Down', window_utils.next_workspace),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
