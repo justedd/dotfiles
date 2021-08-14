@@ -20,6 +20,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 
 local wibar_visibility_control = require('wibar_visibility_control')
+local current_tag = require('current_tag')
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -227,6 +228,7 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     wibar_visibility_control.init(s, s.mywibox)
+    current_tag.init(s)
 end)
 -- }}}
 
