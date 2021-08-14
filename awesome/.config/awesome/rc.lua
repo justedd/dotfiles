@@ -19,7 +19,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
-local wibar_visibility_control = require('wibar_visibility_control')
+--local wibar_visibility_control = require('wibar_visibility_control')
 local current_tag = require('current_tag')
 
 -- {{{ Error handling
@@ -196,38 +196,38 @@ awful.screen.connect_for_each_screen(function(s)
         buttons = tasklist_buttons
     }
 
-    -- Create the wibox
-    s.mywibox = wibox({
-      x = 0,
-      y = 0,
-      height = 20,
-      width = s.geometry.width,
-      position = "top",
-      ontop = true,
-      type = 'dock',
-      screen = s,
-      visible = true
-    })
+    ---- Create the wibox
+    --s.mywibox = wibox({
+      --x = 0,
+      --y = 0,
+      --height = 20,
+      --width = s.geometry.width,
+      --position = "top",
+      --ontop = true,
+      --type = 'dock',
+      --screen = s,
+      --visible = true
+    --})
 
-    -- Add widgets to the wibox
-    s.mywibox:setup {
-        layout = wibox.layout.align.horizontal,
-        { -- Left widgets
-            layout = wibox.layout.fixed.horizontal,
-            --mylauncher,
-            --s.mytaglist,
-            s.mypromptbox,
-        },
-        --s.mytasklist, -- Middle widget
-        { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
-            mytextclock,
-            --s.mylayoutbox,
-        },
-    }
+    ---- Add widgets to the wibox
+    --s.mywibox:setup {
+        --layout = wibox.layout.align.horizontal,
+        --{ -- Left widgets
+            --layout = wibox.layout.fixed.horizontal,
+            ----mylauncher,
+            ----s.mytaglist,
+            --s.mypromptbox,
+        --},
+        ----s.mytasklist, -- Middle widget
+        --{ -- Right widgets
+            --layout = wibox.layout.fixed.horizontal,
+            --mykeyboardlayout,
+            --mytextclock,
+            ----s.mylayoutbox,
+        --},
+    --}
 
-    wibar_visibility_control.init(s, s.mywibox)
+    --wibar_visibility_control.init(s, s.mywibox)
     current_tag.init(s)
 end)
 -- }}}
