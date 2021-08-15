@@ -26,6 +26,7 @@ require("awful.hotkeys_popup.keys")
 local current_tag = require('current_tag')
 local tiny_clock = require('tiny_clock')
 local tiny_connection = require('tiny_connection')
+local tiny_sound = require('tiny_sound')
 local window_utils = require('window_utils')
 
 -- {{{ Error handling
@@ -201,6 +202,7 @@ awful.screen.connect_for_each_screen(function(s)
 
     current_tag.init(s)
     tiny_clock.init(s)
+    tiny_sound.init(s)
     tiny_connection.init(s)
 end)
 -- }}}

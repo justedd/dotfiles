@@ -8,10 +8,20 @@ local obj = {}
 local height = 20
 local width = 200
 
+function get_icon(text)
+  local icons = {
+    analog = "🕩",
+    digital = "🎜",
+  }
+
+  text = string.gsub(text, "%s+", "")
+  return icons[text] or text
+end
+
 function obj.init(screen)
   local box = wibox ({
-    x = 280,
-    y = screen.geometry.height - height + 2,
+    x = 240,
+    y = screen.geometry.height - height,
     opacity = 0.40,
     width = width,
     height = height,
@@ -30,7 +40,7 @@ function obj.init(screen)
   layout:add(textbox)
   box:set_widget(layout)
 
-  local command = "/home/justed/core/scripts/vpn_name.sh"
+  local command = "/home/justed/core/scripts/current_sound.sh"
 
   gears.timer {
     timeout   = 1,
@@ -38,7 +48,7 @@ function obj.init(screen)
     autostart = true,
     callback  = function()
       awful.spawn.easy_async_with_shell(command, function(out)
-        textbox.markup = out
+        textbox.markup = get_icon(out)
       end)
     end
   }
