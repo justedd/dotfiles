@@ -21,14 +21,14 @@ local function current_tag_text(screen)
   local name = screen.selected_tag.name
   local icon = icons[name] or name
 
-  return '<span foreground="#333333">' .. icon .. '</span>'
+  return icon
 end
 
 function obj.init(screen)
   local box = wibox ({
-    x = screen.geometry.width - width,
+    x = 200,
     y = screen.geometry.height - height,
-    --opacity = 0.10,
+    opacity = 0.40,
     width = width,
     height = height,
     input_passthrough = false,
