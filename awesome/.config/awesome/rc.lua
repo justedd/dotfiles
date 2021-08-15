@@ -25,6 +25,7 @@ require("awful.hotkeys_popup.keys")
 --local wibar_visibility_control = require('wibar_visibility_control')
 local current_tag = require('current_tag')
 local tiny_clock = require('tiny_clock')
+local tiny_connection = require('tiny_connection')
 local window_utils = require('window_utils')
 
 -- {{{ Error handling
@@ -200,6 +201,7 @@ awful.screen.connect_for_each_screen(function(s)
 
     current_tag.init(s)
     tiny_clock.init(s)
+    tiny_connection.init(s)
 end)
 -- }}}
 
