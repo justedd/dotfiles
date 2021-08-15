@@ -52,6 +52,18 @@ function obj.init(screen)
       end)
     end
   }
+
+  box:buttons(
+    awful.util.table.join(
+      awful.button(
+        {}, 1, function()
+          local command = "/home/justed/core/scripts/toggle_card.sh"
+          awful.spawn.easy_async_with_shell(command, function(out)
+          end)
+        end
+      )
+    )
+  )
 end
 
 return obj
