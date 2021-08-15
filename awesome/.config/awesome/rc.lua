@@ -249,8 +249,8 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
               {description = "show main menu", group = "awesome"}),
 
-    awful.key({ 'Control', 'Mod1' }, 'Up', window_utils.previous_workspace),
-    awful.key({ 'Control', 'Mod1' }, 'Down', window_utils.next_workspace),
+    awful.key({ 'Control', 'Mod1' }, 'Up', window_utils.previous_workspace_with_focus),
+    awful.key({ 'Control', 'Mod1' }, 'Down', window_utils.next_workspace_with_focus),
 
     -- Layout manipulation
     --awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,

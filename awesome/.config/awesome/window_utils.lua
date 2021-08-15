@@ -19,24 +19,40 @@ function get_active()
   return awful.screen.focused()
 end
 
-function obj.previous_workspace()
+function obj.previous_workspace(keep_focus)
+  keep_focus = keep_focus or false
+
   local active_screen = get_active()
 
   for i = 1, screen.count() do
     awful.tag.viewprev(screen[i])
   end
 
-  focus(active_screen)
+  if keep_focus then
+    focus(active_screen)
+  end
 end
 
-function obj.next_workspace()
+function obj.next_workspace(keep_focus)
+  keep_focus = keep_focus or false
+
   local active_screen = get_active()
 
   for i = 1, screen.count() do
     awful.tag.viewnext(screen[i])
   end
 
-  focus(active_screen)
+  if keep_focus then
+    focus(active_screen)
+  end
+end
+
+function obj.next_workspace_with_focus()
+  obj.next_workspace(true)
+end
+
+function obj.previous_workspace_with_focus()
+  obj.previous_workspace(true)
 end
 
 return obj
