@@ -6,11 +6,11 @@ local beautiful = require('beautiful')
 local obj = {}
 
 local height = 20
-local width = 200
+local width = 50
 
 function obj.init(screen)
   local box = wibox ({
-    x = 320,
+    x = 260,
     y = screen.geometry.height - height + 2,
     opacity = 0.40,
     width = width,
@@ -30,10 +30,11 @@ function obj.init(screen)
   layout:add(textbox)
   box:set_widget(layout)
 
-  local command = "/home/justed/core/scripts/vpn_name.sh"
+  local command = "pacmd list-sinks | grep volume:\\ front-left |  awk '{ print $5 }' | tail -1"
 
+  -- TODO: use events
   gears.timer {
-    timeout   = 1,
+    timeout   = 0.2,
     call_now  = true,
     autostart = true,
     callback  = function()
