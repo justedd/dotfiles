@@ -209,8 +209,26 @@ end)
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
     awful.button({ }, 3, function () mymainmenu:toggle() end),
-    awful.button({ }, 4, window_utils.previous_workspace),
-    awful.button({ }, 5, window_utils.next_workspace)
+    awful.button(
+      {}, 4,
+      function() 
+        if mouse.coords().y > 100 then
+          return
+        end
+
+        window_utils.previous_workspace()
+      end
+    ),
+    awful.button(
+      {}, 5,
+      function()
+        if mouse.coords().y > 100 then
+          return
+        end
+
+        window_utils.next_workspace()
+      end
+    )
 ))
 -- }}}
 
