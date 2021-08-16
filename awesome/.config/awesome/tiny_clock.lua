@@ -10,7 +10,7 @@ local width = 200
 
 function obj.init(screen)
   local box = wibox ({
-    x = 10,
+    x = 50,
     y = screen.geometry.height - height,
     opacity = 0.40,
     width = width,
