@@ -4,7 +4,7 @@ local obj = {}
 
 -- TODO remember previously focused client
 
-function focus(screen, client)
+function focus(screen, mouselocation_x, mouselocation_y)
   awful.screen.focus(screen)
 
   local client = screen.clients[1]
@@ -13,6 +13,11 @@ function focus(screen, client)
     client.focus = client
     client:raise()
   end
+
+  mouse.coords {
+    x = mouselocation_x,
+    y = mouselocation_y
+  }
 end
 
 function get_active()
@@ -22,6 +27,11 @@ end
 function obj.previous_workspace(keep_focus)
   keep_focus = keep_focus or false
 
+  if keep_focus then
+    local mouselocation_x = mouse.coords().x
+    local mouselocation_y = mouse.coords().y
+  end
+
   local active_screen = get_active()
 
   for i = 1, screen.count() do
@@ -29,12 +39,17 @@ function obj.previous_workspace(keep_focus)
   end
 
   if keep_focus then
-    focus(active_screen)
+    focus(active_screen, mouselocation_x, mouselocation_y)
   end
 end
 
 function obj.next_workspace(keep_focus)
   keep_focus = keep_focus or false
+
+  if keep_focus then
+    local mouselocation_x = mouse.coords().x
+    local mouselocation_y = mouse.coords().y
+  end
 
   local active_screen = get_active()
 
@@ -43,7 +58,7 @@ function obj.next_workspace(keep_focus)
   end
 
   if keep_focus then
-    focus(active_screen)
+    focus(active_screen, mouselocation_x, mouselocation_y)
   end
 end
 
