@@ -536,8 +536,16 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
+-- Enable sloppy focus, so that focus follows mouse.
+client.connect_signal("mouse::enter", function(c)
+    c:emit_signal("request::activate", "mouse_enter", {raise = false})
+end)
+
 
 beautiful.useless_gap = 10
+
+-- mailspring hack
+beautiful.notification_icon_size = 35
 
 --require 'autorun'.init(awful)
 
