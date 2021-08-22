@@ -9,11 +9,11 @@ local obj = {}
 function obj.focus(screen, mouselocation_x, mouselocation_y)
   awful.screen.focus(screen)
 
-  local client = screen.clients[1]
+  local first_client = screen.clients[1]
 
-  if client then
-    client.focus = client
-    client:raise()
+  if first_client then
+    client.focus = first_client
+    first_client:raise()
   end
 
   mouse.coords {

@@ -29,6 +29,11 @@ local tiny_sound = require('tiny_sound')
 local tiny_volume = require('tiny_volume')
 local window_utils = require('window_utils')
 
+
+function debug_msg(msg)
+  naughty.notify({ title = msg, message = msg, timeout = 5 })
+end
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -277,9 +282,9 @@ globalkeys = gears.table.join(
               --{description = "swap with next client by index", group = "client"}),
     --awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
               --{description = "swap with previous client by index", group = "client"}),
-    awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end,
+    awful.key({ modkey, "Control" }, "j", function () awful.client.swap.byidx(1) end,
               {description = "focus the next screen", group = "screen"}),
-    awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
+    awful.key({ modkey, "Control" }, "k", function () awful.client.swap.byidx(-1) end,
               {description = "focus the previous screen", group = "screen"}),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
@@ -407,6 +412,10 @@ for i = 1, 9 do
       { modkey },
       '#' .. i + 9,
       function()
+        local mouselocation_x = mouse.coords().x
+        local mouselocation_y = mouse.coords().y
+        local focused_screen = awful.screen.focused()
+
         for screen_index = 1, screen.count() do
           local screen = screen[screen_index]
 
@@ -416,6 +425,18 @@ for i = 1, 9 do
             tag:view_only()
           end
         end
+
+        local first_client = focused_screen.clients[1]
+
+        if first_client then
+          client.focus = first_client
+          first_client:raise()
+        end
+
+        mouse.coords {
+          x = mouselocation_x,
+          y = mouselocation_y
+        }
       end,
       { description = 'view tag #'..i, group = 'tag' }
     ),
@@ -537,12 +558,16 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- Enable sloppy focus, so that focus follows mouse.
-client.connect_signal("mouse::enter", function(c)
-    c:emit_signal("request::activate", "mouse_enter", {raise = false})
-end)
+--client.connect_signal("mouse::enter", function(c)
+    --c:emit_signal("request::activate", "mouse_enter", {raise = false})
+--end)
 
 
 beautiful.useless_gap = 10
+
+naughty.config.defaults.position = 'bottom_right'
+naughty.config.defaults.screen = 1
+
 
 -- mailspring hack
 beautiful.notification_icon_size = 35
