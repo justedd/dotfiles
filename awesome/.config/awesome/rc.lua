@@ -7,7 +7,7 @@ pcall(require, "luarocks.loader")
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
---require("awful.autofocus")
+require("awful.autofocus")
 
 -- Widget and layout library
 local wibox = require("wibox")
@@ -314,10 +314,10 @@ globalkeys = gears.table.join(
               {description = "increase the number of columns", group = "layout"}),
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
               {description = "decrease the number of columns", group = "layout"}),
-    awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
-              {description = "select next", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
-              {description = "select previous", group = "layout"}),
+    --awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
+              --{description = "select next", group = "layout"}),
+    --awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
+              --{description = "select previous", group = "layout"}),
 
     awful.key({ modkey, "Control" }, "n",
               function ()
@@ -492,6 +492,16 @@ awful.rules.rules = {
      }
     },
 
+    --{
+      --rule = {
+        --{ class = "[Ss]potify" }
+      --},
+      --properties = {
+        --tag = 'main',
+        --screen = 2
+      --}
+    --},
+
     -- Floating clients.
     { rule_any = {
         instance = {
@@ -575,3 +585,13 @@ beautiful.notification_icon_size = 35
 --require 'autorun'.init(awful)
 
 dofile(awful.util.getdir("config") .. "/" .. 'autorun.lua')
+
+
+client.connect_signal("property::class", function(c)
+	if c.class == "Spotify" then
+		-- Move the Spotify instance to "music" tag on this screen
+		local t = awful.tag.find_by_name(screen[2], 'main')
+		c:move_to_tag(t)
+    --c:move_to_screen(screen[2])
+	end
+end)

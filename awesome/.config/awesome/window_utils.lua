@@ -1,29 +1,48 @@
 local awful = require('awful')
+local gears = require("gears")
 
 local naughty = require("naughty")
 
 local obj = {}
 
+function debug_msg(msg)
+  naughty.notify({ title = msg, message = msg, timeout = 5 })
+end
+
 -- TODO remember previously focused client
 
 function obj.focus(screen, mouselocation_x, mouselocation_y)
-  awful.screen.focus(screen)
+  gears.timer {
+    timeout   = 0.05,
+    call_now  = false,
+    autostart = true,
+    single_shot = true,
+    callback  = function()
+      awful.screen.focus(screen)
 
-  local first_client = screen.clients[1]
+      local first_client = screen.clients[1]
 
-  if first_client then
-    client.focus = first_client
-    first_client:raise()
-  end
+      if first_client then
+        client.focus = first_client
+        first_client:raise()
+      end
 
-  mouse.coords {
-    x = mouselocation_x,
-    y = mouselocation_y
-  }
+      mouse.coords {
+        x = mouselocation_x,
+        y = mouselocation_y
+      }
+    end
+}
 end
 
 function obj.get_active()
   return awful.screen.focused()
+end
+
+function obj.unminimize(scr)
+  --for j = 1, scr.clients.count() do
+    --scr.cleints[j].minimized = false
+  --end
 end
 
 function obj.previous_workspace(keep_focus)
@@ -38,6 +57,7 @@ function obj.previous_workspace(keep_focus)
 
   for i = 1, screen.count() do
     awful.tag.viewprev(screen[i])
+    obj.unminimize(screen[i])
   end
 
   if keep_focus then
@@ -60,6 +80,7 @@ function obj.next_workspace(keep_focus)
 
   for i = 1, screen.count() do
     awful.tag.viewnext(screen[i])
+    obj.unminimize(screen[i])
   end
 
   if keep_focus then

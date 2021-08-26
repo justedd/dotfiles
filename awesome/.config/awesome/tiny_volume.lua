@@ -30,7 +30,7 @@ function obj.init(screen)
   layout:add(textbox)
   box:set_widget(layout)
 
-  local command = "pacmd list-sinks | grep volume:\\ front-left |  awk '{ print $5 }' | tail -1"
+  local command = "pacmd list-sinks | grep alsa_output.pci-0000_00 -A 15 | grep volume:\\ front-left |  awk '{ print $5 }' | tail -1"
 
   -- TODO: use events
   gears.timer {
