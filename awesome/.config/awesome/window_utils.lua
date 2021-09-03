@@ -96,4 +96,39 @@ function obj.previous_workspace_with_focus()
   obj.previous_workspace(true)
 end
 
+function obj.jump_to_tag(tag_name)
+  local mouselocation_x = mouse.coords().x
+  local mouselocation_y = mouse.coords().y
+  local focused_screen = awful.screen.focused()
+
+  for screen_index = 1, screen.count() do
+    local screen = screen[screen_index]
+
+    local tag = screen.tags[tag_name]
+
+    if tag then
+      tag:view_only()
+    end
+  end
+
+  local first_client = focused_screen.clients[1]
+
+  -- code tag
+  if tag_name == 5 then
+    if first_client == nil then
+      awful.spawn.with_shell('kitty')
+    end
+  end
+
+  if first_client then
+    client.focus = first_client
+    first_client:raise()
+  end
+
+  mouse.coords {
+    x = mouselocation_x,
+    y = mouselocation_y
+  }
+end
+
 return obj

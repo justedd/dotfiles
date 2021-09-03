@@ -1,5 +1,10 @@
 local awful = require('awful')
 local gears = require('gears')
+local naughty = require("naughty")
+
+function debug_msg(msg)
+  naughty.notify({ title = msg, message = msg, timeout = 5 })
+end
 
 return gears.table.join(
   awful.key(
@@ -19,27 +24,27 @@ return gears.table.join(
   awful.key(
     {}, 'XF86AudioPlay',
     function()
-      awful.util.spawn('playerctl play-pause')
+      awful.util.spawn('playerctl -p spotify play-pause')
     end),
  
   awful.key(
     {}, 'XF86AudioPause',
     function()
-      awful.util.spawn('playerctl play-pause')
+      awful.util.spawn('playerctl -p spotify play-pause')
     end
   ),
  
   awful.key(
     {}, 'XF86AudioNext',
     function()
-      awful.util.spawn('playerctl next')
+      awful.util.spawn('playerctl -p spotify next')
     end
   ),
  
   awful.key(
     {}, 'XF86AudioPrev',
     function()
-      awful.util.spawn('playerctl previous')
+      awful.util.spawn('playerctl -p spotify previous')
     end
   ),
  
@@ -63,4 +68,11 @@ return gears.table.join(
       awful.util.spawn('pactl set-sink-mute @DEFAULT_SINK@ toggle')
     end
   )
+
+  --awful.key(
+    --{}, 's',
+    --function()
+      --debug_msg('kek')
+    --end
+  --)
 )

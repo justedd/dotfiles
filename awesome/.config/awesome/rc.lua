@@ -278,10 +278,6 @@ globalkeys = gears.table.join(
     awful.key({ 'Control', 'Mod1' }, 'Down', window_utils.next_workspace_with_focus),
 
     -- Layout manipulation
-    --awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
-              --{description = "swap with next client by index", group = "client"}),
-    --awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
-              --{description = "swap with previous client by index", group = "client"}),
     awful.key({ modkey, "Control" }, "j", function () awful.client.swap.byidx(1) end,
               {description = "focus the next screen", group = "screen"}),
     awful.key({ modkey, "Control" }, "k", function () awful.client.swap.byidx(-1) end,
@@ -306,6 +302,10 @@ globalkeys = gears.table.join(
               {description = "increase master width factor", group = "layout"}),
     awful.key({ modkey,  "Shift" }, "h",     function () awful.tag.incmwfact(-0.05)          end,
               {description = "decrease master width factor", group = "layout"}),
+    awful.key({ modkey, "Shift"   }, "j", function () awful.client.incwfact(0.05)  end,
+              {description = "swap with next client by index", group = "client"}),
+    awful.key({ modkey, "Shift"   }, "k", function () awful.client.incwfact(-0.05)    end,
+              {description = "swap with previous client by index", group = "client"}),
     --awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
               --{description = "increase the number of master clients", group = "layout"}),
     --awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
@@ -411,32 +411,8 @@ for i = 1, 9 do
     awful.key(
       { modkey },
       '#' .. i + 9,
-      function()
-        local mouselocation_x = mouse.coords().x
-        local mouselocation_y = mouse.coords().y
-        local focused_screen = awful.screen.focused()
-
-        for screen_index = 1, screen.count() do
-          local screen = screen[screen_index]
-
-          local tag = screen.tags[i]
-
-          if tag then
-            tag:view_only()
-          end
-        end
-
-        local first_client = focused_screen.clients[1]
-
-        if first_client then
-          client.focus = first_client
-          first_client:raise()
-        end
-
-        mouse.coords {
-          x = mouselocation_x,
-          y = mouselocation_y
-        }
+      function() 
+        window_utils.jump_to_tag(i)
       end,
       { description = 'view tag #'..i, group = 'tag' }
     ),
@@ -595,3 +571,39 @@ client.connect_signal("property::class", function(c)
     --c:move_to_screen(screen[2])
 	end
 end)
+
+client.connect_signal("property::class", function(c)
+	if c.class == "Tagspaces" then
+    if c.type == 'dialog' then
+
+      gears.timer {
+        timeout   = 0.05,
+        call_now  = false,
+        autostart = true,
+        single_shot = true,
+        callback  = function()
+          local old_c = client.focus
+          client.focus = c
+          awesome.sync()
+
+          root.fake_input('key_press'  , 'Return')
+          root.fake_input('key_release', 'Return')
+
+          client.focus = old_c
+          debug_msg('hehehe')
+        end
+      }
+    end
+    --debug_msg(c.type)
+		-- Move the Spotify instance to "music" tag on this screen
+		--local t = awful.tag.find_by_name(screen[2], 'main')
+		--c:move_to_tag(t)
+    --c:move_to_screen(screen[2])
+	end
+end)
+
+--client.connect_signal("property::class", function(c)
+  --if c.class == "dolphin" then
+    --debug_msg(c.type)
+  --end
+--end)
