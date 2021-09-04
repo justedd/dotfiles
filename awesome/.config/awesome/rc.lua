@@ -223,7 +223,7 @@ root.buttons(gears.table.join(
           return
         end
 
-        window_utils.previous_workspace()
+        window_utils.previous_workspace(true)
       end
     ),
     awful.button(
@@ -233,7 +233,7 @@ root.buttons(gears.table.join(
           return
         end
 
-        window_utils.next_workspace()
+        window_utils.next_workspace(true)
       end
     )
 ))
