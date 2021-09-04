@@ -85,6 +85,26 @@ function obj.next_workspace(keep_focus)
 
   if keep_focus then
     obj.focus(active_screen, mouselocation_x, mouselocation_y)
+  else
+    --awful.screen.focus(active_screen)
+
+    -- TODO focus screen by mouse position
+    gears.timer({
+      timeout   = 0.05,
+      call_now  = false,
+      autostart = true,
+      single_shot = true,
+      callback  = function()
+        local first_client = active_screen.clients[1]
+
+        debug_msg(mouse.coords().x)
+
+        if first_client then
+          client.focus = first_client
+          first_client:raise()
+        end
+      end
+    })
   end
 end
 
