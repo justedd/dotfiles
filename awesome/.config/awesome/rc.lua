@@ -590,7 +590,6 @@ client.connect_signal("property::class", function(c)
           root.fake_input('key_release', 'Return')
 
           client.focus = old_c
-          debug_msg('hehehe')
         end
       }
     end
@@ -607,3 +606,8 @@ end)
     --debug_msg(c.type)
   --end
 --end)
+--
+--
+
+
+awful.ewmh.add_activate_filter(function() return false end, "ewmh")

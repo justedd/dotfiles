@@ -97,8 +97,6 @@ function obj.next_workspace(keep_focus)
       callback  = function()
         local first_client = active_screen.clients[1]
 
-        debug_msg(mouse.coords().x)
-
         if first_client then
           client.focus = first_client
           first_client:raise()
