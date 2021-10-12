@@ -332,7 +332,7 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () awful.util.spawn('rofi -show run') end,
+    awful.key({ modkey },            "r",     function () awful.util.spawn('rofi -show drun') end,
               {description = "run prompt", group = "launcher"}),
 
     awful.key({ modkey }, "x",
@@ -570,36 +570,50 @@ client.connect_signal("property::class", function(c)
 		c:move_to_tag(t)
     --c:move_to_screen(screen[2])
 	end
-end)
 
-client.connect_signal("property::class", function(c)
-	if c.class == "Tagspaces" then
-    if c.type == 'dialog' then
-
-      gears.timer {
-        timeout   = 0.05,
-        call_now  = false,
-        autostart = true,
-        single_shot = true,
-        callback  = function()
-          local old_c = client.focus
-          client.focus = c
-          awesome.sync()
-
-          root.fake_input('key_press'  , 'Return')
-          root.fake_input('key_release', 'Return')
-
-          client.focus = old_c
-        end
-      }
-    end
-    --debug_msg(c.type)
-		-- Move the Spotify instance to "music" tag on this screen
-		--local t = awful.tag.find_by_name(screen[2], 'main')
-		--c:move_to_tag(t)
-    --c:move_to_screen(screen[2])
+	if c.class == "Mailspring" then
+    gears.timer {
+      timeout   = 0.05,
+      call_now  = false,
+      autostart = true,
+      single_shot = true,
+      callback  = function()
+        local t = awful.tag.find_by_name(screen[2], 'post')
+        c:move_to_tag(t)
+        c.maximized = false
+      end
+    }
 	end
 end)
+
+--client.connect_signal("property::class", function(c)
+	--if c.class == "Tagspaces" then
+    --if c.type == 'dialog' then
+
+      --gears.timer {
+        --timeout   = 0.05,
+        --call_now  = false,
+        --autostart = true,
+        --single_shot = true,
+        --callback  = function()
+          --local old_c = client.focus
+          --client.focus = c
+          --awesome.sync()
+
+          --root.fake_input('key_press'  , 'Return')
+          --root.fake_input('key_release', 'Return')
+
+          --client.focus = old_c
+        --end
+      --}
+    --end
+    ----debug_msg(c.type)
+		---- Move the Spotify instance to "music" tag on this screen
+		----local t = awful.tag.find_by_name(screen[2], 'main')
+		----c:move_to_tag(t)
+    ----c:move_to_screen(screen[2])
+	--end
+--end)
 
 --client.connect_signal("property::class", function(c)
   --if c.class == "dolphin" then
