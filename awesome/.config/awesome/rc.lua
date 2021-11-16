@@ -544,9 +544,9 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- Enable sloppy focus, so that focus follows mouse.
---client.connect_signal("mouse::enter", function(c)
-    --c:emit_signal("request::activate", "mouse_enter", {raise = false})
---end)
+client.connect_signal("mouse::enter", function(c)
+    c:emit_signal("request::activate", "mouse_enter", {raise = false})
+end)
 
 
 beautiful.useless_gap = 10
@@ -563,6 +563,7 @@ beautiful.notification_icon_size = 35
 dofile(awful.util.getdir("config") .. "/" .. 'autorun.lua')
 
 
+-- TODO: refactor && use proper rules for proper types
 client.connect_signal("property::class", function(c)
 	if c.class == "Spotify" then
 		-- Move the Spotify instance to "music" tag on this screen
@@ -571,9 +572,35 @@ client.connect_signal("property::class", function(c)
     --c:move_to_screen(screen[2])
 	end
 
+	if c.class == "TelegramDesktop" then
+    gears.timer {
+      timeout   = 0.10,
+      call_now  = false,
+      autostart = true,
+      single_shot = true,
+      callback  = function()
+        local t = awful.tag.find_by_name(screen[2], 'telegram')
+        c:move_to_tag(t)
+      end
+    }
+	end
+
+	if c.class == "Slack" then
+    gears.timer {
+      timeout   = 0.10,
+      call_now  = false,
+      autostart = true,
+      single_shot = true,
+      callback  = function()
+        local t = awful.tag.find_by_name(screen[2], 'slack')
+        c:move_to_tag(t)
+      end
+    }
+	end
+
 	if c.class == "Mailspring" then
     gears.timer {
-      timeout   = 0.05,
+      timeout   = 0.10,
       call_now  = false,
       autostart = true,
       single_shot = true,
