@@ -25,7 +25,14 @@ return gears.table.join(
    function()
       awful.util.spawn("sh -c 'maim -s /home/justed/Pictures/Screenshots/$(date +\"%Y_%m_%d_%H_%M_%S\").png'")
    end
- ),
+  ),
+
+  awful.key(
+  { 'Shift', 'Control', 'Mod1', 'Mod4' }, "p",
+   function()
+      awful.util.spawn("flameshot gui")
+   end
+   ),
 
   awful.key(
     {}, 'XF86AudioPlay',
