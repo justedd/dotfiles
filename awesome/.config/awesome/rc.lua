@@ -215,7 +215,7 @@ end)
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
-    --awful.button({ }, 3, function () mymainmenu:toggle() end),
+    awful.button({ }, 3, function () mymainmenu:toggle() end),
     awful.button(
       {}, 4,
       function() 
@@ -234,6 +234,22 @@ root.buttons(gears.table.join(
         end
 
         window_utils.next_workspace()
+      end
+    ),
+    awful.button(
+      {}, 1,
+      function()
+        if  (mouse.coords().y > 30) then
+          return
+        end
+
+        if (mouse.coords().x > 2560) or (mouse.coords().x < 2560 + 200) then
+          window_utils.jump_to_tag(1)
+        end
+
+        if (mouse.coords().x > 2560 * 2 - 200) then
+          window_utils.jump_to_tag(5)
+        end
       end
     )
 ))
