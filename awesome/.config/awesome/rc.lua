@@ -243,7 +243,7 @@ root.buttons(gears.table.join(
           return
         end
 
-        if (mouse.coords().x > 2560) or (mouse.coords().x < 2560 + 200) then
+        if (mouse.coords().x > 2560) and (mouse.coords().x < 2560 + 200) then
           window_utils.jump_to_tag(1)
         end
 
