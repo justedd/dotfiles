@@ -239,15 +239,14 @@ root.buttons(gears.table.join(
     awful.button(
       {}, 1,
       function()
-        if  (mouse.coords().y > 30) then
-          return
-        end
+        local height = 30
+        local width = 500
 
-        if (mouse.coords().x > 2560) and (mouse.coords().x < 2560 + 200) then
+        if (mouse.coords().x > 2560 * 2 - width) and (mouse.coords().y < height) then
           window_utils.jump_to_tag(1)
         end
 
-        if (mouse.coords().x > 2560 * 2 - 200) then
+        if (mouse.coords().x > 2560 * 2 - height) and (mouse.coords().y < width) then
           window_utils.jump_to_tag(5)
         end
       end
