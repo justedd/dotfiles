@@ -7,7 +7,7 @@ pcall(require, "luarocks.loader")
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
-require("awful.autofocus")
+--require("awful.autofocus")
 
 -- Widget and layout library
 local wibox = require("wibox")
@@ -223,7 +223,7 @@ root.buttons(gears.table.join(
           return
         end
 
-        window_utils.previous_workspace()
+        window_utils.previous_workspace(true)
       end
     ),
     awful.button(
@@ -233,11 +233,11 @@ root.buttons(gears.table.join(
           return
         end
 
-        window_utils.next_workspace()
+        window_utils.next_workspace(true)
       end
     ),
     awful.button(
-      {}, 1,
+      {}, 2,
       function()
         local height = 30
         local width = 500
@@ -286,11 +286,8 @@ globalkeys = gears.table.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
-              {description = "show main menu", group = "awesome"}),
-
-    awful.key({ 'Control', 'Mod1' }, 'Up', window_utils.previous_workspace_with_focus),
-    awful.key({ 'Control', 'Mod1' }, 'Down', window_utils.next_workspace_with_focus),
+    awful.key({ modkey }, 'i', window_utils.previous_workspace_with_focus),
+    awful.key({ modkey }, 'u', window_utils.next_workspace_with_focus),
 
     -- Layout manipulation
     awful.key({ modkey, "Control" }, "j", function () awful.client.swap.byidx(1) end,
