@@ -46,26 +46,14 @@ function obj.unminimize(scr)
 end
 
 function obj.previous_workspace(keep_focus)
-  keep_focus = keep_focus or false
-
-  if keep_focus then
-    local mouselocation_x = mouse.coords().x
-    local mouselocation_y = mouse.coords().y
-  end
-
-  local active_screen = obj.get_active()
-
-  for i = 1, screen.count() do
-    awful.tag.viewprev(screen[i])
-    obj.unminimize(screen[i])
-  end
-
-  if keep_focus then
-    obj.focus(active_screen, mouselocation_x, mouselocation_y)
-  end
+  obj.focus_raw('viewprev', keep_focus)
 end
 
 function obj.next_workspace(keep_focus)
+  obj.focus_raw('viewnext', keep_focus)
+end
+
+function obj.focus_raw(action, keep_focus)
   keep_focus = keep_focus or false
 
   local mouselocation_x
@@ -79,7 +67,7 @@ function obj.next_workspace(keep_focus)
   local active_screen = obj.get_active()
 
   for i = 1, screen.count() do
-    awful.tag.viewnext(screen[i])
+    awful.tag[action](screen[i])
     obj.unminimize(screen[i])
   end
 
