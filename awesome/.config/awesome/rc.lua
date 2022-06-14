@@ -556,10 +556,18 @@ dofile(awful.util.getdir("config") .. "/" .. 'autorun.lua')
 
 -- TODO: refactor && use proper rules for proper types
 client.connect_signal("property::class", function(c)
-	if c.class == "Spotify" then
+	if c.class == "Spotify" or c.class == "eu.tiliado.NuvolaAppYandexMusic" then
 		-- Move the Spotify instance to "music" tag on this screen
-		local t = awful.tag.find_by_name(screen[2], 'main')
-		c:move_to_tag(t)
+    gears.timer {
+      timeout   = 0.10,
+      call_now  = false,
+      autostart = true,
+      single_shot = true,
+      callback  = function()
+        local t = awful.tag.find_by_name(screen[2], 'main')
+        c:move_to_tag(t)
+      end
+    }
     --c:move_to_screen(screen[2])
 	end
 
