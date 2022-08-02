@@ -1,0 +1,35 @@
+snippet caf "const arrow function" w
+const ${1:function_name} = (${2:argument}) => {
+  $3
+}
+endsnippet
+
+snippet af "arrow function" w
+(${1:argument}) => {
+  $2
+}
+endsnippet
+
+snippet im "import default" b
+import ${1:module} from '${2:package}'
+endsnippet
+
+snippet imm "import desctructing" b
+import { ${1:module} } from '${2:package}'
+endsnippet
+
+snippet constd "destruct assignment from object" b
+const { ${1:variables} } = '${2:source}'
+endsnippet
+
+snippet constda "destruct assignment from array" b
+const [ ${1:variables} ] = '${2:source}'
+endsnippet
+
+snippet log "console.log" b
+console.log(${1:variables})
+endsnippet
+
+snippet clear "console.clear" b
+console.clear()
+endsnippet
