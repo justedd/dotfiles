@@ -38,27 +38,27 @@ return gears.table.join(
     {}, 'XF86AudioPlay',
     function()
       -- spotify
-      awful.util.spawn('playerctl -p NuvolaAppYandexMusic play-pause')
+      awful.util.spawn('playerctl -p YandexMusic play-pause')
     end),
  
   awful.key(
     {}, 'XF86AudioPause',
     function()
-      awful.util.spawn('playerctl -p NuvolaAppYandexMusic play-pause')
+      awful.util.spawn('playerctl -p YandexMusic play-pause')
     end
   ),
  
   awful.key(
     {}, 'XF86AudioNext',
     function()
-      awful.util.spawn('playerctl -p NuvolaAppYandexMusic next')
+      awful.util.spawn('playerctl -p YandexMusic next')
     end
   ),
  
   awful.key(
     {}, 'XF86AudioPrev',
     function()
-      awful.util.spawn('playerctl -p NuvolaAppYandexMusic previous')
+      awful.util.spawn('playerctl -p YandexMusic previous')
     end
   ),
  
