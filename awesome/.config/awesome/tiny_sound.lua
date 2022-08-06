@@ -10,8 +10,8 @@ local width = 200
 
 function get_icon(text)
   local icons = {
-    analog = "🕩",
-    digital = "🎜",
+    analog = "🔊",
+    digital = "🎧",
   }
 
   text = string.gsub(text, "%s+", "")
