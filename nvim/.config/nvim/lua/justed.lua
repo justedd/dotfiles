@@ -59,8 +59,6 @@ table.insert(runtime_path, "lua/?/init.lua")
   -- Setup nvim-cmp.
 local cmp = require'cmp'
 
--- require("copilot").setup()
-
 cmp.setup({
   mapping = {
     ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
@@ -87,11 +85,6 @@ cmp.setup({
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
   },
   sources = cmp.config.sources({
-    {
-      name = 'copilot',
-      keyword_length = 0,
-      group_index = 1,
-    },
     {
       name = 'nvim_lsp',
       group_index = 1,
