@@ -145,9 +145,9 @@ local function set_wallpaper(s)
   if beautiful.wallpaper then
     for s = 1, screen.count() do
       if s < 2 then
-        gears.wallpaper.maximized("/home/justed/Pictures/right.png", s, true)
+        gears.wallpaper.maximized("/home/justed/Pictures/Wallpapers/right.png", s, true)
       else
-        gears.wallpaper.maximized("/home/justed/Pictures/left.png", s, true)
+        gears.wallpaper.maximized("/home/justed/Pictures/Wallpapers/left.png", s, true)
       end
     end
   end
