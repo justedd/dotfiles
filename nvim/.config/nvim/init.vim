@@ -261,6 +261,11 @@ augroup BWCCreateDir
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
 
+augroup twig_ft
+  au!
+  autocmd BufNewFile,BufRead *.jrnl set syntax=markdown
+augroup END
+
 " airblade/vim-gitgutter
 set updatetime=100
 
