@@ -215,11 +215,11 @@ end)
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
+    --awful.button({ }, 3, function () mymainmenu:toggle() end),
     awful.button(
-      {}, 4,
-      function() 
-        if mouse.coords().y > 100 then
+      {}, 3,
+      function()
+        if 1440 - mouse.coords().y > 100 then
           return
         end
 
@@ -227,9 +227,9 @@ root.buttons(gears.table.join(
       end
     ),
     awful.button(
-      {}, 5,
+      {}, 1,
       function()
-        if mouse.coords().y > 100 then
+        if 1440 - mouse.coords().y > 100 then
           return
         end
 
