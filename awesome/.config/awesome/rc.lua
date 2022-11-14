@@ -9,8 +9,6 @@ local gears = require("gears")
 local awful = require("awful")
 --require("awful.autofocus")
 
--- Widget and layout library
-local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
@@ -61,12 +59,10 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/home/justed/.config/awesome/theme.lua")
+beautiful.init("~/.config/awesome/theme.lua")
 
-terminal = "kitty"
-editor = "nvim"
-editor_cmd = terminal .. " -e " .. editor
-modkey = "Mod4"
+local terminal = "kitty"
+local modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
@@ -75,71 +71,9 @@ awful.layout.layouts = {
 }
 -- }}}
 
--- {{{ Menu
--- Create a launcher widget and a main menu
-myawesomemenu = {
-   { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", function() awesome.quit() end },
-}
-
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "open terminal", terminal }
-                                  }
-                        })
-
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                                     menu = mymainmenu })
-
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
-
--- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
-
--- {{{ Wibar
--- Create a wibox for each screen and add it
-local taglist_buttons = gears.table.join(
-                    awful.button({ }, 1, function(t) t:view_only() end),
-                    awful.button({ modkey }, 1, function(t)
-                                              if client.focus then
-                                                  client.focus:move_to_tag(t)
-                                              end
-                                          end),
-                    awful.button({ }, 3, awful.tag.viewtoggle),
-                    awful.button({ modkey }, 3, function(t)
-                                              if client.focus then
-                                                  client.focus:toggle_tag(t)
-                                              end
-                                          end),
-                    awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
-                    awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
-                )
-
-local tasklist_buttons = gears.table.join(
-                     awful.button({ }, 1, function (c)
-                                              if c == client.focus then
-                                                  c.minimized = true
-                                              else
-                                                  c:emit_signal(
-                                                      "request::activate",
-                                                      "tasklist",
-                                                      {raise = true}
-                                                  )
-                                              end
-                                          end),
-                     awful.button({ }, 3, function()
-                                              awful.menu.client_list({ theme = { width = 250 } })
-                                          end),
-                     awful.button({ }, 4, function ()
-                                              awful.client.focus.byidx(1)
-                                          end),
-                     awful.button({ }, 5, function ()
-                                              awful.client.focus.byidx(-1)
-                                          end))
 
 local function set_wallpaper(s)
   if beautiful.wallpaper then
@@ -179,31 +113,6 @@ awful.screen.connect_for_each_screen(function(s)
         --awful.layout.suit.floating,
       }
     )
-
-
-    -- Create a promptbox for each screen
-    s.mypromptbox = awful.widget.prompt()
-    -- Create an imagebox widget which will contain an icon indicating which layout we're using.
-    -- We need one layoutbox per screen.
-    s.mylayoutbox = awful.widget.layoutbox(s)
-    s.mylayoutbox:buttons(gears.table.join(
-                           awful.button({ }, 1, function () awful.layout.inc( 1) end),
-                           awful.button({ }, 3, function () awful.layout.inc(-1) end),
-                           awful.button({ }, 4, function () awful.layout.inc( 1) end),
-                           awful.button({ }, 5, function () awful.layout.inc(-1) end)))
-    -- Create a taglist widget
-    s.mytaglist = awful.widget.taglist {
-        screen  = s,
-        filter  = awful.widget.taglist.filter.all,
-        buttons = taglist_buttons
-    }
-
-    -- Create a tasklist widget
-    s.mytasklist = awful.widget.tasklist {
-        screen  = s,
-        filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons
-    }
 
     current_tag.init(s)
     tiny_clock.init(s)
@@ -255,7 +164,7 @@ root.buttons(gears.table.join(
 -- }}}
 
 -- {{{ Key bindings
-globalkeys = gears.table.join(
+local globalkeys = gears.table.join(
   -- my keybindings
 
   -- end of my keybindings
@@ -611,43 +520,5 @@ client.connect_signal("property::class", function(c)
     }
 	end
 end)
-
---client.connect_signal("property::class", function(c)
-	--if c.class == "Tagspaces" then
-    --if c.type == 'dialog' then
-
-      --gears.timer {
-        --timeout   = 0.05,
-        --call_now  = false,
-        --autostart = true,
-        --single_shot = true,
-        --callback  = function()
-          --local old_c = client.focus
-          --client.focus = c
-          --awesome.sync()
-
-          --root.fake_input('key_press'  , 'Return')
-          --root.fake_input('key_release', 'Return')
-
-          --client.focus = old_c
-        --end
-      --}
-    --end
-    ----debug_msg(c.type)
-		---- Move the Spotify instance to "music" tag on this screen
-		----local t = awful.tag.find_by_name(screen[2], 'main')
-		----c:move_to_tag(t)
-    ----c:move_to_screen(screen[2])
-	--end
---end)
-
---client.connect_signal("property::class", function(c)
-  --if c.class == "dolphin" then
-    --debug_msg(c.type)
-  --end
---end)
---
---
-
 
 awful.ewmh.add_activate_filter(function() return false end, "ewmh")
