@@ -89,12 +89,9 @@ cmp.setup({
       name = 'nvim_lsp',
       group_index = 1,
     },
-    { name = 'path' },
-    { name = 'nvim_lua' },
-    { name = 'vim-dadbod-completion' },
-  }, {
     {
       name = 'buffer',
+      group_index = 1,
       max_item_count = 5,
       option = {
         get_bufnrs = function()
@@ -102,6 +99,9 @@ cmp.setup({
         end
       },
     },
+    { name = 'path' },
+    { name = 'nvim_lua' },
+    { name = 'vim-dadbod-completion' },
   })
 })
 
