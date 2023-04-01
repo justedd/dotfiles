@@ -1,12 +1,11 @@
-local gears = require('gears')
 local wibox = require('wibox')
 local awful = require('awful')
 local beautiful = require('beautiful')
 
 local obj = {}
 
-local height = 20
-local width = 40
+local HEIGHT = 20
+local WIDTH = 40
 
 local icons = {
   main = '★',
@@ -27,26 +26,30 @@ local function current_tag_text(screen)
   return icon
 end
 
-function another_one(screen)
-  if (screen.index == 2) then
-    return
-  end
-
-  local box = wibox ({
-    x = 30,
-    y = 0,
+local function build_wibox(screen, x, y)
+  return wibox ({
+    x = x,
+    y = y,
     opacity = 0.60,
-    width = width,
-    height = height,
+    width = WIDTH,
+    height = HEIGHT,
     input_passthrough = false,
     visible = true,
     screen = screen,
     bg = beautiful.bg_normal .. '00' ,
     type = 'normal',
   })
+end
 
-  box.x = screen.geometry.width * 2 - width + 5
-  box.y = screen.geometry.height - height
+function another_one(screen)
+  if (screen.index == 2) then
+    return
+  end
+
+  local box = build_wibox(screen, 30, 0)
+
+  box.x = screen.geometry.width * 2 - WIDTH + 5
+  box.y = screen.geometry.height - HEIGHT
 
   local textbox = wibox.widget.textbox(screen.selected_tag.name)
   textbox.font = 'FiraCode Nerd Font 13'
@@ -56,27 +59,14 @@ function another_one(screen)
 
   screen:connect_signal(
     'tag::history::update',
-    function(c)
+    function()
       textbox.markup = current_tag_text(screen)
     end
   )
 end
 
 function obj.init(screen)
-  local box = wibox ({
-    x = 20,
-    y = screen.geometry.height - height,
-    opacity = 0.40,
-    width = width,
-    height = height,
-    input_passthrough = false,
-    visible = true,
-    ontop = true,
-    layout = awful.widget.only_on_screen,
-    screen = 2,
-    bg = beautiful.bg_normal .. '00' ,
-    type = 'desktop',
-  })
+  local box = build_wibox(screen, 20, screen.geometry.height - HEIGHT)
 
   local textbox = wibox.widget.textbox(screen.selected_tag.name)
   textbox.font = 'FiraCode Nerd Font 13'
