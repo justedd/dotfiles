@@ -93,11 +93,11 @@ cmp.setup({
       name = 'buffer',
       group_index = 1,
       max_item_count = 5,
-      option = {
-        get_bufnrs = function()
-          return vim.api.nvim_list_bufs()
-        end
-      },
+      --option = {
+        --get_bufnrs = function()
+          --return vim.api.nvim_list_bufs()
+        --end
+      --},
     },
     { name = 'path' },
     { name = 'nvim_lua' },
