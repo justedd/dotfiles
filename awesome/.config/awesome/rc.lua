@@ -79,9 +79,9 @@ local function set_wallpaper(s)
   if beautiful.wallpaper then
     for s = 1, screen.count() do
       if s < 2 then
-        gears.wallpaper.maximized("/home/justed/Pictures/Wallpapers/right.png", s, true)
-      else
         gears.wallpaper.maximized("/home/justed/Pictures/Wallpapers/left.png", s, true)
+      else
+        gears.wallpaper.maximized("/home/justed/Pictures/Wallpapers/right.png", s, true)
       end
     end
   end
@@ -452,7 +452,7 @@ end)
 beautiful.useless_gap = 10
 
 naughty.config.defaults.position = 'bottom_right'
-naughty.config.defaults.screen = 1
+naughty.config.defaults.screen = 2
 
 
 -- mailspring hack
@@ -473,7 +473,7 @@ client.connect_signal("property::class", function(c)
       autostart = true,
       single_shot = true,
       callback  = function()
-        local t = awful.tag.find_by_name(screen[2], 'main')
+        local t = awful.tag.find_by_name(screen[1], 'main')
         c:move_to_tag(t)
       end
     }
@@ -487,7 +487,7 @@ client.connect_signal("property::class", function(c)
       autostart = true,
       single_shot = true,
       callback  = function()
-        local t = awful.tag.find_by_name(screen[2], 'telegram')
+        local t = awful.tag.find_by_name(screen[1], 'telegram')
         c:move_to_tag(t)
       end
     }
@@ -500,7 +500,7 @@ client.connect_signal("property::class", function(c)
       autostart = true,
       single_shot = true,
       callback  = function()
-        local t = awful.tag.find_by_name(screen[2], 'slack')
+        local t = awful.tag.find_by_name(screen[1], 'slack')
         c:move_to_tag(t)
       end
     }
@@ -513,7 +513,7 @@ client.connect_signal("property::class", function(c)
       autostart = true,
       single_shot = true,
       callback  = function()
-        local t = awful.tag.find_by_name(screen[2], 'post')
+        local t = awful.tag.find_by_name(screen[1], 'post')
         c:move_to_tag(t)
         c.maximized = false
       end

@@ -29,7 +29,7 @@ function obj.init(screen)
     visible = true,
     ontop = true,
     layout = awful.widget.only_on_screen,
-    screen = 2,
+    screen = 1,
     bg = beautiful.bg_normal .. '00' ,
     type = 'desktop',
   })
