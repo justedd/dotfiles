@@ -64,6 +64,8 @@ let g:ale_linters = {
       \   'cpp': [],
       \}
 
+let g:ale_virtualtext_cursor = 'dsabled'
+
 let g:ale_sign_error = emoji#for('broken_heart')
 let g:ale_sign_warning = emoji#for('fire')
 let g:ale_set_highlights = 0

@@ -22,7 +22,7 @@ return require('packer').startup(function()
   use 'kristijanhusak/vim-dadbod-completion'
 
 
-  -- Errors
+  -- Errors Lint
   use 'w0rp/ale'
 
 
