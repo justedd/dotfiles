@@ -8,7 +8,10 @@ telescope.setup {
   defaults = {
     prompt_prefix = "(╯°□°）╯ >>> ",
     path_display = { "truncate" },
-    dynamic_preview_title = true
+    dynamic_preview_title = true,
+    preview = {
+      treesitter = false,
+    }
   },
   extensions = {
     fzf = {
@@ -134,6 +137,14 @@ require'nvim-treesitter.configs'.setup {
     -- the name of the parser)
     -- list of language that will be disabled
     disable = {},
+
+    disable = function(lang, buf)
+      local max_filesize = 300 * 1024 -- 100 KB
+      local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+      if ok and stats and stats.size > max_filesize then
+        return true
+      end
+    end,
 
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
