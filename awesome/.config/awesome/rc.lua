@@ -462,63 +462,26 @@ beautiful.notification_icon_size = 35
 
 dofile(awful.util.getdir("config") .. "/" .. 'autorun.lua')
 
+function arrange_with_timeout(client, class, id, index)
+  client.connect_signal("property::class", function(c)
+    if c.class == class then
+      gears.timer {
+        timeout   = 0.10,
+        call_now  = false,
+        autostart = true,
+        single_shot = true,
+        callback  = function()
+          local t = awful.tag.find_by_name(screen[index], id)
+          c:move_to_tag(t)
+        end
+      }
+    end
+  end)
+end
 
--- TODO: refactor && use proper rules for proper types
-client.connect_signal("property::class", function(c)
-	if c.class == "Spotify" or c.class == "yandex-music-player" then
-		-- Move the Spotify instance to "music" tag on this screen
-    gears.timer {
-      timeout   = 0.10,
-      call_now  = false,
-      autostart = true,
-      single_shot = true,
-      callback  = function()
-        local t = awful.tag.find_by_name(screen[1], 'main')
-        c:move_to_tag(t)
-      end
-    }
-    --c:move_to_screen(screen[2])
-	end
-
-	if c.class == "TelegramDesktop" then
-    gears.timer {
-      timeout   = 0.10,
-      call_now  = false,
-      autostart = true,
-      single_shot = true,
-      callback  = function()
-        local t = awful.tag.find_by_name(screen[1], 'telegram')
-        c:move_to_tag(t)
-      end
-    }
-	end
-
-	if c.class == "Slack" then
-    gears.timer {
-      timeout   = 0.10,
-      call_now  = false,
-      autostart = true,
-      single_shot = true,
-      callback  = function()
-        local t = awful.tag.find_by_name(screen[1], 'slack')
-        c:move_to_tag(t)
-      end
-    }
-	end
-
-	if c.class == "Mailspring" then
-    gears.timer {
-      timeout   = 0.10,
-      call_now  = false,
-      autostart = true,
-      single_shot = true,
-      callback  = function()
-        local t = awful.tag.find_by_name(screen[1], 'post')
-        c:move_to_tag(t)
-        c.maximized = false
-      end
-    }
-	end
-end)
+arrange_with_timeout(client, "yandex-music-player", "main", 1)
+arrange_with_timeout(client, "TelegramDesktop", "telegram", 1)
+arrange_with_timeout(client, "Slack", "slack", 1)
+arrange_with_timeout(client, "Mailspring", "post", 1)
 
 awful.ewmh.add_activate_filter(function() return false end, "ewmh")
