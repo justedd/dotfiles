@@ -1,5 +1,6 @@
 local awful = require('awful')
 local gears = require("gears")
+local beautiful = require("beautiful")
 
 local naughty = require("naughty")
 
@@ -153,5 +154,18 @@ function obj.arrange_with_timeout(client, class, id, index)
     end
   end)
 end
+
+function obj.set_wallpaper(s)
+  if beautiful.wallpaper then
+    for s = 1, screen.count() do
+      if s < 2 then
+        gears.wallpaper.maximized("/home/justed/Pictures/Wallpapers/left.png", s, true)
+      else
+        gears.wallpaper.maximized("/home/justed/Pictures/Wallpapers/right.png", s, true)
+      end
+    end
+  end
+end
+
 
 return obj

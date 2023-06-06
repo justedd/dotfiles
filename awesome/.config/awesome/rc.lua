@@ -75,25 +75,12 @@ awful.layout.layouts = {
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
-local function set_wallpaper(s)
-  if beautiful.wallpaper then
-    for s = 1, screen.count() do
-      if s < 2 then
-        gears.wallpaper.maximized("/home/justed/Pictures/Wallpapers/left.png", s, true)
-      else
-        gears.wallpaper.maximized("/home/justed/Pictures/Wallpapers/right.png", s, true)
-      end
-    end
-  end
-end
-
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
-screen.connect_signal("property::geometry", set_wallpaper)
+screen.connect_signal("property::geometry", window_utils.set_wallpaper)
 
 
 awful.screen.connect_for_each_screen(function(s)
-    -- Wallpaper
-    set_wallpaper(s)
+    window_utils.set_wallpaper(s)
 
     awful.tag(
     {
@@ -110,7 +97,6 @@ awful.screen.connect_for_each_screen(function(s)
       s,
       {
         awful.layout.suit.tile,
-        --awful.layout.suit.floating,
       }
     )
 
