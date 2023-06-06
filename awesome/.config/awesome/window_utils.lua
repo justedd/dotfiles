@@ -40,12 +40,6 @@ function obj.get_active()
   return awful.screen.focused()
 end
 
-function obj.unminimize(scr)
-  --for j = 1, scr.clients.count() do
-    --scr.cleints[j].minimized = false
-  --end
-end
-
 function obj.previous_workspace(keep_focus)
   obj.focus_raw('viewprev', keep_focus)
 end
@@ -69,7 +63,6 @@ function obj.focus_raw(action, keep_focus)
 
   for i = 1, screen.count() do
     awful.tag[action](screen[i])
-    obj.unminimize(screen[i])
   end
 
   if keep_focus then
