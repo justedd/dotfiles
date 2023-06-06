@@ -354,16 +354,6 @@ awful.rules.rules = {
      }
     },
 
-    --{
-      --rule = {
-        --{ class = "[Ss]potify" }
-      --},
-      --properties = {
-        --tag = 'main',
-        --screen = 2
-      --}
-    --},
-
     -- Floating clients.
     { rule_any = {
         instance = {
