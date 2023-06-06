@@ -137,4 +137,21 @@ function obj.jump_to_tag(tag_name)
   }
 end
 
+function obj.arrange_with_timeout(client, class, id, index)
+  client.connect_signal("property::class", function(c)
+    if c.class == class then
+      gears.timer {
+        timeout   = 0.10,
+        call_now  = false,
+        autostart = true,
+        single_shot = true,
+        callback  = function()
+          local t = awful.tag.find_by_name(screen[index], id)
+          c:move_to_tag(t)
+        end
+      }
+    end
+  end)
+end
+
 return obj
