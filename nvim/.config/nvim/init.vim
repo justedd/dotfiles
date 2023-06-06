@@ -221,7 +221,7 @@ nnoremap <Leader>gr :Gread<cr>
 nnoremap <Leader>gw :Gwrite<cr>
 nnoremap <Leader>gp :Git push<cr>
 nnoremap <Leader>gL :Gclog -n 50<cr>
-nnoremap <Leader>gl :Gclog -50 -- %<cr>
+nnoremap <Leader>gl :Gclog -150 -- %<cr>
 nnoremap <Leader>ge :Gedit %<cr>
 nnoremap <Leader>gE :Gedit origin/master:%<cr>
 nnoremap <Leader>gj :VcsJump diff HEAD<cr>
