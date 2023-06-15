@@ -4,7 +4,7 @@ local beautiful = require("beautiful")
 
 local naughty = require("naughty")
 
-local obj = {}
+local M = {}
 
 function debug_msg(msg)
   naughty.notify({ title = msg, message = msg, timeout = 5 })
@@ -12,7 +12,7 @@ end
 
 -- TODO remember previously focused client
 
-function obj.focus(screen, mouselocation_x, mouselocation_y)
+function M.focus(screen, mouselocation_x, mouselocation_y)
   gears.timer {
     timeout   = 0.05,
     call_now  = false,
@@ -36,19 +36,19 @@ function obj.focus(screen, mouselocation_x, mouselocation_y)
 }
 end
 
-function obj.get_active()
+function M.get_active()
   return awful.screen.focused()
 end
 
-function obj.previous_workspace(keep_focus)
-  obj.focus_raw('viewprev', keep_focus)
+function M.previous_workspace(keep_focus)
+  M.focus_raw('viewprev', keep_focus)
 end
 
-function obj.next_workspace(keep_focus)
-  obj.focus_raw('viewnext', keep_focus)
+function M.next_workspace(keep_focus)
+  M.focus_raw('viewnext', keep_focus)
 end
 
-function obj.focus_raw(action, keep_focus)
+function M.focus_raw(action, keep_focus)
   keep_focus = keep_focus or false
 
   local mouselocation_x
@@ -59,14 +59,14 @@ function obj.focus_raw(action, keep_focus)
     mouselocation_y = mouse.coords().y
   end
 
-  local active_screen = obj.get_active()
+  local active_screen = M.get_active()
 
   for i = 1, screen.count() do
     awful.tag[action](screen[i])
   end
 
   if keep_focus then
-    obj.focus(active_screen, mouselocation_x, mouselocation_y)
+    M.focus(active_screen, mouselocation_x, mouselocation_y)
   else
     --awful.screen.focus(active_screen)
 
@@ -88,15 +88,15 @@ function obj.focus_raw(action, keep_focus)
   end
 end
 
-function obj.next_workspace_with_focus()
-  obj.next_workspace(true)
+function M.next_workspace_with_focus()
+  M.next_workspace(true)
 end
 
-function obj.previous_workspace_with_focus()
-  obj.previous_workspace(true)
+function M.previous_workspace_with_focus()
+  M.previous_workspace(true)
 end
 
-function obj.jump_to_tag(tag_name)
+function M.jump_to_tag(tag_name)
   local mouselocation_x = mouse.coords().x
   local mouselocation_y = mouse.coords().y
   local focused_screen = awful.screen.focused()
@@ -131,7 +131,7 @@ function obj.jump_to_tag(tag_name)
   }
 end
 
-function obj.arrange_with_timeout(client, class, id, index)
+function M.arrange_with_timeout(client, class, id, index)
   client.connect_signal("property::class", function(c)
     if c.class == class then
       gears.timer {
@@ -148,7 +148,7 @@ function obj.arrange_with_timeout(client, class, id, index)
   end)
 end
 
-function obj.set_wallpaper(s)
+function M.set_wallpaper(s)
   if beautiful.wallpaper then
     for s = 1, screen.count() do
       if s < 2 then
@@ -161,4 +161,4 @@ function obj.set_wallpaper(s)
 end
 
 
-return obj
+return M

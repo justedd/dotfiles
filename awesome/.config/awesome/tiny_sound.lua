@@ -3,7 +3,7 @@ local wibox = require('wibox')
 local awful = require('awful')
 local beautiful = require('beautiful')
 
-local obj = {}
+local M = {}
 
 local height = 20
 local width = 200
@@ -18,7 +18,7 @@ function get_icon(text)
   return icons[text] or text
 end
 
-function obj.init(screen)
+function M.init(screen)
   local box = wibox ({
     x = 240,
     y = screen.geometry.height - height,
@@ -66,4 +66,4 @@ function obj.init(screen)
   )
 end
 
-return obj
+return M

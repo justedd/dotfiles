@@ -1,9 +1,9 @@
 local gears = require("gears")
 local wibox = require("wibox")
 
-local obj = {}
+local M = {}
 
-function obj.init(screen, wibar)
+function M.init(screen, wibar)
   wibar.visible = false
 
   local detect = gears.timer({
@@ -43,4 +43,4 @@ function obj.init(screen, wibar)
   end)
 end
 
-return obj
+return M
