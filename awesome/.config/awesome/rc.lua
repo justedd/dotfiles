@@ -28,16 +28,12 @@ local tiny_volume = require('widgets/tiny_volume')
 
 local window_utils = require('window_utils')
 
--- {{{ Error handling
--- Check if awesome encountered an error during startup and fell back to
--- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
     naughty.notify({ preset = naughty.config.presets.critical,
                      title = "Oops, there were errors during startup!",
                      text = awesome.startup_errors })
 end
 
--- Handle runtime errors after startup
 do
     local in_error = false
     awesome.connect_signal("debug::error", function (err)
@@ -51,27 +47,18 @@ do
         in_error = false
     end)
 end
--- }}}
 
--- {{{ Variable definitions
--- Themes define colours, icons, font and wallpapers.
 beautiful.init("~/.config/awesome/theme.lua")
 
 local terminal = "kitty"
 local modkey = "Mod4"
 
--- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.tile,
-    --awful.layout.suit.floating,
+    awful.layout.suit.tile
 }
--- }}}
 
--- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
--- }}}
 
--- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", window_utils.set_wallpaper)
 
 
@@ -102,17 +89,11 @@ awful.screen.connect_for_each_screen(function(s)
     tiny_connection.init(s)
     tiny_volume.init(s)
 end)
--- }}}
 
 local mouse_keys = require('mouse_keys')
 root.buttons(mouse_keys)
 
--- {{{ Key bindings
 local globalkeys = gears.table.join(
-  -- my keybindings
-
-  -- end of my keybindings
-
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "h",
@@ -142,12 +123,10 @@ local globalkeys = gears.table.join(
     awful.key({ modkey }, 'i', window_utils.previous_workspace_with_focus),
     awful.key({ modkey }, 'u', window_utils.next_workspace_with_focus),
 
-    -- Layout manipulation
     awful.key({ modkey, "Control" }, "j", function () awful.client.swap.byidx(1) end,
               {description = "focus the next screen", group = "screen"}),
     awful.key({ modkey, "Control" }, "k", function () awful.client.swap.byidx(-1) end,
               {description = "focus the previous screen", group = "screen"}),
-    -- Standard program
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift" }, "l",     function () awful.tag.incmwfact( 0.05)          end,
@@ -220,8 +199,6 @@ clientkeys = gears.table.join(
               {description = "toggle keep on top", group = "client"}),
     awful.key({ modkey,           }, "n",
         function (c)
-            -- The client currently has the input focus, so it cannot be
-            -- minimized, since minimized clients can't have the focus.
             c.minimized = true
         end ,
         {description = "minimize", group = "client"}),
@@ -245,9 +222,6 @@ clientkeys = gears.table.join(
         {description = "(un)maximize horizontally", group = "client"})
 )
 
--- Bind all key numbers to tags.
--- Be careful: we use keycodes to make it work on any keyboard layout.
--- This should map on the top row of your keyboard, usually 1 to 9.
 for i = 1, 9 do
   globalkeys = gears.table.join(
     globalkeys,
@@ -292,14 +266,9 @@ clientbuttons = gears.table.join(
     end)
 )
 
--- Set keys
 root.keys(globalkeys)
--- }}}
 
--- {{{ Rules
--- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
-    -- All clients will match this rule.
     { rule = { },
       properties = { border_width = beautiful.border_width,
                      border_color = beautiful.border_normal,
@@ -311,8 +280,6 @@ awful.rules.rules = {
                      placement = awful.placement.no_overlap+awful.placement.no_offscreen
      }
     },
-
-    -- Floating clients.
     { rule_any = {
         instance = {
           "DTA",  -- Firefox addon DownThemAll.
@@ -343,28 +310,15 @@ awful.rules.rules = {
         }
       }, properties = { floating = true }},
 
-    -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
       }, properties = { titlebars_enabled = true }
     },
-
-    -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
 }
--- }}}
 
--- {{{ Signals
--- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c)
-    -- Set the windows at the slave,
-    -- i.e. put it at the end of others instead of setting it master.
-    -- if not awesome.startup then awful.client.setslave(c) end
-
     if awesome.startup
       and not c.size_hints.user_position
       and not c.size_hints.program_position then
-        -- Prevent clients from being unreachable after screen count changes.
         awful.placement.no_offscreen(c)
     end
 
@@ -375,24 +329,12 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
--- }}}
 
--- Enable sloppy focus, so that focus follows mouse.
---client.connect_signal("mouse::enter", function(c)
-    --c:emit_signal("request::activate", "mouse_enter", {raise = false})
---end)
-
-
-beautiful.useless_gap = 10
 
 naughty.config.defaults.position = 'bottom_right'
 naughty.config.defaults.screen = 2
-
-
--- mailspring hack
+beautiful.useless_gap = 10
 beautiful.notification_icon_size = 35
-
---require 'autorun'.init(awful)
 
 dofile(awful.util.getdir("config") .. "/" .. 'autorun.lua')
 
