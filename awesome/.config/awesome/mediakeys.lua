@@ -2,6 +2,8 @@ local awful = require('awful')
 local gears = require('gears')
 local naughty = require("naughty")
 
+local music_player = 'YandexMusic'
+
 function debug_msg(msg)
   naughty.notify({ title = msg, message = msg, timeout = 5 })
 end
@@ -37,28 +39,27 @@ return gears.table.join(
   awful.key(
     {}, 'XF86AudioPlay',
     function()
-      -- spotify
-      awful.util.spawn('playerctl -p YandexMusic play-pause')
+      awful.util.spawn('playerctl -p ' .. music_player ..' play-pause')
     end),
  
   awful.key(
     {}, 'XF86AudioPause',
     function()
-      awful.util.spawn('playerctl -p YandexMusic play-pause')
+      awful.util.spawn('playerctl -p ' .. music_player ..' play-pause')
     end
   ),
  
   awful.key(
     {}, 'XF86AudioNext',
     function()
-      awful.util.spawn('playerctl -p YandexMusic next')
+      awful.util.spawn('playerctl -p ' .. music_player ..' next')
     end
   ),
  
   awful.key(
     {}, 'XF86AudioPrev',
     function()
-      awful.util.spawn('playerctl -p YandexMusic previous')
+      awful.util.spawn('playerctl -p ' .. music_player ..' previous')
     end
   ),
  
@@ -103,11 +104,4 @@ return gears.table.join(
       exec_in_shell("~/core/scripts/smplayer/capture.sh")
     end
   )
-
-  --awful.key(
-    --{}, 's',
-    --function()
-      --debug_msg('kek')
-    --end
-  --)
 )
