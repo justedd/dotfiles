@@ -6,10 +6,6 @@ local naughty = require("naughty")
 
 local M = {}
 
-function debug_msg(msg)
-  naughty.notify({ title = msg, message = msg, timeout = 5 })
-end
-
 -- TODO remember previously focused client
 
 function M.focus(screen, mouselocation_x, mouselocation_y)

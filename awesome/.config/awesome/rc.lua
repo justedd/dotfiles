@@ -28,11 +28,6 @@ local tiny_volume = require('widgets/tiny_volume')
 
 local window_utils = require('window_utils')
 
--- TODO: extract
-function debug_msg(msg)
-  naughty.notify({ title = msg, message = msg, timeout = 5 })
-end
-
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)

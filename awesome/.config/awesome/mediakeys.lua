@@ -4,10 +4,6 @@ local naughty = require("naughty")
 
 local music_player = 'YandexMusic'
 
-function debug_msg(msg)
-  naughty.notify({ title = msg, message = msg, timeout = 5 })
-end
-
 function exec_in_shell(cmd)
   awful.spawn.easy_async_with_shell(cmd, function(out)
     -- noop
