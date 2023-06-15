@@ -28,6 +28,7 @@ local tiny_volume = require('tiny_volume')
 local window_utils = require('window_utils')
 
 
+-- TODO: extract
 function debug_msg(msg)
   naughty.notify({ title = msg, message = msg, timeout = 5 })
 end
