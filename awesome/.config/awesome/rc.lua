@@ -19,14 +19,14 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
---local wibar_visibility_control = require('wibar_visibility_control')
-local current_tag = require('current_tag')
-local tiny_clock = require('tiny_clock')
-local tiny_connection = require('tiny_connection')
-local tiny_sound = require('tiny_sound')
-local tiny_volume = require('tiny_volume')
-local window_utils = require('window_utils')
+-- Widgets
+local current_tag = require('widgets/current_tag')
+local tiny_clock = require('widgets/tiny_clock')
+local tiny_connection = require('widgets/tiny_connection')
+local tiny_sound = require('widgets/tiny_sound')
+local tiny_volume = require('widgets/tiny_volume')
 
+local window_utils = require('window_utils')
 
 -- TODO: extract
 function debug_msg(msg)
