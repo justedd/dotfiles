@@ -27,8 +27,35 @@ local function copy(args)
 end
 
 ls.add_snippets("all", {
+	s("class", {
+		t("class "),
+		i(1),
+		t({"", "end"})
+	}),
+
+	s("describe", {
+		t("describe '"),
+		i(1),
+		t({"' do", "\t"}),
+		i(2),
+		t({"", "end"}),
+	}),
+
+	s("context", {
+		t("context '"),
+		c(1, {
+			t("with"),
+			t("when"),
+		}),
+    t(" "),
+		i(2),
+		t({"' do", "\t"}),
+		i(3),
+		t({"", "end"}),
+	}),
+
 	-- trigger is `fn`, second argument to snippet-constructor are the nodes to insert into the buffer on expansion.
-	s("fna", {
+	s("ex_fn", {
 		-- Simple static text.
 		t("//Parameters: "),
 		-- function, first parameter is the function, second the Placeholders
@@ -46,7 +73,8 @@ ls.add_snippets("all", {
 		i(0),
 		t({ "", "}" }),
 	}),
-  s("class", {
+
+  s("ex_class", {
 		-- Choice: Switch between two different Nodes, first parameter is its position, second a list of nodes.
 		c(1, {
 			t("public "),
