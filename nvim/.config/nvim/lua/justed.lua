@@ -37,6 +37,7 @@ require("indent_blankline").setup {
 }
 
 require('justed_statusline')
+require('snippets')
 
   -- Setup nvim-cmp.
 local cmp = require'cmp'
@@ -66,6 +67,11 @@ cmp.setup({
     }),
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
   },
+  snippet = {
+    expand = function(args)
+      require'luasnip'.lsp_expand(args.body)
+    end
+  },
   sources = cmp.config.sources({
     {
       name = 'nvim_lsp',
@@ -86,6 +92,7 @@ cmp.setup({
         end
       },
     },
+    { name = 'luasnip' },
     { name = 'path' },
     { name = 'nvim_lua' },
     { name = 'vim-dadbod-completion' },

@@ -53,6 +53,12 @@ return require('packer').startup(function()
   use 'posva/vim-vue'
   use 'ekalinin/Dockerfile.vim'
 
+  use({
+    "L3MON4D3/LuaSnip",
+    tag = "v1.2.*",
+    run = "make install_jsregexp"
+  })
+  use { 'saadparwaiz1/cmp_luasnip' }
 
   -- git plugins
   use 'tpope/vim-fugitive'
