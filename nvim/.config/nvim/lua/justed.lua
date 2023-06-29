@@ -38,6 +38,7 @@ require("indent_blankline").setup {
 
 require('justed_statusline')
 require('snippets')
+require('cmp_source')
 
   -- Setup nvim-cmp.
 local cmp = require'cmp'
@@ -73,6 +74,11 @@ cmp.setup({
     end
   },
   sources = cmp.config.sources({
+    --{
+      --name = 'custom_source',
+      --group_index = 1,
+      --max_item_count = 5,
+    --},
     {
       name = 'nvim_lsp',
       group_index = 1,
