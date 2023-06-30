@@ -58,6 +58,8 @@ function source:complete(params, callback)
     return callback({})
   end
 
+  -- add all matches from rspec
+
   callback({
     { label = 'January' },
     { label = 'February' },
@@ -91,3 +93,6 @@ end
 
 ---Register your source to nvim-cmp.
 require('cmp').register_source('custom_source', source)
+
+
+-- rg shared_examples_for --no-filename --no-line-number ./spec | grep .

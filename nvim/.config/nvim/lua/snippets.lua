@@ -54,6 +54,28 @@ ls.add_snippets("all", {
 		t({"", "end"}),
 	}),
 
+	s("let", {
+		t("let(:"),
+		i(1),
+		t(') { '),
+		i(2),
+		t(' }'),
+	}),
+
+	s("specify", {
+		t("specify { expect("),
+		i(1),
+		t(").to "),
+		i(2),
+		t(' }'),
+	}),
+
+	s("itis", {
+		t("it { is_expected.to "),
+		i(1),
+		t(' }'),
+	}),
+
 	-- trigger is `fn`, second argument to snippet-constructor are the nodes to insert into the buffer on expansion.
 	s("ex_fn", {
 		-- Simple static text.
