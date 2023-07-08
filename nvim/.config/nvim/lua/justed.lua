@@ -74,11 +74,11 @@ cmp.setup({
     end
   },
   sources = cmp.config.sources({
-    --{
-      --name = 'custom_source',
-      --group_index = 1,
-      --max_item_count = 5,
-    --},
+    {
+      name = 'custom_source',
+      group_index = 1,
+      max_item_count = 5,
+    },
     {
       name = 'nvim_lsp',
       group_index = 1,

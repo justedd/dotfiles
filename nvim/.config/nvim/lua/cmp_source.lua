@@ -1,5 +1,7 @@
 local source = {}
 
+local cmp = require'cmp'
+
 function _G.debug_put(...)
   local objects = {}
   for i = 1, select('#', ...) do
@@ -39,50 +41,64 @@ end
 
 ---Return trigger characters for triggering completion (optional).
 function source:get_trigger_characters()
-  --return { '.' }
-  return { "it_behaves_like \'" }
+  return { '.' }
+  --return { "it_behaves_like \'" }
 end
+
+local class_matchers = {
+  {
+    label = 'be_an_instance_of',
+    doc = 'passes if `actual.class == expected`'
+  },
+  {
+    label = 'be_a',
+    doc = 'passes if `actual.kind_of?(expected)`',
+  },
+  {
+    label = 'be_an',
+    doc = 'passes if `actual.kind_of?(expected)`',
+    alias = 'be_a'
+  },
+  {
+    label = 'be_a_kind_of',
+    doc = 'passes if `actual.kind_of?(expected)`',
+    alias = 'be_a'
+  }
+}
 
 ---Invoke completion (required).
 ---@param params cmp.SourceCompletionApiParams
 ---@param callback fun(response: lsp.CompletionResponse|nil)
 function source:complete(params, callback)
-  --debug_put(params)
-  --debug_put(params['context']['cursor_before_line'])
-  --local file_name = vim.fn.expand('%:t')
-  --local list = {}
+  debug_put(params)
+  debug_put(params['context']['cursor_before_line'])
+  local filename = vim.fn.expand('%:t')
+  debug_put(filename)
 
-
-  --local handle = io.popen(command)
-  --local result = handle:read("*a")
-  --handle:close()
-
-  --vim.api.nvim_exec(command, true)
-
-  --io.popen("python3 " .. vim.fn.expand("%"))
-
-  local includes = string.find(file_name, '_spec.rb')
-
-  if not includes then
+  if not string.find(filename, "_spec.rb") then
     return callback({})
   end
 
-  -- add all matches from rspec
+  local items = {}
 
-  callback({
-    { label = 'January' },
-    { label = 'February' },
-    { label = 'March' },
-    { label = 'April' },
-    { label = 'May' },
-    { label = 'June' },
-    { label = 'July' },
-    { label = 'August' },
-    { label = 'September' },
-    { label = 'October' },
-    { label = 'November' },
-    { label = 'December' },
-  })
+  for i, item in ipairs(class_matchers) do
+    local doc = item.doc or ''
+
+    if doc and item.alias then
+      doc = doc .. "\n_alias_ " .. item.alias
+    end
+
+    items[i] = {
+      label = item.label,
+      kind = cmp.lsp.CompletionItemKind.Text,
+      documentation = {
+        kind = cmp.lsp.MarkupKind.Markdown,
+        value = doc
+      }
+    }
+  end
+
+  callback(items)
 end
 
 ---Resolve completion item (optional). This is called right before the completion is about to be displayed.
