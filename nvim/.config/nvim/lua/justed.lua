@@ -98,7 +98,10 @@ cmp.setup({
         end
       },
     },
-    { name = 'luasnip' },
+    {
+      name = 'luasnip',
+      priority = 2
+    },
     { name = 'path' },
     { name = 'nvim_lua' },
     { name = 'vim-dadbod-completion' },

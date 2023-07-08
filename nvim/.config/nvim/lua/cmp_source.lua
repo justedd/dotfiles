@@ -49,8 +49,17 @@ end
 function source:complete(params, callback)
   --debug_put(params)
   --debug_put(params['context']['cursor_before_line'])
-  local file_name = vim.fn.expand('%:t')
-  local list = {}
+  --local file_name = vim.fn.expand('%:t')
+  --local list = {}
+
+
+  --local handle = io.popen(command)
+  --local result = handle:read("*a")
+  --handle:close()
+
+  --vim.api.nvim_exec(command, true)
+
+  --io.popen("python3 " .. vim.fn.expand("%"))
 
   local includes = string.find(file_name, '_spec.rb')
 
