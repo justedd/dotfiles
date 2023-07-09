@@ -45,37 +45,22 @@ function source:get_trigger_characters()
   --return { "it_behaves_like \'" }
 end
 
-local class_matchers = {
-  {
-    label = 'be_an_instance_of',
-    doc = 'passes if `actual.class == expected`'
-  },
-  {
-    label = 'be_a',
-    doc = 'passes if `actual.kind_of?(expected)`',
-  },
-  {
-    label = 'be_an',
-    doc = 'passes if `actual.kind_of?(expected)`',
-    alias = 'be_a'
-  },
-  {
-    label = 'be_a_kind_of',
-    doc = 'passes if `actual.kind_of?(expected)`',
-    alias = 'be_a'
-  }
-}
+local class_matchers = require('./matchers')
 
 ---Invoke completion (required).
 ---@param params cmp.SourceCompletionApiParams
 ---@param callback fun(response: lsp.CompletionResponse|nil)
 function source:complete(params, callback)
-  debug_put(params)
-  debug_put(params['context']['cursor_before_line'])
+  --debug_put(params)
+  line_before = params['context']['cursor_before_line']
   local filename = vim.fn.expand('%:t')
-  debug_put(filename)
+  --debug_put(filename)
 
   if not string.find(filename, "_spec.rb") then
+    return callback({})
+  end
+
+  if (not string.find(line_before, '.not_to')) and (not string.find(line_before, '.to')) then
     return callback({})
   end
 
@@ -90,7 +75,7 @@ function source:complete(params, callback)
 
     items[i] = {
       label = item.label,
-      kind = cmp.lsp.CompletionItemKind.Text,
+      kind = cmp.lsp.CompletionItemKind.Method,
       documentation = {
         kind = cmp.lsp.MarkupKind.Markdown,
         value = doc
