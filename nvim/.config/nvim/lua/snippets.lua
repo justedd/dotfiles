@@ -82,6 +82,18 @@ ls.add_snippets("ruby", {
 		t(' }'),
 	}),
 
+	s("fdescribe", {
+		t({"fdescribe do", "\t"}),
+		i(1),
+		t({'', 'end'}),
+	}),
+
+	s("it_behaves_like", {
+		t("it_behaves_like '"),
+		i(1),
+		t("'"),
+	}),
+
 	-- trigger is `fn`, second argument to snippet-constructor are the nodes to insert into the buffer on expansion.
 	s("ex_fn", {
 		-- Simple static text.
