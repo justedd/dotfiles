@@ -45,7 +45,25 @@ function source:get_trigger_characters()
   --return { "it_behaves_like \'" }
 end
 
-local class_matchers = require('./matchers')
+local raw_class_matchers = require('./matchers')
+local matchers = {}
+
+for i, item in ipairs(raw_class_matchers) do
+  local doc = item.doc or ''
+
+  if doc and item.alias then
+    doc = doc .. "\n_alias_ " .. item.alias
+  end
+
+  matchers[i] = {
+    label = item.label,
+    kind = cmp.lsp.CompletionItemKind.Method,
+    documentation = {
+      kind = cmp.lsp.MarkupKind.Markdown,
+      value = doc
+    }
+  }
+end
 
 ---Invoke completion (required).
 ---@param params cmp.SourceCompletionApiParams
@@ -64,26 +82,7 @@ function source:complete(params, callback)
     return callback({})
   end
 
-  local items = {}
-
-  for i, item in ipairs(class_matchers) do
-    local doc = item.doc or ''
-
-    if doc and item.alias then
-      doc = doc .. "\n_alias_ " .. item.alias
-    end
-
-    items[i] = {
-      label = item.label,
-      kind = cmp.lsp.CompletionItemKind.Method,
-      documentation = {
-        kind = cmp.lsp.MarkupKind.Markdown,
-        value = doc
-      }
-    }
-  end
-
-  callback(items)
+  callback(matchers)
 end
 
 ---Resolve completion item (optional). This is called right before the completion is about to be displayed.
