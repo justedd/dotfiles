@@ -27,13 +27,13 @@ local function copy(args)
 end
 
 ls.add_snippets("ruby", {
-	s("*class", {
+	s("class", {
 		t("class "),
 		i(1),
 		t({"", "end"})
 	}),
 
-	s("*describe", {
+	s("describe", {
 		t("describe '"),
 		i(1),
 		t({"' do", "\t"}),
@@ -41,7 +41,7 @@ ls.add_snippets("ruby", {
 		t({"", "end"}),
 	}),
 
-	s("*context", {
+	s("context", {
 		t("context '"),
 		c(1, {
 			t("with"),
@@ -54,7 +54,7 @@ ls.add_snippets("ruby", {
 		t({"", "end"}),
 	}),
 
-	s("*let", {
+	s("let", {
 		t("let(:"),
 		i(1),
 		t(') { '),
@@ -62,7 +62,7 @@ ls.add_snippets("ruby", {
 		t(' }'),
 	}),
 
-	s("*specify", {
+	s("specify", {
 		t("specify { expect("),
 		i(1),
 		t(").to "),
@@ -70,8 +70,14 @@ ls.add_snippets("ruby", {
 		t(' }'),
 	}),
 
-	s("*itis", {
+	s("itis", {
 		t("it { is_expected.to "),
+		i(1),
+		t(' }'),
+	}),
+
+	s("fit", {
+		t("fit { ap subject"),
 		i(1),
 		t(' }'),
 	}),
