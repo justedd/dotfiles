@@ -76,6 +76,13 @@ ls.add_snippets("ruby", {
 		t(' }'),
 	}),
 
+
+	s("subject", {
+		t("subject { "),
+		i(1),
+		t(' }'),
+	}),
+
 	s("fit", {
 		t("fit { ap subject"),
 		i(1),
