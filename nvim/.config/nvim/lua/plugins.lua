@@ -20,6 +20,7 @@ return require('packer').startup(function()
   use 'hrsh7th/nvim-cmp'
   use 'neovim/nvim-lspconfig'
   use 'kristijanhusak/vim-dadbod-completion'
+  use 'Exafunction/codeium.vim'
 
 
   -- Errors Lint
@@ -66,6 +67,8 @@ return require('packer').startup(function()
   use 'tpope/vim-rhubarb' -- required for :Gbrowse for GitHub
   use 'wincent/vcs-jump'
   use 'kristijanhusak/vim-dirvish-git'
+  use 'junegunn/gv.vim'
+  use 'rhysd/git-messenger.vim'
 
 
   -- Database
