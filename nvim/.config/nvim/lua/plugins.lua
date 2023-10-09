@@ -94,6 +94,7 @@ return require('packer').startup(function()
   use 'junegunn/vim-easy-align'
   use 'machakann/vim-highlightedyank'
   use 'markonm/traces.vim'
+  use 'nvim-treesitter/nvim-treesitter-context'
 
 
   -- File Browsing
