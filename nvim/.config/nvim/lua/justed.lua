@@ -7,8 +7,7 @@ telescope.load_extension('media_files')
 telescope.setup {
   defaults = {
     prompt_prefix = "(╯°□°）╯ >>> ",
-    path_display = { "truncate" },
-    dynamic_preview_title = true,
+    path_display = { "truncate" }, dynamic_preview_title = true,
     preview = {
       treesitter = false,
     }
@@ -31,10 +30,15 @@ local justed = {
 --require('gitsigns').setup()
 
 
-require("indent_blankline").setup {
-    char = '▏',
-    buftype_exclude = {"terminal"}
-}
+require("ibl").setup({
+  indent = {  char = '▏' },
+  scope = { enabled = false }
+})
+
+--require("indent_blankline").setup {
+    --char = '▏',
+    --buftype_exclude = {"terminal"}
+--}
 
 require('justed_statusline')
 require('snippets')
@@ -187,6 +191,22 @@ require'treesitter-context'.setup{
   separator = nil,
   zindex = 20, -- The Z-index of the context window
   on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
+}
+
+require('neorg').setup {
+  load = {
+    ["core.defaults"] = {},
+    ["core.concealer"] = {},
+    --["core.completion"] = {},
+    ["core.dirman"] = {
+      config = {
+        workspaces = {
+          work = "~/notes/work",
+          home = "~/notes/home",
+        }
+      }
+    }
+  }
 }
 
 return justed
