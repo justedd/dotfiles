@@ -83,6 +83,18 @@ ins_left({
   left_padding = 0 -- We don't need space before this
 }, true)
 
+
+-- isnert number of tabs
+ins_left({
+  function()
+    local current_tab = vim.fn.tabpagenr()
+    local total_tabs = vim.fn.tabpagenr('$')
+    return current_tab .. '/' .. total_tabs
+  end,
+  color = { fg = colors.magenta, gui = 'bold' },
+  left_padding = 0
+}, true)
+
 ins_left({
   -- mode component
   function()
