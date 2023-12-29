@@ -182,7 +182,7 @@ nnoremap <F4> :lua package.loaded.justed = nil<CR>:lua package.loaded.justed_com
 
 nnoremap <leader>w :write<CR>
 
-nnoremap <leader>Nw :Neorg workspace work<CR>
+nnoremap <leader>nww :tabe<CR>:e scratch/index.md<CR>
 
 nnoremap <leader>s :Telescope grep_string searc=<C-R><C-W><CR>
 

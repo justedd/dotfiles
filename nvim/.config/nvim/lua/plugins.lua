@@ -47,6 +47,8 @@ return require('packer').startup(function()
   -- Errors Lint
   use 'w0rp/ale'
 
+  use 'sbdchd/neoformat'
+
 
   -- Telescope
   use 'nvim-lua/popup.nvim'

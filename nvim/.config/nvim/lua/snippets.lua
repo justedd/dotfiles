@@ -33,6 +33,12 @@ ls.add_snippets("ruby", {
 		t({"", "end"})
 	}),
 
+	s("rescueap", {
+		t("rescue StandardError => e"),
+		t({"  ", "ap e.message"}),
+		t({"  ", "ap e.backtrace"})
+	}),
+
 	s("describe", {
 		t("describe '"),
 		i(1),
