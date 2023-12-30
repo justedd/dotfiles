@@ -77,6 +77,14 @@ return require('packer').startup(function()
   use 'posva/vim-vue'
   use 'ekalinin/Dockerfile.vim'
 
+  use({'jakewvincent/mkdnflow.nvim',
+    config = function()
+      require('mkdnflow').setup({
+        -- Config goes here; leave blank for defaults
+      })
+    end
+  })
+
   use({
     "L3MON4D3/LuaSnip",
     tag = "v1.2.*",
