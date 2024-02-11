@@ -28,6 +28,8 @@ local tiny_volume = require('widgets/tiny_volume')
 
 local window_utils = require('window_utils')
 
+local debug_msg = require('debug_msg')
+
 dofile(awful.util.getdir("config") .. "/" .. 'load_recovery.lua')
 
 
@@ -56,6 +58,7 @@ awful.screen.connect_for_each_screen(function(s)
       "slack",
       "work_code",
       "work_view",
+      "store",
       "other_1",
       "other_2",
       "other_3",
@@ -205,7 +208,7 @@ clientkeys = gears.table.join(
         {description = "(un)maximize horizontally", group = "client"})
 )
 
-for i = 1, 9 do
+for i = 1, 10 do
   globalkeys = gears.table.join(
     globalkeys,
     -- View tag only.

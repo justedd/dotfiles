@@ -13,6 +13,7 @@ local icons = {
   slack = '☍',
   work_code = '☰',
   work_view = '☯',
+  store = '🂠',
   other_1 = '⚀',
   other_2 = '⚁',
   other_3 = '⚂',
