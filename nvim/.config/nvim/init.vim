@@ -170,9 +170,6 @@ nnoremap H :call mappings#cycle_highlight() <CR>
 nnoremap <silent> <c-k> <plug>(ale_previous_wrap)
 nnoremap <silent> <c-j> <plug>(ale_next_wrap)
 
-nnoremap <leader>gs :G<cr>
-nnoremap <leader>gb :Git blame<cr>
-
 xnoremap <Leader>yy "+y
 nmap <leader>yn :let @"=expand("%:t")<CR>
 nmap <leader>yp :let @"=expand("%")<CR>
@@ -225,6 +222,7 @@ inoremap ? ?<c-g>u
 nnoremap <Leader>r :RnvimrToggle<cr>
 
 " Git
+nnoremap <leader>gs :G<cr>
 nnoremap <Leader>gc :lua require'telescope.builtin'.git_branches{}<cr>
 xnoremap <Leader>gb :GBrowse<cr>
 nnoremap <Leader>ga :Git blame<cr>
