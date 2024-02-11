@@ -209,6 +209,6 @@ require('neorg').setup {
   }
 }
 
-require('mkdnflow').setup()
+--require('mkdnflow').setup()
 
 return justed

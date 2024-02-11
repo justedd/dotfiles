@@ -113,7 +113,8 @@ let g:highlightedyank_highlight_duration = 150
 "}}}
 " lyokha/vim-xkbswitch {{{
 let g:XkbSwitchEnabled = 1
-let g:XkbSwitchLib = '/usr/local/lib/libg3kbswitch.so'
+let g:XkbSwitchIMappings = ['ru']
+"let g:XkbSwitchLib = '/usr/local/lib/libg3kbswitch.so'
 let g:XkbSwitchAssistNKeymap = 1    " for commands r and f
 "let g:XkbSwitchAssistSKeymap = 1    " for search lines
 let g:XkbSwitchDynamicKeymap = 1
