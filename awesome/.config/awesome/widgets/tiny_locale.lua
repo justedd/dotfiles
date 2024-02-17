@@ -6,12 +6,12 @@ local beautiful = require('beautiful')
 local M = {}
 
 local height = 20
-local width = 200
+local width = 50
 
 function M.init(screen)
   local box = wibox ({
-    x = 355,
-    y = screen.geometry.height - height + 2,
+    x = 320,
+    y = screen.geometry.height - height + 1,
     opacity = 0.40,
     width = width,
     height = height,
@@ -30,10 +30,11 @@ function M.init(screen)
   layout:add(textbox)
   box:set_widget(layout)
 
-  local command = "/home/justed/core/scripts/vpn_name.sh"
+  local command = "xkb-switch -p"
 
+  -- TODO: use events
   gears.timer {
-    timeout   = 1,
+    timeout   = 0.2,
     call_now  = true,
     autostart = true,
     callback  = function()
