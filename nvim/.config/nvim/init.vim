@@ -89,7 +89,7 @@ set laststatus=2
 " autozimu/LanguageClient-neovim {{{
 let g:LanguageClient_autoStop = 0
 let g:LanguageClient_serverCommands = {
-    \ 'ruby': ['ruby-lsp']
+    \ 'ruby': ['solargraph', 'stdio']
     \ }
 " }}}
 " vim-scropts/vim-autosave {{{
@@ -111,14 +111,18 @@ let g:dirvish_mode = ':sort ,^.*[\/],'
 " machakann/vim-highlightedyank {{{
 let g:highlightedyank_highlight_duration = 150
 "}}}
+
 " lyokha/vim-xkbswitch {{{
 let g:XkbSwitchEnabled = 1
 let g:XkbSwitchIMappings = ['ru']
+let g:XkbSwitchSkipIMappings =
+        \ {'*'   : ['.', '>', ':', ';', ',', '{<CR>', '/*', '/*<CR>'],}
 "let g:XkbSwitchLib = '/usr/local/lib/libg3kbswitch.so'
-let g:XkbSwitchAssistNKeymap = 1    " for commands r and f
+"let g:XkbSwitchAssistNKeymap = 1    " for commands r and f
 "let g:XkbSwitchAssistSKeymap = 1    " for search lines
-let g:XkbSwitchDynamicKeymap = 1
+"let g:XkbSwitchDynamicKeymap = 1
 " }}}
+
 " sainnhe/gruvbox-material {{{
 "let g:gruvbox_material_background = 'medium'
 "let g:gruvbox_material_enable_italic = 0

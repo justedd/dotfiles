@@ -95,6 +95,10 @@ ls.add_snippets("ruby", {
 		t(' }'),
 	}),
 
+	s("bb", {
+		t("binding.pry"),
+	}),
+
 	s("fdescribe", {
 		t({"fdescribe do", "\t"}),
 		i(1),
