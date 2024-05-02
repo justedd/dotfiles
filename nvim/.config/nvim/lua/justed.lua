@@ -192,22 +192,6 @@ require'treesitter-context'.setup{
   on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
 }
 
-require('neorg').setup {
-  load = {
-    ["core.defaults"] = {},
-    ["core.concealer"] = {},
-    --["core.completion"] = {},
-    ["core.dirman"] = {
-      config = {
-        workspaces = {
-          work = "~/notes/work",
-          home = "~/notes/home",
-        }
-      }
-    }
-  }
-}
-
 --require('mkdnflow').setup()
 
 return justed
