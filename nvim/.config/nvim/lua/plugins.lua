@@ -74,6 +74,7 @@ return require('packer').startup(function()
   use 'tpope/vim-fugitive'
   use 'airblade/vim-gitgutter'
   use 'tpope/vim-rhubarb' -- required for :Gbrowse for GitHub
+  use 'shumphrey/fugitive-gitlab.vim' -- required for :Gbrowse for GitLab
   use 'wincent/vcs-jump'
   use 'kristijanhusak/vim-dirvish-git'
   use 'junegunn/gv.vim'
