@@ -185,6 +185,13 @@ nnoremap <F4> :lua package.loaded.justed = nil<CR>:lua package.loaded.justed_com
 nnoremap <leader>w :write<CR>
 
 nnoremap <leader>nww :e scratch/index.md<CR>
+nnoremap <Leader>ngla :GV<cr> 
+nnoremap <Leader>nglf :GV!<cr>
+nnoremap <leader>ngg :G<cr>
+nnoremap <Leader>ngb :GBrowse<cr>
+nnoremap <Leader>ngb :Git blame<cr>
+nnoremap <Leader>ndb :tabe<cr>:DBUI<cr>
+nnoremap <Leader>nr :RnvimrToggle<cr>
 
 nnoremap <leader>s :Telescope grep_string searc=<C-R><C-W><CR>
 
@@ -223,18 +230,10 @@ inoremap . .<c-g>u
 inoremap ! !<c-g>u
 inoremap ? ?<c-g>u
 
-nnoremap <Leader>r :RnvimrToggle<cr>
-
 " Git
-nnoremap <leader>gs :G<cr>
-nnoremap <Leader>gc :lua require'telescope.builtin'.git_branches{}<cr>
-xnoremap <Leader>gb :GBrowse<cr>
-nnoremap <Leader>ga :Git blame<cr>
 nnoremap <Leader>gr :Gread<cr>
 nnoremap <Leader>gw :Gwrite<cr>
 nnoremap <Leader>gp :Git push<cr>
-nnoremap <Leader>gL :GV<cr>
-nnoremap <Leader>gl :GV!<cr>
 nnoremap <Leader>ge :Gedit %<cr>
 nnoremap <Leader>gE :Gedit origin/master:%<cr>
 nnoremap <Leader>gj :VcsJump diff HEAD<cr>
