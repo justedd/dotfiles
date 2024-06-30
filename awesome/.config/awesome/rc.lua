@@ -329,6 +329,7 @@ dofile(awful.util.getdir("config") .. "/" .. 'autorun.lua')
 window_utils.arrange_with_timeout(client, "yandex-music-player", "main", 1)
 window_utils.arrange_with_timeout(client, "TelegramDesktop", "telegram", 1)
 window_utils.arrange_with_timeout(client, "Slack", "slack", 1)
-window_utils.arrange_with_timeout(client, "Mailspring", "post", 1)
+window_utils.arrange_with_timeout(client, "pachca", "slack", 1)
+window_utils.arrange_with_timeout(client, "thunderbird", "post", 1)
 
 awful.ewmh.add_activate_filter(function() return false end, "ewmh")
