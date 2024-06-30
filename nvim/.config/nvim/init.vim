@@ -89,7 +89,7 @@ set laststatus=2
 " autozimu/LanguageClient-neovim {{{
 let g:LanguageClient_autoStop = 0
 let g:LanguageClient_serverCommands = {
-    \ 'ruby': ['solargraph', 'stdio']
+    \ 'ruby': ['ruby-lsp']
     \ }
 " }}}
 " vim-scropts/vim-autosave {{{

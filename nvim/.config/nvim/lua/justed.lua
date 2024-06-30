@@ -112,7 +112,7 @@ cmp.setup({
   })
 })
 
-require'lspconfig'.solargraph.setup{
+require'lspconfig'.ruby_lsp.setup{
   handlers = {
     ["textDocument/publishDiagnostics"] = vim.lsp.with(
       vim.lsp.diagnostic.on_publish_diagnostics, {
