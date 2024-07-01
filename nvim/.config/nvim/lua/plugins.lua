@@ -20,7 +20,6 @@ return require('packer').startup(function()
   use 'hrsh7th/nvim-cmp'
   use 'neovim/nvim-lspconfig'
   use 'kristijanhusak/vim-dadbod-completion'
-  use 'Exafunction/codeium.vim'
 
   -- Errors Lint
   use 'w0rp/ale'
