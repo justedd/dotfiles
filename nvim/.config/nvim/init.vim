@@ -187,9 +187,8 @@ nnoremap <leader>w :write<CR>
 nnoremap <leader>nww :e scratch/index.md<CR>
 nnoremap <Leader>ngla :GV<cr> 
 nnoremap <Leader>nglf :GV!<cr>
-nnoremap <leader>ngg :G<cr>
+nnoremap <leader>ngs :G<cr>
 nnoremap <Leader>ngb :GBrowse<cr>
-nnoremap <Leader>ngb :Git blame<cr>
 nnoremap <Leader>ndb :tabe<cr>:DBUI<cr>
 nnoremap <Leader>nr :RnvimrToggle<cr>
 
@@ -237,6 +236,7 @@ nnoremap <Leader>gp :Git push<cr>
 nnoremap <Leader>ge :Gedit %<cr>
 nnoremap <Leader>gE :Gedit origin/master:%<cr>
 nnoremap <Leader>gj :VcsJump diff HEAD<cr>
+nnoremap <Leader>ga :Git blame<cr>
 
 nnoremap <silent><Leader>ma :lua require("harpoon.mark").add_file()<cr>
 nnoremap <silent><Leader>mm :lua require("harpoon.ui").toggle_quick_menu()<cr>
