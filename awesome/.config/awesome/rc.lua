@@ -14,10 +14,19 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
-local hotkeys_popup = require("awful.hotkeys_popup")
+--local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
-require("awful.hotkeys_popup.keys")
+local my_hotkeys = require("hotkeys_help")
+local hotkeys_popup = require("awful.hotkeys_popup.widget")
+
+-- Create the hotkeys widget
+local my_hotkeys_popup = hotkeys_popup.new()
+
+-- Add custom hotkeys
+my_hotkeys_popup:add_hotkeys(my_hotkeys)
+
+--hotkeys_popup.add_hotkeys(my_hotkeys)
 
 -- Widgets
 local current_tag = require('widgets/current_tag')
@@ -30,6 +39,8 @@ local tiny_volume = require('widgets/tiny_volume')
 local window_utils = require('window_utils')
 
 local debug_msg = require('debug_msg')
+
+--debug_msg(my_hotkeys)
 
 dofile(awful.util.getdir("config") .. "/" .. 'load_recovery.lua')
 
@@ -82,8 +93,11 @@ local mouse_keys = require('mouse_keys')
 root.buttons(mouse_keys)
 
 local globalkeys = gears.table.join(
-    awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
-              {description="show help", group="awesome"}),
+    awful.key({ modkey,           }, "s",
+        function ()
+          my_hotkeys_popup:show_help()
+        end,
+        {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "h",
         function ()
           awful.client.focus.global_bydirection('left')
