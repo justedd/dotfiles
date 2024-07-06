@@ -184,13 +184,13 @@ nnoremap <F4> :lua package.loaded.justed = nil<CR>:lua package.loaded.justed_com
 
 nnoremap <leader>w :write<CR>
 
-nnoremap <leader>nww :e scratch/index.md<CR>
-nnoremap <Leader>ngla :GV<cr> 
-nnoremap <Leader>nglf :GV!<cr>
-nnoremap <leader>ngs :G<cr>
-nnoremap <Leader>ngb :GBrowse<cr>
-nnoremap <Leader>ndb :tabe<cr>:DBUI<cr>
-nnoremap <Leader>nr :RnvimrToggle<cr>
+nnoremap <leader>ww :e scratch/index.md<CR>
+nnoremap <Leader>gla :GV<cr> 
+nnoremap <Leader>glf :GV!<cr>
+nnoremap <leader>gs :G<cr>
+nnoremap <Leader>gb :GBrowse<cr>
+nnoremap <Leader>dd :tabe<cr>:DBUI<cr>
+nnoremap <Leader>rr :RnvimrToggle<cr>
 
 nnoremap <leader>s :Telescope grep_string searc=<C-R><C-W><CR>
 
@@ -239,7 +239,7 @@ nnoremap <Leader>gj :VcsJump diff HEAD<cr>
 nnoremap <Leader>ga :Git blame<cr>
 
 nnoremap <silent><Leader>ma :lua require("harpoon.mark").add_file()<cr>
-nnoremap <silent><Leader>mm :lua require("harpoon.ui").toggle_quick_menu()<cr>
+nnoremap <silent><Leader>nh :lua require("harpoon.ui").toggle_quick_menu()<cr>
 nnoremap <silent><A-y> :lua require("harpoon.ui").nav_file(1)<cr>
 nnoremap <silent><A-u> :lua require("harpoon.ui").nav_file(2)<cr>
 nnoremap <silent><A-i> :lua require("harpoon.ui").nav_file(3)<cr>
