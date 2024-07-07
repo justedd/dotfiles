@@ -23,6 +23,8 @@ telescope.setup {
   }
 }
 
+telescope.load_extension('luasnip')
+
 local justed = {
   mappings = {}
 }
