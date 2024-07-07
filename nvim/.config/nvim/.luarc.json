@@ -1,0 +1,13 @@
+{
+    "diagnostics": {
+        "enable": true,
+        "globals": [
+            "use",
+        ],
+        "neededFileStatus": {
+            "codestyle-check": "Any"
+        }
+    },
+    "misc.parameters": [ "--loglevel=trace" ],
+    "telemetry.enable": false
+}
