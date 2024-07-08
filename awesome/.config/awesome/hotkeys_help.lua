@@ -6,6 +6,7 @@ local vim_keys = {
                 ["⚪ww"] = "Scrath index",
                 ["⚪gla"] = "Git log all files",
                 ["⚪glf"] = "Git log the current file",
+                ["⚪dd"] = "DBUI",
             }
         }
     }
