@@ -1,33 +1,15 @@
--- If LuaRocks is installed, make sure that packages installed through it are
--- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
--- TODO: extract window control keys
-
--- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
---require("awful.autofocus")
-
--- Theme handling library
 local beautiful = require("beautiful")
--- Notification library
 local naughty = require("naughty")
---local hotkeys_popup = require("awful.hotkeys_popup")
--- Enable hotkeys help widget for VIM and other apps
--- when client with a matching name is opened:
 local my_hotkeys = require("hotkeys_help")
 local hotkeys_popup = require("awful.hotkeys_popup.widget")
 
--- Create the hotkeys widget
 local my_hotkeys_popup = hotkeys_popup.new()
-
--- Add custom hotkeys
 my_hotkeys_popup:add_hotkeys(my_hotkeys)
 
---hotkeys_popup.add_hotkeys(my_hotkeys)
-
--- Widgets
 local current_tag = require('widgets/current_tag')
 local tiny_clock = require('widgets/tiny_clock')
 local tiny_connection = require('widgets/tiny_connection')
@@ -36,17 +18,14 @@ local tiny_locale = require('widgets/tiny_locale')
 local tiny_volume = require('widgets/tiny_volume')
 
 local window_utils = require('window_utils')
-
-local debug_msg = require('debug_msg')
-
---debug_msg(my_hotkeys)
+--local debug_msg = require('debug_msg')
 
 dofile(awful.util.getdir("config") .. "/" .. 'load_recovery.lua')
 
 
 beautiful.init("~/.config/awesome/theme.lua")
 
-local terminal = "kitty"
+--local terminal = "kitty"
 local modkey = "Mod4"
 
 awful.layout.layouts = {
