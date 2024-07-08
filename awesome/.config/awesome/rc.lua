@@ -13,7 +13,6 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
-local menubar = require("menubar")
 --local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
@@ -54,10 +53,7 @@ awful.layout.layouts = {
     awful.layout.suit.tile
 }
 
-menubar.utils.terminal = terminal -- Set the terminal for applications that require it
-
 screen.connect_signal("property::geometry", window_utils.set_wallpaper)
-
 
 awful.screen.connect_for_each_screen(function(s)
     window_utils.set_wallpaper(s)
@@ -169,10 +165,7 @@ local globalkeys = gears.table.join(
                     history_path = awful.util.get_cache_dir() .. "/history_eval"
                   }
               end,
-              {description = "lua execute prompt", group = "awesome"}),
-    -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "lua execute prompt", group = "awesome"})
 )
 
 local mediakeys = require('mediakeys')
