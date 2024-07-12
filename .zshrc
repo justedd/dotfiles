@@ -94,16 +94,10 @@ export PATH=$PATH:~/.local/share/nvim/plugged/vcs-jump/bin
 export PATH=$PATH:~/core/scripts/diff-so-fancy
 
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 export PATH="$PATH:$HOME/.local/bin"
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-rvm_silence_path_mismatch_check_flag=1
 
 # . ~/.z.sh
 alias vim="vimx"
