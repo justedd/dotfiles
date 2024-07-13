@@ -22,10 +22,8 @@ local window_utils = require('window_utils')
 
 dofile(awful.util.getdir("config") .. "/" .. 'load_recovery.lua')
 
-
 beautiful.init("~/.config/awesome/theme.lua")
 
---local terminal = "kitty"
 local modkey = "Mod4"
 
 awful.layout.layouts = {
@@ -106,58 +104,105 @@ local globalkeys = gears.table.join(
     awful.key({ modkey }, 'i', window_utils.previous_workspace_with_focus),
     awful.key({ modkey }, 'u', window_utils.next_workspace_with_focus),
 
-      awful.key({ modkey, "Control" }, "j", function () awful.client.swap.byidx(1) end,
-                {description = "focus the next screen", group = "screen"}),
-      awful.key({ modkey, "Control" }, "k", function () awful.client.swap.byidx(-1) end,
-                {description = "focus the previous screen", group = "screen"}),
-      awful.key({ modkey, "Control" }, "r", awesome.restart,
-                {description = "reload awesome", group = "awesome"}),
-      awful.key({ modkey, "Shift" }, "l",     function () awful.tag.incmwfact( 0.05)          end,
-                {description = "increase master width factor", group = "layout"}),
-      awful.key({ modkey,  "Shift" }, "h",     function () awful.tag.incmwfact(-0.05)          end,
-                {description = "decrease master width factor", group = "layout"}),
-      awful.key({ modkey, "Shift"   }, "j", function () awful.client.incwfact(0.05)  end,
-                {description = "swap with next client by index", group = "client"}),
-      awful.key({ modkey, "Shift"   }, "k", function () awful.client.incwfact(-0.05)    end,
-                {description = "swap with previous client by index", group = "client"}),
-      awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
-                {description = "increase the number of columns", group = "layout"}),
-      awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
-                {description = "decrease the number of columns", group = "layout"}),
+    awful.key(
+        { modkey, "Control" }, "j",
+        function()
+            awful.client.swap.byidx(1)
+        end,
+        { description = "focus the next screen", group = "screen" }
+    ),
+    awful.key(
+        { modkey, "Control" }, "k",
+        function()
+            awful.client.swap.byidx(-1)
+        end,
+        { description = "focus the previous screen", group = "screen" }
+    ),
+    awful.key(
+        { modkey, "Control" }, "r", awesome.restart,
+        { description = "reload awesome", group = "awesome" }
+    ),
+    awful.key(
+        { modkey, "Shift" }, "l",
+        function()
+            awful.tag.incmwfact(0.05)
+        end,
+        { description = "increase master width factor", group = "layout" }
+    ),
+    awful.key(
+        { modkey, "Shift" }, "h",
+        function()
+            awful.tag.incmwfact(-0.05)
+        end,
+        { description = "decrease master width factor", group = "layout" }
+    ),
+    awful.key(
+        { modkey, "Shift" }, "j",
+        function()
+            awful.client.incwfact(0.05)
+        end,
+        { description = "swap with next client by index", group = "client" }
+    ),
+    awful.key(
+        { modkey, "Shift" }, "k",
+        function()
+            awful.client.incwfact(-0.05)
+        end,
+        { description = "swap with previous client by index", group = "client" }
+    ),
+    awful.key(
+        { modkey, "Control" }, "h",
+        function()
+            awful.tag.incncol(1, nil, true)
+        end,
+        { description = "increase the number of columns", group = "layout" }
+    ),
+    awful.key(
+        { modkey, "Control" }, "l",
+        function()
+            awful.tag.incncol(-1, nil, true)
+        end,
+        { description = "decrease the number of columns", group = "layout" }
+    ),
+    awful.key(
+        { modkey, "Control" }, "n",
+        function()
+            local c = awful.client.restore()
 
-      awful.key({ modkey, "Control" }, "n",
-                function ()
-                    local c = awful.client.restore()
-                    -- Focus restored client
-                    if c then
-                      c:emit_signal(
-                          "request::activate", "key.unminimize", {raise = true}
-                      )
-                    end
-                end,
-                {description = "restore minimized", group = "client"}),
+            -- Focus restored client
+            if c then
+                c:emit_signal("request::activate", "key.unminimize", { raise = true })
+            end
+        end,
+        { description = "restore minimized", group = "client" }
+    ),
+    awful.key(
+        { modkey }, "r",
+        function()
+            awful.util.spawn('rofi -show drun')
+        end,
+        { description = "run prompt", group = "launcher" }
+    ),
 
-      -- Prompt
-      awful.key({ modkey },            "r",     function () awful.util.spawn('rofi -show drun') end,
-                {description = "run prompt", group = "launcher"}),
-
-      awful.key({ modkey }, "x",
-                function ()
-                    awful.prompt.run {
-                      prompt       = "Run Lua code: ",
-                      textbox      = awful.screen.focused().mypromptbox.widget,
-                      exe_callback = awful.util.eval,
-                      history_path = awful.util.get_cache_dir() .. "/history_eval"
-                    }
-                end,
-                {description = "lua execute prompt", group = "awesome"})
+    awful.key(
+        { modkey }, "x",
+        function()
+            awful.prompt.run {
+                prompt = "Run Lua code: ",
+                textbox = awful.screen.focused().mypromptbox.widget,
+                exe_callback = awful.util.eval,
+                history_path = awful.util.get_cache_dir() .. "/history_eval"
+            }
+        end,
+        { description = "lua execute prompt", group = "awesome" }
+    )
 )
 
 local mediakeys = require('mediakeys')
 
 globalkeys = gears.table.join(
-  globalkeys,
-  mediakeys
+    globalkeys,
+    mediakeys
 )
 
 clientkeys = gears.table.join(
