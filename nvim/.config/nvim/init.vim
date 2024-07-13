@@ -35,20 +35,6 @@ let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 
 source $HOME/.config/nvim/config/commands.vimrc
 
-"augroup filetype_vim
-  "autocmd!
-  "autocmd FileType vim setlocal foldmethod=marker
-  "autocmd FileType vim setlocal foldlevelstart=0
-  "autocmd FileType vim setlocal foldlevel=0
-"augroup END
-
-"augroup filetype_markdown
-  "autocmd!
-  "autocmd FileType markdown setlocal foldmethod=marker
-  "autocmd FileType markdown setlocal foldlevelstart=0
-  "autocmd FileType markdown setlocal foldlevel=0
-"augroup END
-
 " bronson/vim-trailing-whitespace {{{
 let g:extra_whitespace_ignored_filetypes = ['sql', 'dbout']
 " }}}
@@ -78,14 +64,6 @@ set signcolumn=yes
 " }}}
 " bling/vim-airline' {{{
 set laststatus=2
-"hi Normal guibg=NONE ctermbg=NONE
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#show_buffers = 1
-"let g:airline#extensions#tabline#show_splits = 0
-"let g:airline#extensions#ale#enabled = 1
-"let g:airline_powerline_fonts = 1
-"let g:airline#extensions#whitespace#enabled = 0
-" }}}
 " autozimu/LanguageClient-neovim {{{
 let g:LanguageClient_autoStop = 0
 let g:LanguageClient_serverCommands = {
@@ -112,22 +90,6 @@ let g:dirvish_mode = ':sort ,^.*[\/],'
 let g:highlightedyank_highlight_duration = 150
 "}}}
 
-" lyokha/vim-xkbswitch {{{
-"let g:XkbSwitchEnabled = 1
-"let g:XkbSwitchIMappings = ['ru']
-"let g:XkbSwitchSkipIMappings =
-        "\ {'*'   : ['.', '>', ':', "'", "[", "]", ';', ',', '{<CR>', '/*', '/*<CR>'],}
-"let g:XkbSwitchLib = '/usr/local/lib/libg3kbswitch.so'
-"let g:XkbSwitchAssistNKeymap = 1    " for commands r and f
-"let g:XkbSwitchAssistSKeymap = 1    " for search lines
-"let g:XkbSwitchDynamicKeymap = 1
-" }}}
-
-" sainnhe/gruvbox-material {{{
-"let g:gruvbox_material_background = 'medium'
-"let g:gruvbox_material_enable_italic = 0
-"let g:gruvbox_material_disable_italic_comment = 0
-" }}}
 " wincent/ferret {{{
 let g:FerretAutojump=2
 let g:FerretExecutable='ag,rg'
