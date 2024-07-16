@@ -155,6 +155,7 @@ nnoremap <leader>gs :G<cr>
 nnoremap <Leader>gb :GBrowse<cr>
 nnoremap <Leader>dd :tabe<cr>:DBUI<cr>
 nnoremap <Leader>rr :RnvimrToggle<cr>
+nnoremap <Leader>hh :Http<cr>
 
 nnoremap <leader>s :Telescope grep_string searc=<C-R><C-W><CR>
 

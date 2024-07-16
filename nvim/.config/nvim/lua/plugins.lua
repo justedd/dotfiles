@@ -85,6 +85,7 @@ return require('packer').startup(function()
   use 'tpope/vim-dadbod'
   use 'kristijanhusak/vim-dadbod-ui'
 
+  use 'nicwest/vim-http'
 
   -- Random Features
   use 'tpope/vim-surround'
