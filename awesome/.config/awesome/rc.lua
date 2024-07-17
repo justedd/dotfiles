@@ -277,33 +277,33 @@ local clientkeys = gears.table.join(
 )
 
 for i = 1, 10 do
-  globalkeys = gears.table.join(
-    globalkeys,
-    -- View tag only.
-    awful.key(
-      { modkey },
-      '#' .. i + 9,
-      function() 
-        window_utils.jump_to_tag(i)
-      end,
-      { description = 'view tag #'..i, group = 'tag' }
+    globalkeys = gears.table.join(
+        globalkeys,
+        -- View tag only.
+        awful.key(
+            { modkey },
+            '#' .. i + 9,
+            function() 
+                window_utils.jump_to_tag(i)
+            end,
+    { description = 'view tag #' .. i, group = 'tag' }
     ),
 
     -- Move client to tag.
     awful.key(
-      { modkey, 'Shift' },
-      '#' .. i + 9,
-      function()
+    { modkey, 'Shift' },
+    '#' .. i + 9,
+    function()
         if client.focus then
-          local tag = client.focus.screen.tags[i]
-          if tag then
-            client.focus:move_to_tag(tag)
-          end
+            local tag = client.focus.screen.tags[i]
+            if tag then
+                client.focus:move_to_tag(tag)
+            end
         end
-      end,
-      { description = 'move focused client to tag #'..i, group = 'tag' }
+    end,
+    { description = 'move focused client to tag #'..i, group = 'tag' }
     )
-  )
+    )
 end
 
 clientbuttons = gears.table.join(
