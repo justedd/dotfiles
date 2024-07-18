@@ -283,39 +283,38 @@ for i = 1, 10 do
         awful.key(
             { modkey },
             '#' .. i + 9,
-            function() 
+            function()
                 window_utils.jump_to_tag(i)
             end,
-    { description = 'view tag #' .. i, group = 'tag' }
-    ),
-
-    -- Move client to tag.
-    awful.key(
-    { modkey, 'Shift' },
-    '#' .. i + 9,
-    function()
-        if client.focus then
-            local tag = client.focus.screen.tags[i]
-            if tag then
-                client.focus:move_to_tag(tag)
-            end
-        end
-    end,
-    { description = 'move focused client to tag #'..i, group = 'tag' }
-    )
+            { description = 'view tag #' .. i, group = 'tag' }
+        ),
+        -- Move client to tag.
+        awful.key(
+            { modkey, 'Shift' },
+            '#' .. i + 9,
+            function()
+                if client.focus then
+                    local tag = client.focus.screen.tags[i]
+                    if tag then
+                        client.focus:move_to_tag(tag)
+                    end
+                end
+            end,
+            { description = 'move focused client to tag #' .. i, group = 'tag' }
+        )
     )
 end
 
-clientbuttons = gears.table.join(
-    awful.button({ }, 1, function (c)
-        c:emit_signal("request::activate", "mouse_click", {raise = true})
+local clientbuttons = gears.table.join(
+    awful.button({}, 1, function(c)
+        c:emit_signal("request::activate", "mouse_click", { raise = true })
     end),
-    awful.button({ modkey }, 1, function (c)
-        c:emit_signal("request::activate", "mouse_click", {raise = true})
+    awful.button({ modkey }, 1, function(c)
+        c:emit_signal("request::activate", "mouse_click", { raise = true })
         awful.mouse.client.move(c)
     end),
-    awful.button({ modkey }, 3, function (c)
-        c:emit_signal("request::activate", "mouse_click", {raise = true})
+    awful.button({ modkey }, 3, function(c)
+        c:emit_signal("request::activate", "mouse_click", { raise = true })
         awful.mouse.client.resize(c)
     end)
 )
