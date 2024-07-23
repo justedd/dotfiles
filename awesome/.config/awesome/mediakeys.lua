@@ -5,9 +5,9 @@ local naughty = require("naughty")
 local music_player = 'YandexMusic'
 
 function exec_in_shell(cmd)
-  awful.spawn.easy_async_with_shell(cmd, function(out)
-    -- noop
-  end)
+      awful.spawn.easy_async_with_shell(cmd, function(out)
+        -- noop
+      end)
 end
 
 return gears.table.join(
