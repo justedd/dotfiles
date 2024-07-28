@@ -44,7 +44,6 @@ require("ibl").setup({
 
 require('justed_statusline')
 require('snippets')
-require('cmp_source')
 
   -- Setup nvim-cmp.
 local cmp = require'cmp'

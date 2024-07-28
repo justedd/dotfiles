@@ -2,7 +2,8 @@
     "diagnostics": {
         "enable": true,
         "globals": [
-            "use",
+            "vim",
+            "lsp"
         ],
         "neededFileStatus": {
             "codestyle-check": "Any"
