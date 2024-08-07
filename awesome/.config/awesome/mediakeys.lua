@@ -5,20 +5,6 @@ local music_player = 'YandexMusic'
 
 return gears.table.join(
     awful.key(
-        { 'Control', 'Shift' }, 'Print',
-        function()
-            awful.util.spawn("sh -c 'maim -s | xclip -selection clipboard -t image/png'")
-        end
-    ),
-
-    awful.key(
-        { 'Shift' }, 'Print',
-        function()
-            awful.util.spawn("sh -c 'maim -s /home/justed/Pictures/Screenshots/$(date +\"%Y_%m_%d_%H_%M_%S\").png'")
-        end
-    ),
-
-    awful.key(
         { 'Shift', 'Control', 'Mod1', 'Mod4' }, "p",
         function()
             awful.util.spawn("flameshot gui")
