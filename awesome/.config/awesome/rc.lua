@@ -406,6 +406,7 @@ dofile(awful.util.getdir("config") .. "/" .. 'autorun.lua')
 window_utils.arrange_with_timeout(client, "yandex-music-player", "main", 1)
 window_utils.arrange_with_timeout(client, "TelegramDesktop", "telegram", 1)
 window_utils.arrange_with_timeout(client, "Slack", "slack", 1)
+window_utils.arrange_with_timeout(client, "Mattermost", "slack", 1)
 window_utils.arrange_with_timeout(client, "Pachca", "slack", 1)
 window_utils.arrange_with_timeout(client, "thunderbird", "post", 1)
 
