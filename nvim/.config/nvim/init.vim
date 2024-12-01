@@ -54,8 +54,9 @@ let g:ale_linters = {
 
 let g:ale_virtualtext_cursor = 'dsabled'
 
-let g:ale_sign_error = emoji#for('broken_heart')
-let g:ale_sign_warning = emoji#for('fire')
+" Broke after packer->lazy
+"let g:ale_sign_error = emoji#for('broken_heart')
+"let g:ale_sign_warning = emoji#for('fire')
 let g:ale_set_highlights = 0
 highlight link ALEWarningSign todo
 highlight link ALEErrorSign todo
@@ -107,7 +108,6 @@ let g:AutoPairsShortcutToggle = ""
 set termguicolors
 highlight Comment cterm=italic
 set background=dark
-colorscheme gruvbox-material
 
 highlight link CompeDocumentation NormalFloat
 

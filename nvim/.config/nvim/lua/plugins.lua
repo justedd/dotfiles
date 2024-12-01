@@ -1,138 +1,149 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
--- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
-
-return require('packer').startup(function()
-  -- Mange itself
-  use 'wbthomason/packer.nvim'
-
-
-  -- Treesitter
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-
-
-  -- autocomplete
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-nvim-lua'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/nvim-cmp'
-  use 'neovim/nvim-lspconfig'
-  use 'kristijanhusak/vim-dadbod-completion'
-
-  -- Errors Lint
-  use 'w0rp/ale'
-
-  use 'sbdchd/neoformat'
-
-
-  -- Telescope
-  use 'nvim-lua/popup.nvim'
-  use 'nvim-lua/plenary.nvim'
-  use 'nvim-telescope/telescope.nvim'
-  use 'nvim-telescope/telescope-media-files.nvim'
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-  use 'benfowler/telescope-luasnip.nvim'
-
-
-  -- Languages and Frameworks
-  use 'noprompt/vim-yardoc'
-  use 'rust-lang/rust.vim'
-  use 'stevearc/vim-arduino'
-  use 'vim-ruby/vim-ruby'
-  use 'pangloss/vim-javascript'
-  use 'JulesWang/css.vim'
-  use 'cakebaker/scss-syntax.vim'
-  use 'digitaltoad/vim-jade'
-  use 'slim-template/vim-slim'
-  use 'kchmck/vim-coffee-script'
-  use 'plasticboy/vim-markdown'
-  use 'tpope/vim-bundler'
-  use 'jparise/vim-graphql'
-  use 'tpope/vim-rails'
-  use 'mxw/vim-jsx'
-  use 'posva/vim-vue'
-  use 'ekalinin/Dockerfile.vim'
-
-  use({'jakewvincent/mkdnflow.nvim',
-    config = function()
-      require('mkdnflow').setup({
-        -- Config goes here; leave blank for defaults
-      })
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+    local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+    local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+    if vim.v.shell_error ~= 0 then
+        vim.api.nvim_echo({
+            { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+            { out, "WarningMsg" },
+            { "\nPress any key to exit..." },
+        }, true, {})
+        vim.fn.getchar()
+        os.exit(1)
     end
-  })
+end
+vim.opt.rtp:prepend(lazypath)
 
-  use({
-    "L3MON4D3/LuaSnip",
-    tag = "v1.2.*",
-    run = "make install_jsregexp"
-  })
-  use { 'saadparwaiz1/cmp_luasnip' }
+-- Setup lazy.nvim
+require("lazy").setup({
+    spec = {
+        { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
-  -- git plugins
-  use 'tpope/vim-fugitive'
-  use 'airblade/vim-gitgutter'
-  use 'tpope/vim-rhubarb' -- required for :Gbrowse for GitHub
-  use 'shumphrey/fugitive-gitlab.vim' -- required for :Gbrowse for GitLab
-  use 'wincent/vcs-jump'
-  use 'kristijanhusak/vim-dirvish-git'
-  use 'junegunn/gv.vim'
-  use 'rhysd/git-messenger.vim'
+        { 'hrsh7th/cmp-nvim-lsp' },
+        { 'hrsh7th/cmp-nvim-lua' },
+        { 'hrsh7th/cmp-buffer' },
+        { 'hrsh7th/cmp-path' },
+        { 'hrsh7th/nvim-cmp' },
+        { 'neovim/nvim-lspconfig' },
+        { 'kristijanhusak/vim-dadbod-completion' },
+        -- Errors Lint }
+        { 'w0rp/ale' },
 
+        { 'sbdchd/neoformat' },
 
-  -- Database
-  use 'tpope/vim-dadbod'
-  use 'kristijanhusak/vim-dadbod-ui'
+        -- Telescope
+        { 'nvim-lua/popup.nvim' },
+        { 'nvim-lua/plenary.nvim' },
+        { 'nvim-telescope/telescope.nvim' },
+        { 'nvim-telescope/telescope-media-files.nvim' },
+        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+        { 'benfowler/telescope-luasnip.nvim' },
 
-  use 'nicwest/vim-http'
+        -- Languages and Frameworks
+        { 'noprompt/vim-yardoc' },
+        { 'rust-lang/rust.vim' },
+        { 'stevearc/vim-arduino' },
+        { 'vim-ruby/vim-ruby' },
+        { 'pangloss/vim-javascript' },
+        { 'JulesWang/css.vim' },
+        { 'cakebaker/scss-syntax.vim' },
+        { 'digitaltoad/vim-jade' },
+        { 'slim-template/vim-slim' },
+        { 'kchmck/vim-coffee-script' },
+        { 'plasticboy/vim-markdown' },
+        { 'tpope/vim-bundler' },
+        { 'jparise/vim-graphql' },
+        { 'tpope/vim-rails' },
+        { 'mxw/vim-jsx' },
+        { 'posva/vim-vue' },
+        { 'ekalinin/Dockerfile.vim' },
 
-  -- Random Features
-  use 'tpope/vim-surround'
-  use 'tpope/vim-repeat'
-  use 'tpope/vim-abolish'
-  use 'tpope/vim-speeddating'
-  use 'tpope/vim-eunuch'
-  use 'haya14busa/vim-asterisk'
-  use 'tpope/vim-unimpaired'
-  use 'jeetsukumaran/vim-indentwise'
-  use 'andrewradev/splitjoin.vim'
-  use 'scrooloose/nerdcommenter'
-  use 'tpope/vim-endwise'
-  use 'jiangmiao/auto-pairs'
-  use 'kshenoy/vim-signature' -- Display marks(a-z, A-Z) near numbers
-  use 'lukas-reineke/indent-blankline.nvim'
-  use 'junegunn/vim-easy-align'
-  use 'machakann/vim-highlightedyank'
-  use 'markonm/traces.vim'
-  use 'nvim-treesitter/nvim-treesitter-context'
+        {
+            'jakewvincent/mkdnflow.nvim',
+            config = function()
+                require('mkdnflow').setup({})
+            end
+        },
 
+        {
+            "L3MON4D3/LuaSnip",
+            version = "v2.*",
+            build = "make install_jsregexp"
+        },
 
-  -- File Browsing
-  use 'justinmk/vim-dirvish'
-  use 'ryanoasis/vim-devicons'
-  use 'kyazdani42/nvim-web-devicons'
-  use 'kevinhwang91/rnvimr'
-  use 'ThePrimeagen/harpoon'
+        { 'saadparwaiz1/cmp_luasnip' },
 
+        -- git plugins
+        { 'tpope/vim-fugitive' },
+        { 'airblade/vim-gitgutter' },
+        { 'tpope/vim-rhubarb' },
+        { 'shumphrey/fugitive-gitlab.vim' },
+        { 'wincent/vcs-jump' },
+        { 'kristijanhusak/vim-dirvish-git' },
+        { 'junegunn/gv.vim' },
+        { 'rhysd/git-messenger.vim' },
 
-  -- UI
-  use 'sainnhe/gruvbox-material'
+        -- Database
+        { 'tpope/vim-dadbod' },
+        { 'kristijanhusak/vim-dadbod-ui' },
 
-  use { 'luisiacc/gruvbox-baby', branch = 'main' }
-  use "EdenEast/nightfox.nvim"
+        { 'nicwest/vim-http' },
 
+        -- Random Features },
+        { 'tpope/vim-surround' },
+        { 'tpope/vim-repeat' },
+        { 'tpope/vim-abolish' },
+        { 'tpope/vim-speeddating' },
+        { 'tpope/vim-eunuch' },
+        { 'haya14busa/vim-asterisk' },
+        { 'tpope/vim-unimpaired' },
+        { 'jeetsukumaran/vim-indentwise' },
+        { 'andrewradev/splitjoin.vim' },
+        { 'scrooloose/nerdcommenter' },
+        { 'tpope/vim-endwise' },
+        { 'jiangmiao/auto-pairs' },
+        { 'kshenoy/vim-signature' },
+        { 'lukas-reineke/indent-blankline.nvim' },
+        { 'junegunn/vim-easy-align' },
+        { 'machakann/vim-highlightedyank' },
+        { 'markonm/traces.vim' },
+        { 'nvim-treesitter/nvim-treesitter-context' },
 
-  use 'junegunn/vim-emoji'
-  use 'hoob3rt/lualine.nvim'
+        -- File Browsing
+        { 'justinmk/vim-dirvish' },
+        { 'ryanoasis/vim-devicons' },
+        { 'kyazdani42/nvim-web-devicons' },
+        { 'kevinhwang91/rnvimr' },
+        { 'ThePrimeagen/harpoon' },
 
+        -- UI
+        {
+            'sainnhe/gruvbox-material',
+            lazy = false,
+            priority = 1000,
+            config = function()
+                vim.cmd([[colorscheme gruvbox-material]])
+            end,
+        },
 
-  -- System Integration
-  use 'wincent/terminus' -- Terminal improvements
-  --use 'lyokha/vim-xkbswitch'
-  use 'embear/vim-localvimrc'
+        { 'luisiacc/gruvbox-baby', branch = 'main' },
 
+        { "EdenEast/nightfox.nvim" },
 
-  -- Search & Replace
-  use 'wincent/ferret'
-end)
+        { 'junegunn/vim-emoji' },
+        { 'hoob3rt/lualine.nvim' },
+
+        -- System Integration
+        { 'wincent/terminus' },
+        { 'embear/vim-localvimrc' },
+
+        { 'wincent/ferret' },
+    },
+    -- Configure any other settings here. See the documentation for more details.
+    -- colorscheme that will be used when installing plugins.
+    --install = { colorscheme = { "habamax" } },
+    -- automatically check for plugin updates
+    checker = { enabled = false },
+})
