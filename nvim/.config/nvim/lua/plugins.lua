@@ -61,13 +61,6 @@ require("lazy").setup({
         { 'ekalinin/Dockerfile.vim' },
 
         {
-            'jakewvincent/mkdnflow.nvim',
-            config = function()
-                require('mkdnflow').setup({})
-            end
-        },
-
-        {
             "L3MON4D3/LuaSnip",
             version = "v2.*",
             build = "make install_jsregexp"
