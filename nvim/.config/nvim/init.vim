@@ -127,7 +127,7 @@ nnoremap <A-l> <C-w>l
 " }}}
 
 lua require('plugins')
-lua require('justed')
+lua require('core')
 
 "colorscheme nightfox
 
