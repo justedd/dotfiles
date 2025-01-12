@@ -113,23 +113,23 @@ cmp.setup({
   })
 })
 
---require'lspconfig'.ruby_lsp.setup{
-require'lspconfig'.solargraph.setup{
-  handlers = {
-    ["textDocument/publishDiagnostics"] = vim.lsp.with(
-      vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = false,
-        signs = false,
-        underline = false
-      }
-    )
-  },
-  on_attach = function()
-    -- remap documentation only for current buffer
-    -- second press moves you to the documentation window
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
-  end
-}
+-- require'lspconfig'.solargraph.setup {
+require('lspconfig').ruby_lsp.setup {
+    handlers = {
+        ["textDocument/publishDiagnostics"] = vim.lsp.with(
+        vim.lsp.diagnostic.on_publish_diagnostics, {
+            virtual_text = false,
+            signs = false,
+            underline = false
+        }
+        )
+    },
+    on_attach = function()
+        -- remap documentation only for current buffer
+        -- second press moves you to the documentation window
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
+        end
+    }
 
 require'lspconfig'.rust_analyzer.setup{
   cmd = { "/home/justed/core/apps/rust-analyzer" },

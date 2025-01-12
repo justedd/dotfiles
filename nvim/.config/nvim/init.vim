@@ -205,12 +205,7 @@ nnoremap <Leader>gj :VcsJump diff HEAD<cr>
 nnoremap <Leader>ga :Git blame<cr>
 
 nnoremap <silent><Leader>ma :lua require("harpoon.mark").add_file()<cr>
-nnoremap <silent><Leader>nh :lua require("harpoon.ui").toggle_quick_menu()<cr>
-nnoremap <silent><A-y> :lua require("harpoon.ui").nav_file(1)<cr>
-nnoremap <silent><A-u> :lua require("harpoon.ui").nav_file(2)<cr>
-nnoremap <silent><A-i> :lua require("harpoon.ui").nav_file(3)<cr>
-nnoremap <silent><A-o> :lua require("harpoon.ui").nav_file(4)<cr>
-nnoremap <silent><A-p> :lua require("harpoon.ui").nav_file(5)<cr>
+nnoremap <silent><Leader>mm :lua require("harpoon.ui").toggle_quick_menu()<cr>
 
 " Always refresh indentlines after folding
 nmap <silent>zo zo:IndentBlanklineRefresh<cr>

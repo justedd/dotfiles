@@ -99,6 +99,10 @@ ls.add_snippets("ruby", {
 		t("binding.pry"),
 	}),
 
+	s("fzs", {
+		t("# frozen_string_literal: true"),
+	}),
+
 	s("fdescribe", {
 		t({"fdescribe do", "\t"}),
 		i(1),
