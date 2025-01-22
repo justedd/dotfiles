@@ -30,6 +30,8 @@ set hlsearch
 
 set completeopt=menuone,noselect
 
+packadd cfilter
+
 filetype plugin on
 
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
