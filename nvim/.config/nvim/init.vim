@@ -167,6 +167,8 @@ nnoremap ga <Plug>(EasyAlign)
 
 nnoremap <silent> gd :Telescope lsp_definitions<CR>
 nnoremap <silent> gr :Telescope lsp_references<CR>
+nnoremap <silent> gi :Telescope lsp_implementations<CR>
+nnoremap <silent> ga :Telescope aerial<CR>
 
 inoremap <silent><expr> <C-e> compe#close('<C-e>')
 inoremap <silent><expr> <C-f> compe#scroll({ 'delta': +4 })

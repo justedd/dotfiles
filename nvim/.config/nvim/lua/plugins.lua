@@ -59,6 +59,14 @@ require("lazy").setup({
         { 'mxw/vim-jsx' },
         { 'posva/vim-vue' },
         { 'ekalinin/Dockerfile.vim' },
+        {
+            'stevearc/aerial.nvim',
+            opts = {},
+            dependencies = {
+                "nvim-treesitter/nvim-treesitter",
+                "nvim-tree/nvim-web-devicons"
+            },
+        },
 
         {
             "L3MON4D3/LuaSnip",
