@@ -227,6 +227,19 @@ for r in regs
 endfor
 
 
+let g:projectionist_heuristics = {
+            \ '*.go': {
+            \   '*.go': {
+            \       'alternate': '{}_test.go',
+            \       'type': 'source'
+            \   },
+            \   '*_test.go': {
+            \       'alternate': '{}.go',
+            \       'type': 'test'
+            \   },
+            \ }}
+
+
 function s:MkNonExDir(file, buf)
     if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
         let dir=fnamemodify(a:file, ':h')

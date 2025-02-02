@@ -99,6 +99,8 @@ require("lazy").setup({
 
         { 'saadparwaiz1/cmp_luasnip' },
 
+        { 'tpope/vim-projectionist' },
+
         -- git plugins
         { 'tpope/vim-fugitive' },
         { 'airblade/vim-gitgutter' },
