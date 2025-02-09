@@ -12,6 +12,18 @@ require("aerial").setup({
     end,
 })
 
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "go",
+    callback = function()
+        vim.opt.expandtab = false
+        vim.opt.shiftwidth = 2
+        vim.opt.softtabstop = 2
+        vim.opt.tabstop = 2
+    end,
+})
+
+
 require('elements.telescope')
 require('elements.indent_line')
 require('elements.statusline')

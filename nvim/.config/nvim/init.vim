@@ -237,7 +237,18 @@ let g:projectionist_heuristics = {
             \       'alternate': '{}.go',
             \       'type': 'test'
             \   },
-            \ }}
+            \ },
+            \ '*.rb': {
+            \   'app/*.rb': {
+            \       'alternate': 'spec/{}_spec.rb',
+            \       'type': 'source'
+            \   },
+            \   'spec/*_spec.rb': {
+            \       'alternate': 'app/{}.rb',
+            \       'type': 'test'
+            \   },
+            \ }
+            \}
 
 
 function s:MkNonExDir(file, buf)
