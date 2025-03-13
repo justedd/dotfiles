@@ -2,7 +2,7 @@ local M = {
     mappings = {}
 }
 
-require "lsp_signature".setup({})
+--require "lsp_signature".setup({})
 
 require("aerial").setup({
     on_attach = function(bufnr)

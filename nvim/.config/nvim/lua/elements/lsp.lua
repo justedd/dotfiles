@@ -52,7 +52,13 @@ require('lspconfig').rust_analyzer.setup {
     },
 }
 
-require('lspconfig').gopls.setup {}
+require('lspconfig').gopls.setup {
+    settings = {
+        gopls = {
+            buildFlags = { "-tags=integration" },
+        }
+    }
+}
 
 require('lspconfig').lua_ls.setup {
     on_init = function(client)
