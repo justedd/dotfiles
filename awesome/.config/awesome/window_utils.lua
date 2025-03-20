@@ -148,9 +148,9 @@ function M.set_wallpaper(s)
   if beautiful.wallpaper then
     for s = 1, screen.count() do
       if s < 2 then
-        gears.wallpaper.maximized("/home/justed/Pictures/Wallpapers/left.png", s, true)
-      else
         gears.wallpaper.maximized("/home/justed/Pictures/Wallpapers/right.png", s, true)
+      else
+        gears.wallpaper.maximized("/home/justed/Pictures/Wallpapers/left.png", s, true)
       end
     end
   end

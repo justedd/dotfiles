@@ -21,11 +21,11 @@ local icons = {
 
 local function screen_widget_coordinates(screen)
   local presets = {
-    [1] = {
+    [2] = {
       x = 20,
       y = screen.geometry.height - HEIGHT
     },
-    [2] = {
+    [1] = {
       x = screen.geometry.width * 2 - WIDTH + 5,
       y = screen.geometry.height - HEIGHT
     }

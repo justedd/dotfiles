@@ -403,11 +403,11 @@ beautiful.notification_icon_size = 35
 
 dofile(awful.util.getdir("config") .. "/" .. 'autorun.lua')
 
-window_utils.arrange_with_timeout(client, "yandex-music-player", "main", 1)
-window_utils.arrange_with_timeout(client, "TelegramDesktop", "telegram", 1)
-window_utils.arrange_with_timeout(client, "Slack", "slack", 1)
-window_utils.arrange_with_timeout(client, "Mattermost", "slack", 1)
-window_utils.arrange_with_timeout(client, "Pachca", "slack", 1)
-window_utils.arrange_with_timeout(client, "thunderbird", "post", 1)
+window_utils.arrange_with_timeout(client, "yandex-music-player", "main", 2)
+window_utils.arrange_with_timeout(client, "TelegramDesktop", "telegram", 2)
+window_utils.arrange_with_timeout(client, "Slack", "slack", 2)
+window_utils.arrange_with_timeout(client, "Mattermost", "slack", 2)
+window_utils.arrange_with_timeout(client, "Pachca", "slack", 2)
+window_utils.arrange_with_timeout(client, "thunderbird", "post", 2)
 
 awful.ewmh.add_activate_filter(function() return false end, "ewmh")
